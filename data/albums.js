@@ -1,5 +1,23 @@
 export default [
   {
+    title: 'All We Need',
+    image: 'all-we-need',
+    spotify:
+      'https://open.spotify.com/album/5cDnto6P5mxkmkm73EqDVB?si=fy_7l34uSNax8rDt4oJCPg',
+    apple: 'https://music.apple.com/nl/album/korsvei/1491773860',
+    releaseDate: '2022, 10, 28',
+    songlist: [
+      { title: 'Together' },
+      { title: 'When Something´s Undone' },
+      { title: 'All We Need' },
+      { title: 'Riptide' },
+      { title: 'Last Breath' },
+      { title: 'IMAFY' },
+      { title: "Your Spell Ain't Working on Me" },
+      { title: 'River of Dreams' },
+    ],
+  },
+  {
     title: 'Korsvei',
     image: 'korsvei',
     spotify:
