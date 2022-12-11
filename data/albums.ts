@@ -3,7 +3,7 @@ import { IAlbum } from "~~/types/IAlbum";
 const albums: IAlbum[] = [
   {
     title: "All We Need",
-    image: "all-we-need",
+    image: "/images/albums/all-we-need.jpg",
     spotify:
       "https://open.spotify.com/album/5cDnto6P5mxkmkm73EqDVB?si=fy_7l34uSNax8rDt4oJCPg",
     apple: "https://music.apple.com/nl/album/korsvei/1491773860",
@@ -21,7 +21,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "Korsvei",
-    image: "korsvei",
+    image: "/images/albums/korsvei.jpg",
     spotify:
       "https://open.spotify.com/album/0HEpQuKQC5B1aNKi9vfLAD?si=uJ1a7PeeTnaskXXhnChpqA",
     apple: "https://music.apple.com/nl/album/korsvei/1491773860",
@@ -58,7 +58,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "Changes",
-    image: "changes",
+    image: "/images/albums/changes.jpg",
     apple: "https://music.apple.com/nl/album/changes/1277930075",
     spotify:
       "https://open.spotify.com/album/1kDQYA7Y0fn2myWcngbPaT?si=1LOYjtvvR5eb0i9d5IRZFg",
@@ -106,7 +106,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "Live in Dresden",
-    image: "live-in-dresden",
+    image: "/images/albums/live-in-dresden.jpg",
     apple: "https://music.apple.com/nl/album/live-in-dresden/978762992",
     spotify:
       "https://open.spotify.com/album/7KOjiSkYIEQ8661zSn2Aqk?si=9AKow4oNR6WrfHa4NqKwhQ",
@@ -157,7 +157,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "Dieci",
-    image: "dieci",
+    image: "/images/albums/dieci.jpg",
     apple: "https://music.apple.com/nl/album/dieci/740768520",
     spotify:
       "https://open.spotify.com/album/4kgFNGMZDP24BXAgHBBFX7?si=inBRQ6RsSI-kQrEc2vC-XQ",
@@ -197,7 +197,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "You Gotta Get Ready",
-    image: "you-gotta-get-ready",
+    image: "/images/albums/you-gotta-get-ready.jpg",
     apple: "https://music.apple.com/nl/album/you-gotta-get-ready/502874072",
     spotify:
       "https://open.spotify.com/album/2cMkuV3mePu8FkEe0deujG?si=RxAmhyqjR4GwGvt8FKFkxQ",
@@ -237,7 +237,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "The Path Of Love",
-    image: "path-of-love",
+    image: "/images/albums/path-of-love.jpg",
     apple: "https://music.apple.com/nl/album/the-path-of-love/1093200481",
     spotify:
       "https://open.spotify.com/album/4ENKgj2Vl1bHr6gfDya6q4?si=L7DhJAiJQvytNCUymhwSdQ",
@@ -279,7 +279,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "A Brighter Kind of Blue",
-    image: "a-brighter-kind-of-blue",
+    image: "/images/albums/a-brighter-kind-of-blue.jpg",
     apple: "https://music.apple.com/nl/album/a-brighter-kind-of-blue/297076152",
     spotify:
       "https://open.spotify.com/album/0lm0RlZkT8kzcofLm2Pyh9?si=L4rU7ucSRnOK_ZPxGKDrWg",
@@ -319,7 +319,7 @@ const albums: IAlbum[] = [
   },
   {
     title: "Terje Nordgarden",
-    image: "terje-nordgarden",
+    image: "/images/albums/terje-nordgarden.jpg",
     apple: "https://music.apple.com/nl/album/terje-nordgarden/961461467",
     spotify:
       "https://open.spotify.com/album/5pNDGKY5WW5R9uhQUM17hx?si=QxZiPjqpRtiWbM3nLp8vRg",
