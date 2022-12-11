@@ -1,57 +1,14 @@
 {
-  "name": "nordgarden",
-  "version": "1.0.0",
   "private": true,
-  "description": "Nordgarden is a Norwegian artist deriving from the American old school of classic songwriting.",
-  "author": "Michiel Koning",
   "scripts": {
     "build": "nuxt build",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "precommit": "npm run lint",
-    "start": "nuxt start"
-  },
-  "dependencies": {
-    "@nuxtjs/apollo": "^4.0.1-rc.5",
-    "@nuxtjs/axios": "^5.13.1",
-    "@nuxtjs/pwa": "^3.3.5",
-    "@vue-a11y/announcer": "^2.1.0",
-    "body-scroll-lock": "^3.1.5",
-    "cross-env": "^7.0.3",
-    "graphql-tag": "^2.11.0",
-    "nuxt": "^2.15.3",
-    "nuxt-i18n": "^6.21.1",
-    "vue": "^2.6.12",
-    "vue-youtube": "^1.4.0"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/plugin-proposal-optional-chaining": "^7.13.12",
-    "@babel/preset-env": "^7.13.12",
-    "@nuxtjs/eslint-config": "^6.0.0",
-    "@nuxtjs/google-analytics": "^2.4.0",
-    "apollo-fetch": "^0.7.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.22.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": ">=11.1.0",
-    "eslint-plugin-nuxt": ">=2.0.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-standard": ">=4.1.0",
-    "eslint-plugin-vue": "^7.8.0",
-    "nodemon": "^2.0.7",
-    "nuxt-svg-loader": "^1.2.0",
-    "postcss-mixins": "^6.2.3",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.2.1",
-    "stylelint": "^13.12.0",
-    "stylelint-config-standard": "^21.0.0",
-    "vue-cli-plugin-i18n": "^2.0.2"
+    "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
+    "nuxt": "3.0.0"
   }
 }
