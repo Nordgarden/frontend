@@ -17,7 +17,7 @@ defineProps<{
         alt=""
       />
       <!-- <post-date :date="album.releaseDate" class="date" /> -->
-      <ul class="stores">
+      <ul class="stores" v-if="album.spotify || album.apple">
         <li v-if="album.spotify">
           <a
             :href="album.spotify"
@@ -25,7 +25,12 @@ defineProps<{
             target="_blank"
             class="shop-link"
           >
-            <!-- <icon-spotify aria-hidden="true" width="24" height="24" /> -->
+            <nuxt-icon
+              name="spotify"
+              aria-hidden="true"
+              width="24"
+              height="24"
+            />
             <span class="sr-only">
               {{ $t("viewOn", { title: album.title, network: "Spotify" }) }}
             </span>
@@ -38,7 +43,7 @@ defineProps<{
             target="_blank"
             class="shop-link"
           >
-            <!-- <icon-apple aria-hidden="true" width="24" height="24" /> -->
+            <nuxt-icon name="apple" aria-hidden="true" width="24" height="24" />
             <span class="sr-only">
               {{ $t("viewOn", { title: album.title, network: "Apple Music" }) }}
             </span>

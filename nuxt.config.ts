@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/base.css"],
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/apollo"],
+  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/apollo", "nuxt-icons"],
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",

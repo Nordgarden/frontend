@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const { t } = useI18n();
 defineI18nRoute({
   paths: {
     en: "/tour",
@@ -8,7 +7,7 @@ defineI18nRoute({
 </script>
 
 <template>
-  <app-page :title="t('tour')">
+  <app-page :title="$t('tour')">
     <tour-dates />
   </app-page>
 </template>

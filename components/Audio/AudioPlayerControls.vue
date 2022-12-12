@@ -20,32 +20,30 @@ const scrub = (event: MouseEvent) => {
 </script>
 
 <template>
-  <button v-if="isPlaying" :disabled="!playableSongs.length" @click="pause">
-    <icon-pause width="24" height="24" aria-hidden="true" />
-    <span class="sr-only">{{ $t("pause") }}</span>
-  </button>
-  <button v-else :disabled="!playableSongs.length" @click="play">
-    <icon-play width="24" height="24" aria-hidden="true" />
-    <span class="sr-only">{{ $t("play") }}</span>
-  </button>
-  <button :disabled="playableSongs.length < 1" @click="next">
-    <icon-forwards width="24" height="24" aria-hidden="true" />
-    <span class="sr-only">{{ $t("next") }}</span>
-  </button>
-  <div
-    v-show="playableSongs.length"
-    ref="progressBar"
-    class="progress"
-    @click="scrub"
-  >
-    <div :style="{ width: progress }" class="bar"></div>
-    <div v-if="currentSong" class="title">{{ currentSong.title }}</div>
+  <div class="wrapper" v-if="playableSongs">
+    <button v-if="isPlaying" @click="pause">
+      <nuxt-icon name="pause" width="24" height="24" aria-hidden="true" />
+      <span class="sr-only">{{ $t("pause") }}</span>
+    </button>
+    <button v-else @click="play">
+      <nuxt-icon name="play" width="24" height="24" aria-hidden="true" />
+      <span class="sr-only">{{ $t("play") }}</span>
+    </button>
+    <button v-if="playableSongs.length < 1" @click="next">
+      <nuxt-icon name="forwards" width="24" height="24" aria-hidden="true" />
+      <span class="sr-only">{{ $t("next") }}</span>
+    </button>
+    <div ref="progressBar" class="progress" @click="scrub">
+      <div :style="{ width: progress }" class="bar"></div>
+      <div v-if="currentSong" class="title">{{ currentSong.title }}</div>
+    </div>
   </div>
 </template>
 
 <style lang="postcss" scoped>
-.player {
+.wrapper {
   margin-bottom: var(--spacing-l);
+  gap: var(--spacing-m);
   display: flex;
 }
 
@@ -55,7 +53,6 @@ audio {
 
 button {
   text-align: center;
-  margin-right: var(--spacing-m);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,9 +77,7 @@ button {
 .bar {
   transition: width linear 0.1s;
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0 auto 0 0;
   background: var(--color-primary);
 }
 </style>

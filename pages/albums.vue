@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { albums } = useAudio();
-const { t } = useI18n();
 
 defineI18nRoute({
   paths: {
@@ -10,7 +9,7 @@ defineI18nRoute({
 </script>
 
 <template>
-  <app-page :title="t('albums')">
+  <app-page :title="$t('albums')">
     <ul v-if="albums.length" class="albums">
       <app-album v-for="album in albums" :key="album.title" :album="album" />
     </ul>
