@@ -4,11 +4,9 @@ const {
   isPlaying,
   player,
   progress,
-  pause,
-  play,
   next,
-  previous,
   setMetaData,
+  setMediaSessionEventListeners,
 } = useAudio();
 const preload = ref("none");
 
@@ -27,38 +25,6 @@ const setPreloadOnFastConnection = () => {
   } else {
     preload.value = "none";
   }
-};
-
-const setMediaSessionEventListeners = () => {
-  if (!process.client) return;
-  if (!("mediaSession" in window.navigator)) return;
-  navigator.mediaSession.setActionHandler("pause", () => {
-    pause();
-  });
-  navigator.mediaSession.setActionHandler("play", () => {
-    play();
-  });
-  navigator.mediaSession.setActionHandler("seekbackward", (details) => {
-    if (!player.value) {
-      return;
-    }
-    player.value.currentTime =
-      player.value.currentTime - (details.seekOffset || 10);
-  });
-  navigator.mediaSession.setActionHandler("seekforward", (details) => {
-    if (!player.value) {
-      return;
-    }
-    player.value.currentTime =
-      player.value.currentTime + (details.seekOffset || 10);
-  });
-  navigator.mediaSession.setActionHandler("previoustrack", () => {
-    previous();
-  });
-
-  navigator.mediaSession.setActionHandler("nexttrack", () => {
-    next();
-  });
 };
 
 onMounted(() => {

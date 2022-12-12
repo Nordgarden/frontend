@@ -53,11 +53,48 @@ export const useAudio = () => {
   const setMetaData = () => {
     if (!process.client) return;
     if (!("mediaSession" in window.navigator)) return;
-    // eslint-disable-next-line no-undef
     navigator.mediaSession.metadata = new MediaMetadata({
       artist: "Nordgarden",
     });
     updateMetaData();
+  };
+
+  const setMediaSessionEventListeners = () => {
+    if (!process.client) return;
+    if (!("mediaSession" in window.navigator)) return;
+    navigator.mediaSession.setActionHandler("pause", () => {
+      pause();
+    });
+    navigator.mediaSession.setActionHandler("play", () => {
+      play();
+    });
+    navigator.mediaSession.setActionHandler(
+      "seekbackward",
+      (details: MediaSessionActionDetails) => {
+        if (!player.value) {
+          return;
+        }
+        player.value.currentTime =
+          player.value.currentTime - (details.seekOffset || -10);
+      }
+    );
+    navigator.mediaSession.setActionHandler(
+      "seekforward",
+      (details: MediaSessionActionDetails) => {
+        if (!player.value) {
+          return;
+        }
+        player.value.currentTime =
+          player.value.currentTime + (details.seekOffset || 10);
+      }
+    );
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+      previous();
+    });
+
+    navigator.mediaSession.setActionHandler("nexttrack", () => {
+      next();
+    });
   };
 
   const previous = async () => {
@@ -111,5 +148,6 @@ export const useAudio = () => {
     progress,
     selectSong,
     setMetaData,
+    setMediaSessionEventListeners,
   };
 };
