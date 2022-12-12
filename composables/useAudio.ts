@@ -1,29 +1,9 @@
 import { Ref } from "vue";
 import albums from "~/data/albums";
+import playableSongs from "~/data/playableSongs";
 import { IPlayableSong } from "~~/types/ISong";
 
-const getPlayableSongs = () => {
-  let newArray: IPlayableSong[] = [];
-  albums.forEach((album) => {
-    const songs = album.songlist.filter((song) => song.file !== undefined);
-    const songsWithAlbum: IPlayableSong[] = songs.map((song) => {
-      return {
-        title: song.title,
-        file: song.file,
-        album: {
-          title: album.title,
-          image: album.image,
-        },
-      };
-    });
-    newArray = [...newArray, ...songsWithAlbum];
-  });
-  return newArray;
-};
-
-const playableSongs = getPlayableSongs();
 const currentSong: Ref<IPlayableSong> = ref(playableSongs[0]);
-
 const isPlaying = ref(false);
 const progress: Ref<null | string> = ref(null);
 const player: Ref<HTMLAudioElement | null> = ref(null);
