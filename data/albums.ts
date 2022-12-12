@@ -9,10 +9,10 @@ const albums: IAlbum[] = [
     apple: "https://music.apple.com/nl/album/korsvei/1491773860",
     releaseDate: "2022, 10, 28",
     songlist: [
-      { title: "Together" },
+      { title: "Together", file: "/media/audio/11.ogg" },
       { title: "When Something´s Undone" },
-      { title: "All We Need" },
-      { title: "Riptide" },
+      { title: "All We Need", file: "/media/audio/sample2.ogg" },
+      { title: "Riptide", file: "/media/audio/sample3.ogg" },
       { title: "Last Breath" },
       { title: "IMAFY" },
       { title: "Your Spell Ain't Working on Me" },

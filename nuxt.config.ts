@@ -2,6 +2,7 @@ export default defineNuxtConfig({
   components: {
     dirs: [
       "~/components/Albums",
+      "~/components/Audio",
       "~/components/Biography",
       "~/components/Home",
       "~/components/Layout",
@@ -12,12 +13,14 @@ export default defineNuxtConfig({
       "~/components/Videos",
     ],
   },
+
+  css: ["~/assets/css/base.css"],
   modules: ["@nuxt/image-edge", "@nuxtjs/i18n"],
   i18n: {
+    baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
     defaultLocale: "en",
-    lazy: true,
-    locales: [{ code: "en", file: "en.json" }],
+    locales: [{ code: "en", file: "en.json", iso: "en-US" }],
     langDir: "locales",
     vueI18n: {
       datetimeFormats: {

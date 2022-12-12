@@ -1,17 +1,9 @@
 <script setup lang="ts">
-  const { albums } = useAlbums();
+  const { albums } = useAudio();
 </script>
 
 <template>
   <ul v-if="albums.length" class="albums-list">
-    <div v-for="album in albums" :key="album.title" :album="album">
-      <nuxt-img
-        :src="album.image"
-        format="avif"
-        sizes="sm:100vw md:50vw lg:400px"
-        alt=""
-      />
-      {{ album }}
-    </div>
+    <app-album v-for="album in albums" :key="album.title" :album="album" />
   </ul>
 </template>
