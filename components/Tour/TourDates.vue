@@ -10,25 +10,23 @@ const { d } = useI18n();
 </script>
 
 <template>
-  <div>
-    <app-loader v-if="isLoading" />
-    <template v-else>
-      <ul v-if="events.length">
-        <li v-for="event in events" :key="event.date">
-          <span class="date">{{ d(event.date, "short") }}</span>
-          <div>
-            <span class="venue">{{ event.venue }}</span>
-            <span class="city">{{ event.city }}</span>
-          </div>
-        </li>
-      </ul>
-      <p v-else>{{ $t("noTourDays") }}</p>
-    </template>
-  </div>
+  <app-loader v-if="isLoading" />
+  <template v-else>
+    <ul v-if="events.length" class="list">
+      <li v-for="event in events" :key="event.date">
+        <span class="date">{{ d(event.date, "short") }}</span>
+        <div>
+          <span class="venue">{{ event.venue }}</span>
+          <span class="city">{{ event.city }}</span>
+        </div>
+      </li>
+    </ul>
+    <p v-else>{{ $t("noTourDays") }}</p>
+  </template>
 </template>
 
 <style lang="postcss" scoped>
-ul {
+.list {
   @mixin list-reset;
 }
 

@@ -12,11 +12,12 @@ defineProps<{
       <nuxt-img
         :src="album.image"
         format="avif"
+        loading="lazy"
         sizes="sm:100vw md:50vw lg:400px"
         alt=""
       />
       <!-- <post-date :date="album.releaseDate" class="date" /> -->
-      <ul class="shops">
+      <ul class="stores">
         <li v-if="album.spotify">
           <a
             :href="album.spotify"
@@ -60,7 +61,7 @@ defineProps<{
 
 <style lang="postcss" scoped>
 .songlist,
-.shops {
+.stores {
   @mixin list-reset;
 }
 
@@ -100,7 +101,7 @@ defineProps<{
   border-top: 1px solid #ccc;
 }
 
-.shops {
+.stores {
   display: flex;
 }
 
