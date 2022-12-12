@@ -16,7 +16,6 @@
               <router-link to="/">Nordgarden</router-link>
             </h1>
             <main-navigation />
-            <audio-player />
             <social-links />
             <icon-waves
               class="waves"
@@ -32,19 +31,17 @@
 </template>
 
 <script>
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import SkipLinks from '~/components/Menu/SkipLinks.vue'
-import IconWaves from '~/assets/icons/waves.svg'
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import SkipLinks from "~/components/Menu/SkipLinks.vue";
+import IconWaves from "~/assets/icons/waves.svg";
 
-import AudioPlayer from '~/components/Menu/AudioPlayer.vue'
-import MainNavigation from '~/components/Menu/MainNavigation.vue'
-import SocialLinks from '~/components/Menu/SocialLinks.vue'
-import MobileNavigation from '~/components/Menu/MobileNavigation.vue'
+import MainNavigation from "~/components/Menu/MainNavigation.vue";
+import SocialLinks from "~/components/Menu/SocialLinks.vue";
+import MobileNavigation from "~/components/Menu/MobileNavigation.vue";
 
 export default {
   components: {
     SkipLinks,
-    AudioPlayer,
     SocialLinks,
     MainNavigation,
     MobileNavigation,
@@ -53,33 +50,33 @@ export default {
   data() {
     return {
       showMenu: false,
-    }
+    };
   },
 
   methods: {
     toggleMenu(status) {
-      this.showMenu = status
+      this.showMenu = status;
     },
     afterEnter() {
-      this.lockBodyScoll(true)
+      this.lockBodyScoll(true);
     },
     beforeLeave() {
-      const bg = this.$refs.bg
-      bg.scrollTop = 0
+      const bg = this.$refs.bg;
+      bg.scrollTop = 0;
     },
     afterLeave() {
-      this.lockBodyScoll(false)
+      this.lockBodyScoll(false);
     },
     lockBodyScoll(isOpen) {
-      const { bg } = this.$refs
+      const { bg } = this.$refs;
       if (isOpen) {
-        disableBodyScroll(bg)
+        disableBodyScroll(bg);
       } else {
-        enableBodyScroll(bg)
+        enableBodyScroll(bg);
       }
     },
   },
-}
+};
 </script>
 
 <style lang="postcss" scoped>

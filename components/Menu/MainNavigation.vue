@@ -1,35 +1,35 @@
 <template>
   <nav aria-labelledby="menu-title">
     <h2 id="menu-title" class="sr-only" tabindex="-1">
-      {{ $t('mainNavigation') }}
+      {{ $t("mainNavigation") }}
     </h2>
     <ul ref="menu">
       <li>
         <nuxt-link id="menu" to="/" @click.native="changePage">
           <span class="title">
-            {{ $t('home') }}
+            {{ $t("home") }}
           </span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link to="/tour" @click.native="changePage">
-          <span class="title">{{ $t('tour') }}</span>
+          <span class="title">{{ $t("tour") }}</span>
           <app-badge :amount="list.length" />
         </nuxt-link>
       </li>
       <li>
         <nuxt-link to="/albums" @click.native="changePage">
-          <span class="title">{{ $t('albums') }}</span>
+          <span class="title">{{ $t("albums") }}</span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link to="/videos" @click.native="changePage">
-          <span class="title">{{ $t('videos') }}</span>
+          <span class="title">{{ $t("videos") }}</span>
         </nuxt-link>
       </li>
       <li>
         <nuxt-link to="/biography" @click.native="changePage">
-          <span class="title">{{ $t('biography') }}</span>
+          <span class="title">{{ $t("biography") }}</span>
         </nuxt-link>
       </li>
     </ul>
@@ -41,9 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import AppBadge from '~/components/Shared/AppBadge.vue'
-import EventBusUtil from '~/utils/eventBusUtil'
+import AppBadge from "~/components/Shared/AppBadge.vue";
 
 export default {
   components: {
@@ -52,47 +50,41 @@ export default {
   data() {
     return {
       arrowPosition: 0,
-    }
+      list: [],
+    };
   },
   computed: {
-    ...mapState('tour', ['list']),
     step() {
-      return this.$store.state.step
+      return this.$store.state.step;
     },
   },
   watch: {
     $route() {
       this.$nextTick(() => {
-        this.setArrowPosition()
-      })
+        this.setArrowPosition();
+      });
     },
   },
   mounted() {
-    this.setArrowPosition()
+    this.setArrowPosition();
     setTimeout(() => {
-      this.mounted = true
-    }, 0)
+      this.mounted = true;
+    }, 0);
 
-    this.setTours()
+    this.setTours();
   },
   methods: {
     setArrowPosition() {
-      const { menu } = this.$refs
-      const activeLink = menu.querySelector('.nuxt-link-exact-active')
+      const { menu } = this.$refs;
+      const activeLink = menu.querySelector(".nuxt-link-exact-active");
       if (activeLink) {
-        const { parentElement } = activeLink
-        this.arrowPosition = `translateY(${parentElement.offsetTop}px)`
-        this.arrowWidth = `${activeLink.offsetWidth}px`
+        const { parentElement } = activeLink;
+        this.arrowPosition = `translateY(${parentElement.offsetTop}px)`;
+        this.arrowWidth = `${activeLink.offsetWidth}px`;
       }
     },
-    ...mapActions({
-      setTours: 'tour/set',
-    }),
-    changePage() {
-      EventBusUtil.$emit('header-close-mobile-menu')
-    },
   },
-}
+};
 </script>
 
 <style lang="postcss" scoped>
@@ -163,7 +155,7 @@ a {
     &::after {
       position: absolute;
       display: block;
-      content: '';
+      content: "";
       border-top: var(--spacing-s) solid transparent;
       border-bottom: var(--spacing-s) solid transparent;
       border-left: var(--spacing-m) solid var(--color-secondary);
@@ -172,7 +164,7 @@ a {
     &::before {
       position: absolute;
       display: block;
-      content: '';
+      content: "";
       margin-top: -3px;
       border-top: calc(var(--spacing-s) + 3px) solid transparent;
       border-bottom: calc(var(--spacing-s) + 3px) solid transparent;

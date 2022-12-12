@@ -6,6 +6,6 @@
 
 <style lang="postcss">
 .notch-wrapper {
-  padding: var(--notch);
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
 }
 </style>

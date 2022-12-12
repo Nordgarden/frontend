@@ -24,6 +24,26 @@ export default defineNuxtConfig({
     ],
   },
 
+  postcss: {
+    plugins: {
+      "postcss-import": {},
+      "postcss-url": {},
+      cssnano: true,
+      "postcss-mixins": {
+        mixinsDir: "./assets/css/mixins/",
+      },
+
+      "postcss-preset-env": {
+        importFrom: ["./assets/css/media-queries/media-queries.css"],
+
+        features: {
+          "nesting-rules": true,
+          "custom-media-queries": true,
+          "media-query-ranges": true,
+        },
+      },
+    },
+  },
   css: ["~/assets/css/base.css"],
   modules: ["@nuxt/image-edge", "@nuxtjs/i18n"],
   i18n: {

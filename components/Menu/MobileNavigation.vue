@@ -8,30 +8,28 @@
           @click="toggleMenu(!menuIsExpanded)"
         >
           <icon-bars aria-hidden="true" width="24" height="24" />
-          {{ $t('menu') }}
+          {{ $t("menu") }}
         </button>
-        <template v-if="songs.length">
+        <!-- <template v-if="songs.length">
           <button v-if="isPlaying" @click="pauseAudio">
             <icon-pause width="24" height="24" aria-hidden="true" />
-            <span class="sr-only">{{ $t('pause') }}</span>
+            <span class="sr-only">{{ $t("pause") }}</span>
           </button>
           <button v-else @click="playAudio()">
             <icon-play width="24" height="24" aria-hidden="true" />
-            <span class="sr-only">{{ $t('play') }}</span>
+            <span class="sr-only">{{ $t("play") }}</span>
           </button>
-        </template>
+        </template> -->
       </div>
     </notch-wrapper>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-import EventBusUtil from '~/utils/eventBusUtil'
-import IconPlay from '~/assets/icons/play.svg'
-import IconPause from '~/assets/icons/pause.svg'
-import IconBars from '~/assets/icons/bars.svg'
-import NotchWrapper from '~/components/Layout/NotchWrapper.vue'
+import IconPlay from "~/assets/icons/play.svg";
+import IconPause from "~/assets/icons/pause.svg";
+import IconBars from "~/assets/icons/bars.svg";
+import NotchWrapper from "~/components/Layout/NotchWrapper.vue";
 
 export default {
   components: {
@@ -43,30 +41,15 @@ export default {
   data() {
     return {
       menuIsExpanded: false,
-    }
-  },
-  computed: {
-    ...mapState('albums', ['isPlaying']),
-    ...mapGetters({
-      songs: 'albums/playableSongs',
-    }),
-  },
-  mounted() {
-    EventBusUtil.$on('header-close-mobile-menu', () => this.toggleMenu(false))
+    };
   },
   methods: {
     toggleMenu(status) {
-      this.menuIsExpanded = status
-      this.$emit('toggleMenu', status)
-    },
-    pauseAudio() {
-      EventBusUtil.$emit('audio-play-song', false)
-    },
-    playAudio() {
-      EventBusUtil.$emit('audio-play-song', true)
+      this.menuIsExpanded = status;
+      this.$emit("toggleMenu", status);
     },
   },
-}
+};
 </script>
 
 <style lang="postcss" scoped>
@@ -102,7 +85,7 @@ export default {
     color: var(--text-color);
   }
 
-  &[aria-expanded='true'] {
+  &[aria-expanded="true"] {
     background: var(--color-primary);
     color: var(--color-white);
   }

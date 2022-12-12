@@ -1,11 +1,19 @@
 <script lang="ts" setup>
 import { ISong } from "~~/types/ISong";
 
-const { selectSong, pause, currentSong, isPlaying } = useAudio();
+const { selectSong, pause, currentSong, isPlaying, playableSongs } = useAudio();
 
 const props = defineProps<{
   song: ISong;
 }>();
+
+const select = (song: ISong) => {
+  const playableSong = playableSongs.find((s) => s.file === song.file);
+  if (!playableSong) {
+    return;
+  }
+  selectSong(playableSong);
+};
 
 const isPlayingCurrentSong = computed(() => {
   return currentSong.value?.file === props.song.file && isPlaying.value;
@@ -19,7 +27,7 @@ const isPlayingCurrentSong = computed(() => {
         <button
           v-if="!isPlayingCurrentSong"
           class="btn-play"
-          @click="selectSong(song)"
+          @click="select(song)"
         >
           <icon-play width="20" height="20" aria-hidden="true" />
           <span class="sr-only">{{ $t("play") }}</span>

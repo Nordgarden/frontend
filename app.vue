@@ -1,9 +1,14 @@
 <template>
   <div>
+    <skip-links />
     <audio-player />
     <audio-player-controls />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <notch-wrapper>
+      <main>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </main>
+    </notch-wrapper>
   </div>
 </template>

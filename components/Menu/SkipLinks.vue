@@ -6,13 +6,17 @@
 </template>
 
 <style lang="postcss" scoped>
-a {
+.btn {
   @mixin link-reset;
 
   background: var(--color-secondary);
 
   &:not(:focus) {
     @mixin sr-only;
+  }
+
+  &:hover {
+    background: #f0f;
   }
 
   &:focus,
