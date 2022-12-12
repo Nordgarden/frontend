@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-const menuIsExpanded = ref(false);
-const toggleMenu = (state: boolean) => {};
+const menuIsOpen = useMenu();
+const toggleMenu = () => {
+  menuIsOpen.value = !menuIsOpen.value;
+};
 
 const { keys, play, pause } = useAudio();
 
@@ -12,9 +14,9 @@ const isPlaying = useState<boolean>(keys.isPlaying);
     <notch-wrapper>
       <div class="buttons">
         <button
-          :aria-expanded="menuIsExpanded ? 'true' : 'false'"
+          :aria-expanded="menuIsOpen ? 'true' : 'false'"
           class="btn"
-          @click="toggleMenu(!menuIsExpanded)"
+          @click="toggleMenu()"
         >
           <app-icon icon="bars" />
           {{ $t("menu") }}

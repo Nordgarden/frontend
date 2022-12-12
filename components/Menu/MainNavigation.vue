@@ -1,13 +1,14 @@
 <script lang="ts" setup>
 import { IEvent } from "~~/types/IEvent";
-import { Ref, ComponentPublicInstance } from "vue";
+import { Ref } from "vue";
 
 const { keys } = useEvents();
+const menuIsOpen = useMenu();
 const menu: Ref<HTMLAnchorElement | null> = ref(null);
 const events = useState<IEvent[]>(keys.events);
 const arrowPosition: Ref<string | undefined> = ref(undefined);
 const changePage = () => {
-  //
+  menuIsOpen.value = false;
 };
 
 const route = useRoute();
@@ -32,55 +33,8 @@ const setArrowPosition = () => {
 };
 </script>
 
-<!-- <script>
-import AppBadge from "~/components/Shared/AppBadge.vue";
-
-export default {
-  components: {
-    AppBadge,
-  },
-  data() {
-    return {
-      arrowPosition: 0,
-      list: [],
-    };
-  },
-  computed: {
-    step() {
-      return this.$store.state.step;
-    },
-  },
-  watch: {
-    $route() {
-      this.$nextTick(() => {
-        this.setArrowPosition();
-      });
-    },
-  },
-  mounted() {
-    this.setArrowPosition();
-    setTimeout(() => {
-      this.mounted = true;
-    }, 0);
-
-    this.setTours();
-  },
-  methods: {
-    setArrowPosition() {
-      const { menu } = this.$refs;
-      const activeLink = menu.querySelector(".nuxt-link-exact-active");
-      if (activeLink) {
-        const { parentElement } = activeLink;
-        this.arrowPosition = `translateY(${parentElement.offsetTop}px)`;
-        this.arrowWidth = `${activeLink.offsetWidth}px`;
-      }
-    },
-  },
-};
-</script> -->
-
 <template>
-  <nav aria-labelledby="menu-title" style="width: 200px">
+  <nav aria-labelledby="menu-title">
     <h2 id="menu-title" class="sr-only" tabindex="-1">
       {{ $t("mainNavigation") }}
     </h2>
