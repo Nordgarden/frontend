@@ -45,8 +45,15 @@ export default defineNuxtConfig({
       },
     },
   },
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: "https://api.nordgarden.info/graphql",
+      },
+    },
+  },
   css: ["~/assets/css/base.css"],
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n"],
+  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/apollo"],
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",

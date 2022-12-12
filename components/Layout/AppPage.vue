@@ -1,33 +1,18 @@
-<template>
-  <main :class="$style.main">
-    <div :class="$style.content">
-      <!-- eslint-disable-next-line -->
-      <h1 id="content" tabindex="-1" v-html="title" />
-      <slot />
-    </div>
-    <img
-      :src="require('~/assets/images/promo.png')"
-      :class="$style.promo"
-      loading="lazy"
-      width="472"
-      height="456"
-      alt
-    />
-  </main>
-</template>
-
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
-  },
-}
+<script lang="ts" setup>
+defineProps<{
+  title: string;
+}>();
 </script>
 
-<style lang="postcss" module>
+<template>
+  <div class="content">
+    <!-- eslint-disable-next-line -->
+    <h1 id="content" tabindex="-1" v-html="title" />
+    <slot />
+  </div>
+</template>
+
+<style lang="postcss" scoped>
 .main {
   --triangle-size: 50vw;
 
@@ -51,7 +36,7 @@ export default {
     position: absolute;
     bottom: 0;
     right: 0;
-    content: '';
+    content: "";
     z-index: -1;
   }
 
