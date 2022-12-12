@@ -1,6 +1,14 @@
+<script lang="ts" setup>
+const images = [
+  { name: "2", width: 640, height: 960 },
+  { name: "3", width: 960, height: 640 },
+  { name: "4", width: 960, height: 720 },
+];
+</script>
+
 <template>
   <section class="gallery" aria-labelledby="gallery-title">
-    <h1 id="gallery-title" class="sr-only">{{ $t('gallery') }}</h1>
+    <h1 id="gallery-title" class="sr-only">{{ $t("gallery") }}</h1>
     <div
       v-for="image in images"
       :key="image.name"
@@ -15,25 +23,11 @@
           image.width * 1.5
         }&h=${image.height * 1.5} 2x`"
         loading="lazy"
-        alt
+        alt=""
       />
     </div>
   </section>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      images: [
-        { name: '2', width: 640, height: 960 },
-        { name: '3', width: 960, height: 640 },
-        { name: '4', width: 960, height: 720 },
-      ],
-    }
-  },
-}
-</script>
 
 <style lang="postcss" scoped>
 .gallery {
@@ -45,12 +39,12 @@ export default {
 
   /* height: 80vh; */
   grid-template-areas:
-    'photo-3 photo-3 photo-2  '
-    'photo-4 photo-4 photo-4';
+    "photo-3 photo-3 photo-2  "
+    "photo-4 photo-4 photo-4";
   grid-template-rows: repeat(2, 1fr);
 
   @media (--viewport-xlg) {
-    grid-template-areas: 'photo-3 photo-3 photo-2 photo-4 photo-4';
+    grid-template-areas: "photo-3 photo-3 photo-2 photo-4 photo-4";
     grid-template-rows: 1fr;
   }
 }

@@ -25,15 +25,10 @@ defineProps<{
             target="_blank"
             class="shop-link"
           >
-            <nuxt-icon
-              name="spotify"
-              aria-hidden="true"
-              width="24"
-              height="24"
+            <app-icon
+              icon="spotify"
+              :title="$t('viewOn', { title: album.title, network: 'Spotify' })"
             />
-            <span class="sr-only">
-              {{ $t("viewOn", { title: album.title, network: "Spotify" }) }}
-            </span>
           </a>
         </li>
         <li v-if="album.apple">
@@ -43,10 +38,12 @@ defineProps<{
             target="_blank"
             class="shop-link"
           >
-            <nuxt-icon name="apple" aria-hidden="true" width="24" height="24" />
-            <span class="sr-only">
-              {{ $t("viewOn", { title: album.title, network: "Apple Music" }) }}
-            </span>
+            <app-icon
+              icon="apple"
+              :title="
+                $t('viewOn', { title: album.title, network: 'Apple Music' })
+              "
+            />
           </a>
         </li>
       </ul>

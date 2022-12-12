@@ -1,19 +1,14 @@
-<template>
-  <span v-if="amount > 0" :class="$style.badge">{{ amount }}</span>
-</template>
-
-<script>
-export default {
-  props: {
-    amount: {
-      type: Number,
-      required: true,
-    },
-  },
-}
+<script lang="ts" setup>
+defineProps<{
+  amount: Number;
+}>();
 </script>
 
-<style lang="postcss" module>
+<template>
+  <span v-if="amount > 0" class="badge">{{ amount }}</span>
+</template>
+
+<style lang="postcss" scoped>
 .badge {
   font-size: var(--font-size-sm);
   background: var(--text-color);

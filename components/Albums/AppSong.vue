@@ -32,12 +32,10 @@ const isPlayingCurrentSong = computed(() => {
           class="btn-play"
           @click="select(song)"
         >
-          <nuxt-icon name="play" width="20" height="20" aria-hidden="true" />
-          <span class="sr-only">{{ $t("play") }}</span>
+          <app-icon icon="play" :size="20" :title="$t('play')" />
         </button>
         <button v-else class="btn-pause" @click="pause">
-          <nuxt-icon name="pause" width="20" height="20" aria-hidden="true" />
-          <span class="sr-only">{{ $t("pause") }}</span>
+          <app-icon icon="pause" :size="20" :title="$t('pause')" />
         </button>
       </template>
     </div>

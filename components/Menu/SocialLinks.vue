@@ -1,108 +1,61 @@
+<script lang="ts" setup>
+const links = [
+  {
+    url: "https://open.spotify.com/artist/2yLSBMXR6j2svRJtsIn2Cz",
+    icon: "spotify",
+    network: "Spotify",
+  },
+  {
+    url: "https://music.apple.com/nl/artist/nordgarden/165768114",
+    icon: "apple",
+    network: "Apple Music",
+  },
+  {
+    url: "https://www.youtube.com/channel/UChYwZ-Z9ub3gh0lYcP8Nfag",
+    icon: "youtube",
+    network: "YouTube",
+  },
+  {
+    url: "https://www.facebook.com/NordgardenOfficial/",
+    icon: "facebook",
+    network: "FaceBook",
+  },
+  {
+    url: "https://twitter.com/TerjeNordgarden",
+    icon: "twitter",
+    network: "Twitter",
+  },
+  {
+    url: "https://www.linkedin.com/in/terje-nordgarden-2460364/",
+    icon: "linkedin",
+    network: "LinkedIn",
+  },
+];
+</script>
+
 <template>
   <nav aria-labelledby="social-links-title">
     <h2 id="social-links-title" class="sr-only">
-      {{ $t('socialMediaLinks') }}
+      {{ $t("socialMediaLinks") }}
     </h2>
-    <ul class="social-links">
-      <li>
-        <a
-          href="https://open.spotify.com/artist/2yLSBMXR6j2svRJtsIn2Cz"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-spotify aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'Spotify' }) }}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://music.apple.com/nl/artist/nordgarden/165768114"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-apple aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'Apple Music' }) }}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.youtube.com/channel/UChYwZ-Z9ub3gh0lYcP8Nfag"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-youtube aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'YouTube' }) }}
-          </span>
-        </a>
-      </li>
-
-      <li>
-        <a
-          href="https://www.facebook.com/NordgardenOfficial/"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-facebook aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'FaceBook' }) }}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/TerjeNordgarden"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-twitter aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'Twitter' }) }}
-          </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/terje-nordgarden-2460364/"
-          rel="noopener"
-          target="_blank"
-        >
-          <icon-linkedin aria-hidden="true" width="32" height="32" />
-          <span class="sr-only">
-            {{ $t('viewOn', { title: 'Nordgarden', network: 'LinkedIn' }) }}
-          </span>
+    <ul class="list">
+      <li v-for="link in links" :key="link.url">
+        <a :href="link.url" rel="noopener" target="_blank" class="link">
+          <app-icon
+            :icon="link.icon"
+            :size="32"
+            :title="
+              $t('viewOn', { title: 'Nordgarden', network: link.network })
+            "
+          />
         </a>
       </li>
     </ul>
   </nav>
 </template>
 
-<script>
-import IconApple from '~/assets/icons/apple.svg'
-import IconYoutube from '~/assets/icons/youtube.svg'
-import IconFacebook from '~/assets/icons/facebook.svg'
-import IconTwitter from '~/assets/icons/twitter.svg'
-import IconLinkedin from '~/assets/icons/linkedin.svg'
-import IconSpotify from '~/assets/icons/spotify.svg'
-
-export default {
-  components: {
-    IconSpotify,
-    IconApple,
-    IconYoutube,
-    IconFacebook,
-    IconTwitter,
-    IconLinkedin,
-  },
-}
-</script>
-
 <style lang="postcss" scoped>
-ul {
+.list {
   @mixin list-reset;
 
   justify-content: space-between;
@@ -111,7 +64,7 @@ ul {
   max-width: 20em;
 }
 
-a {
+.link {
   @mixin link-reset;
 }
 </style>

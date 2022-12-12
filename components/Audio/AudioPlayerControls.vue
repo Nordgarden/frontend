@@ -22,16 +22,13 @@ const scrub = (event: MouseEvent) => {
 <template>
   <div class="wrapper" v-if="playableSongs">
     <button v-if="isPlaying" @click="pause">
-      <nuxt-icon name="pause" width="24" height="24" aria-hidden="true" />
-      <span class="sr-only">{{ $t("pause") }}</span>
+      <app-icon icon="pause" :title="$t('pause')" />
     </button>
     <button v-else @click="play">
-      <nuxt-icon name="play" width="24" height="24" aria-hidden="true" />
-      <span class="sr-only">{{ $t("play") }}</span>
+      <app-icon icon="play" :title="$t('play')" />
     </button>
-    <button v-if="playableSongs.length < 1" @click="next">
-      <nuxt-icon name="forwards" width="24" height="24" aria-hidden="true" />
-      <span class="sr-only">{{ $t("next") }}</span>
+    <button v-if="playableSongs.length > 1" @click="next">
+      <app-icon icon="forwards" :title="$t('next')" />
     </button>
     <div ref="progressBar" class="progress" @click="scrub">
       <div :style="{ width: progress }" class="bar"></div>
