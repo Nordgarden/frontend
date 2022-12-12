@@ -2,13 +2,13 @@
 import { Ref } from "vue";
 import { IPlayableSong } from "~~/types/ISong";
 
-const { playableSongs, play, pause, next, setCurrentTime } = useAudio();
+const { playableSongs, play, pause, next, setCurrentTime, keys } = useAudio();
 
 const progressBar: Ref<HTMLDivElement | null> = ref(null);
 
-const isPlaying = useState<boolean>("isPlaying");
-const currentSong = useState<IPlayableSong>("currentSong");
-const progress = useState<string | null>("progress");
+const isPlaying = useState<boolean>(keys.isPlaying);
+const currentSong = useState<IPlayableSong>(keys.currentSong);
+const progress = useState<string | null>(keys.progress);
 
 const scrub = (event: MouseEvent) => {
   if (!progressBar.value) {

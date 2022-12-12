@@ -1,8 +1,13 @@
 import { IEvent, IEventResponse } from "~~/types/IEvent";
 
+const keys = {
+  isLoading: "events/isLoading",
+  events: "events/events",
+};
+
 export const useEvents = () => {
-  const isLoading = useState<boolean>("isLoading", () => true);
-  const events = useState<IEvent[]>("events", () => []);
+  const isLoading = useState<boolean>(keys.isLoading, () => true);
+  const events = useState<IEvent[]>(keys.events, () => []);
 
   const { eventsApiUrl } = useAppConfig();
   const fetchEvents = async () => {
@@ -28,6 +33,7 @@ export const useEvents = () => {
     }
   };
   return {
+    keys,
     fetchEvents,
   };
 };

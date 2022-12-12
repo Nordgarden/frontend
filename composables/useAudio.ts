@@ -2,20 +2,28 @@ import albums from "~/data/albums";
 import playableSongs from "~/data/playableSongs";
 import { IPlayableSong } from "~~/types/ISong";
 
+const keys = {
+  isPlaying: "audio/isPlaying",
+  progress: "audio/progress",
+  player: "audio/player",
+  currentSong: "audio/currentSong",
+};
+
 export const useAudio = () => {
   const currentSong = useState<IPlayableSong>(
-    "currentSong",
+    keys.currentSong,
     () => playableSongs[0]
   );
-  useState<boolean>("isPlaying", () => false);
-  useState<string | null>("progress", () => null);
-  const player = useState<HTMLAudioElement | null>("player", () => null);
+  useState<boolean>(keys.isPlaying, () => false);
+  useState<string | null>(keys.progress, () => null);
+  const player = useState<HTMLAudioElement | null>(keys.player, () => null);
 
   const selectSong = async (song: IPlayableSong) => {
     currentSong.value = song;
-    nextTick(async () => {
+    await nextTick(async () => {
       await play();
     });
+    updateMetaData();
   };
 
   const play = async () => {
@@ -111,7 +119,6 @@ export const useAudio = () => {
     }
 
     await selectSong(playableSongs[previousSongIndex]);
-    updateMetaData();
   };
 
   const next = async () => {
@@ -125,7 +132,6 @@ export const useAudio = () => {
       nextSongIndex = currentSongIndex + 1;
     }
     await selectSong(playableSongs[nextSongIndex]);
-    updateMetaData();
   };
 
   const setCurrentTime = (offsetX: number) => {
@@ -137,6 +143,7 @@ export const useAudio = () => {
   };
 
   return {
+    keys,
     playableSongs,
     albums,
     play,

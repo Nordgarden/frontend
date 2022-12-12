@@ -2,8 +2,10 @@
 import { IEvent } from "~~/types/IEvent";
 import { Ref } from "vue";
 
-const isLoading: Ref<boolean> = useState("isLoading", () => true);
-const events: Ref<IEvent[]> = useState("events", () => []);
+const { keys } = useEvents();
+
+const isLoading = useState<boolean>(keys.isLoading);
+const events = useState<IEvent[]>(keys.events);
 const { d } = useI18n();
 </script>
 

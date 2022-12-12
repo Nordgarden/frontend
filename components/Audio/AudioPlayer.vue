@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { IPlayableSong } from "~~/types/ISong";
 
-const { next, setMetaData, setMediaSessionEventListeners } = useAudio();
+const { next, setMetaData, setMediaSessionEventListeners, keys } = useAudio();
 const preload = ref("none");
 
-const isPlaying = useState<boolean>("isPlaying");
-const currentSong = useState<IPlayableSong>("currentSong");
-const player = useState<HTMLAudioElement | null>("player");
-const progress = useState<string | null>("progress");
+const isPlaying = useState<boolean>(keys.isPlaying);
+const currentSong = useState<IPlayableSong>(keys.currentSong);
+const player = useState<HTMLAudioElement | null>(keys.player);
+const progress = useState<string | null>(keys.progress);
 
 const userHasFastConnection = () => {
   if (!process.client) return false;

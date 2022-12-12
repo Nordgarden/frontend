@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { IPlayableSong, ISong } from "~~/types/ISong";
 
-const { selectSong, pause, playableSongs } = useAudio();
+const { selectSong, pause, playableSongs, keys } = useAudio();
 
-const isPlaying = useState<boolean>("isPlaying");
-const currentSong = useState<IPlayableSong>("currentSong");
+const isPlaying = useState<boolean>(keys.isPlaying);
+const currentSong = useState<IPlayableSong>(keys.currentSong);
 
 const props = defineProps<{
   song: ISong;
