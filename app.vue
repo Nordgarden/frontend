@@ -13,11 +13,8 @@ onMounted(() => {
     <audio-player />
     <audio-player-controls />
     <mobile-navigation />
+    <MainNavigation />
     <SocialLinks />
-    <nuxt-link :to="localePath({ name: 'index' })">Home</nuxt-link>
-    <nuxt-link :to="localePath({ name: 'albums' })">Albums</nuxt-link>
-    <nuxt-link :to="localePath({ name: 'events' })">Events</nuxt-link>
-    <nuxt-link :to="localePath({ name: 'biography' })">biography</nuxt-link>
     <notch-wrapper>
       <main>
         <NuxtLayout>

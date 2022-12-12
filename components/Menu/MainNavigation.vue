@@ -1,46 +1,38 @@
-<template>
-  <nav aria-labelledby="menu-title">
-    <h2 id="menu-title" class="sr-only" tabindex="-1">
-      {{ $t("mainNavigation") }}
-    </h2>
-    <ul ref="menu">
-      <li>
-        <nuxt-link id="menu" to="/" @click.native="changePage">
-          <span class="title">
-            {{ $t("home") }}
-          </span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/tour" @click.native="changePage">
-          <span class="title">{{ $t("tour") }}</span>
-          <app-badge :amount="list.length" />
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/albums" @click.native="changePage">
-          <span class="title">{{ $t("albums") }}</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/videos" @click.native="changePage">
-          <span class="title">{{ $t("videos") }}</span>
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/biography" @click.native="changePage">
-          <span class="title">{{ $t("biography") }}</span>
-        </nuxt-link>
-      </li>
-    </ul>
-    <div
-      :style="{ '-webkit-transform': arrowPosition, transform: arrowPosition }"
-      class="arrow"
-    />
-  </nav>
-</template>
+<script lang="ts" setup>
+import { IEvent } from "~~/types/IEvent";
+import { Ref, ComponentPublicInstance } from "vue";
 
-<script>
+const { keys } = useEvents();
+const menu: Ref<HTMLAnchorElement | null> = ref(null);
+const events = useState<IEvent[]>(keys.events);
+const arrowPosition: Ref<string | undefined> = ref(undefined);
+const changePage = () => {
+  //
+};
+
+const route = useRoute();
+watch(route, () => {
+  nextTick(() => {
+    setArrowPosition();
+  });
+});
+
+onMounted(() => {
+  setArrowPosition();
+});
+const setArrowPosition = () => {
+  if (!menu.value) {
+    return;
+  }
+  const activeLink = menu.value.querySelector(".router-link-exact-active");
+  if (!activeLink?.parentElement) {
+    return;
+  }
+  arrowPosition.value = `translateY(${activeLink.parentElement.offsetTop}px)`;
+};
+</script>
+
+<!-- <script>
 import AppBadge from "~/components/Shared/AppBadge.vue";
 
 export default {
@@ -85,7 +77,50 @@ export default {
     },
   },
 };
-</script>
+</script> -->
+
+<template>
+  <nav aria-labelledby="menu-title" style="width: 200px">
+    <h2 id="menu-title" class="sr-only" tabindex="-1">
+      {{ $t("mainNavigation") }}
+    </h2>
+    <ul ref="menu">
+      <li>
+        <nuxt-link id="menu" to="/" @click.native="changePage">
+          <span class="title">
+            {{ $t("home") }}
+          </span>
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/tour" @click.native="changePage">
+          <span class="title">{{ $t("tour") }}</span>
+          <app-badge :amount="events.length" />
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/albums" @click.native="changePage">
+          <span class="title">{{ $t("albums") }}</span>
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/videos" @click.native="changePage">
+          <span class="title">{{ $t("videos") }}</span>
+        </nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/biography" @click.native="changePage">
+          <span class="title">{{ $t("biography") }}</span>
+        </nuxt-link>
+      </li>
+    </ul>
+    <div
+      :style="{ transform: arrowPosition }"
+      class="arrow"
+      v-if="arrowPosition"
+    />
+  </nav>
+</template>
 
 <style lang="postcss" scoped>
 nav {
