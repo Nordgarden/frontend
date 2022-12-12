@@ -1,14 +1,11 @@
 <script setup>
-  const route = useRoute();
-  const { t } = useI18n();
-  const head = useLocaleHead({
-    addDirAttribute: true,
-    identifierAttribute: "id",
-    addSeoAttributes: true,
-  });
-  const title = computed(() =>
-    t("layouts.title", { title: t(route.meta.title ?? "TBD") })
-  );
+const route = useRoute();
+const { t } = useI18n();
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
 </script>
 
 <template>

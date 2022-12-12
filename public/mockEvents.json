@@ -1,0 +1,143 @@
+[
+  {
+    "offers": [],
+    "venue": {
+      "street_address": "Thorvald Meyers gate 30B",
+      "country": "Norway",
+      "city": "Oslo",
+      "latitude": "59.92509499999999",
+      "name": "Christmas concert with Kristian Fossum & Nordgarden",
+      "location": "Oslo, Norway",
+      "postal_code": "0555",
+      "region": "",
+      "longitude": "10.7593545"
+    },
+    "starts_at": "2022-12-12T20:00:00",
+    "artist": {
+      "thumb_url": "https:\/\/photos.bandsintown.com\/thumb\/11574887.jpeg",
+      "mbid": "32ed1713-fded-4272-b5a6-deb3205836d4",
+      "facebook_page_url": "http:\/\/www.facebook.com\/67005762664",
+      "image_url": "https:\/\/photos.bandsintown.com\/large\/11574887.jpeg",
+      "tracker_count": 1145,
+      "tracking": [],
+      "upcoming_event_count": 3,
+      "url": "https:\/\/www.bandsintown.com\/a\/961530?came_from=267&app_id=TerjeNordgardenWebsite",
+      "support_url": "",
+      "show_multi_ticket": true,
+      "name": "Nordgarden",
+      "options": {
+        "display_listen_unit": false
+      },
+      "links": [
+        {
+          "type": "itunes",
+          "url": "https:\/\/music.apple.com\/us\/artist\/nordgarden\/165768114"
+        },
+        {
+          "type": "spotify",
+          "url": "https:\/\/open.spotify.com\/artist\/2yLSBMXR6j2svRJtsIn2Cz?si=xd2CCIWZSz-90GB74_lTYw"
+        },
+        {
+          "type": "facebook",
+          "url": "https:\/\/www.facebook.com\/NordgardenOfficial"
+        },
+        {
+          "type": "website",
+          "url": "http:\/\/www.nordgarden.info"
+        },
+        {
+          "type": "twitter",
+          "url": "https:\/\/twitter.com\/TerjeNordgarden"
+        },
+        {
+          "type": "instagram",
+          "url": "https:\/\/www.instagram.com\/terjenordgarden"
+        },
+        {
+          "type": "youtube",
+          "url": "https:\/\/www.youtube.com\/channel\/UCIHYVmpUfz3--gOZKqRYr3A"
+        }
+      ],
+      "artist_optin_show_phone_number": false,
+      "id": "961530"
+    },
+    "festival_datetime_display_rule": "",
+    "description": "",
+    "lineup": [
+      "Nordgarden"
+    ],
+    "festival_start_date": "",
+    "bandsintown_plus": false,
+    "title": "Christmas concert with Kristian Fossum & Nordgarden",
+    "artist_id": "961530",
+    "url": "https:\/\/www.bandsintown.com\/e\/103846557?app_id=TerjeNordgardenWebsite&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=event",
+    "datetime_display_rule": "datetime",
+    "datetime": "2022-12-12T20:00:00",
+    "on_sale_datetime": "",
+    "id": "103846557",
+    "ends_at": "2022-12-12T22:00:00",
+    "festival_end_date": ""
+  },
+  {
+    "offers": [],
+    "venue": {
+      "street_address": "Storgata 30",
+      "country": "Norway",
+      "city": "Brevik",
+      "latitude": "59.05914",
+      "name": "Nordgarden \/\/ live @ Bryggekanten 17.12.22",
+      "location": "Brevik, Norway",
+      "postal_code": "3950",
+      "region": "",
+      "longitude": "9.69672"
+    },
+    "starts_at": "2022-12-17T15:00:00",
+    "festival_datetime_display_rule": "",
+    "description": "The new album ALL WE NEED is out:\nhttps:\/\/open.spotify.com\/album\/5cDnto6P5mxkmkm73EqDVB?si=MGdEG4JxS2qhFupaT75okw",
+    "lineup": [
+      "Nordgarden"
+    ],
+    "festival_start_date": "",
+    "bandsintown_plus": false,
+    "title": "Nordgarden \/\/ live @ Bryggekanten 17.12.22",
+    "artist_id": "961530",
+    "url": "https:\/\/www.bandsintown.com\/e\/103898571?app_id=TerjeNordgardenWebsite&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=event",
+    "datetime_display_rule": "datetime",
+    "datetime": "2022-12-17T15:00:00",
+    "on_sale_datetime": "",
+    "id": "103898571",
+    "ends_at": "2022-12-17T18:00:00",
+    "festival_end_date": ""
+  },
+  {
+    "offers": [],
+    "venue": {
+      "street_address": "Görlitzer Str 2B",
+      "country": "Germany",
+      "city": "Dresden",
+      "latitude": "51.0666363",
+      "name": "Nordgarden \/\/ live @ Blue Note Dresden",
+      "location": "Dresden, Germany",
+      "postal_code": "01099",
+      "region": "",
+      "longitude": "13.7540771"
+    },
+    "starts_at": "2023-01-27T20:00:00",
+    "festival_datetime_display_rule": "",
+    "description": "Live presentation of the new album \"All We Need\"",
+    "lineup": [
+      "Nordgarden"
+    ],
+    "festival_start_date": "",
+    "bandsintown_plus": false,
+    "title": "Nordgarden \/\/ live @ Blue Note Dresden",
+    "artist_id": "961530",
+    "url": "https:\/\/www.bandsintown.com\/e\/103846562?app_id=TerjeNordgardenWebsite&came_from=267&utm_medium=api&utm_source=public_api&utm_campaign=event",
+    "datetime_display_rule": "datetime",
+    "datetime": "2023-01-27T20:00:00",
+    "on_sale_datetime": "",
+    "id": "103846562",
+    "ends_at": "2023-01-27T22:00:00",
+    "festival_end_date": ""
+  }
+]

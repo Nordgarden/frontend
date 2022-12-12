@@ -1,40 +1,29 @@
+<script lang="ts" setup>
+import { IEvent } from "~~/types/IEvent";
+import { Ref } from "vue";
+
+const isLoading: Ref<boolean> = useState("isLoading", () => true);
+const events: Ref<IEvent[]> = useState("events", () => []);
+const { d } = useI18n();
+</script>
+
 <template>
   <div>
     <app-loader v-if="isLoading" />
     <template v-else>
-      <ul v-if="list.length">
-        <li v-for="tour in list" :key="tour.date">
-          <span class="date">{{ tour.date | formatDate }}</span>
+      <ul v-if="events.length">
+        <li v-for="event in events" :key="event.date">
+          <span class="date">{{ d(event.date, "short") }}</span>
           <div>
-            <span class="venue">{{ tour.venue }}</span>
-            <span class="city">{{ tour.city }}</span>
+            <span class="venue">{{ event.venue }}</span>
+            <span class="city">{{ event.city }}</span>
           </div>
         </li>
       </ul>
-      <p v-else>{{ $t('noTourDays') }}</p>
+      <p v-else>{{ $t("noTourDays") }}</p>
     </template>
   </div>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-import AppLoader from '~/components/Shared/AppLoader.vue'
-
-export default {
-  components: {
-    AppLoader,
-  },
-  filters: {
-    formatDate(value) {
-      const date = new Date(value)
-      return `${date.getDate()}.${date.getMonth() + 1}`
-    },
-  },
-  computed: {
-    ...mapState('tour', ['isLoading', 'list']),
-  },
-}
-</script>
 
 <style lang="postcss" scoped>
 ul {

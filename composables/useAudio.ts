@@ -1,14 +1,16 @@
-import { Ref } from "vue";
 import albums from "~/data/albums";
 import playableSongs from "~/data/playableSongs";
 import { IPlayableSong } from "~~/types/ISong";
 
-const currentSong: Ref<IPlayableSong> = ref(playableSongs[0]);
-const isPlaying = ref(false);
-const progress: Ref<null | string> = ref(null);
-const player: Ref<HTMLAudioElement | null> = ref(null);
-
 export const useAudio = () => {
+  const currentSong = useState<IPlayableSong>(
+    "currentSong",
+    () => playableSongs[0]
+  );
+  useState<boolean>("isPlaying", () => false);
+  useState<string | null>("progress", () => null);
+  const player = useState<HTMLAudioElement | null>("player", () => null);
+
   const selectSong = async (song: IPlayableSong) => {
     currentSong.value = song;
     nextTick(async () => {
@@ -135,17 +137,13 @@ export const useAudio = () => {
   };
 
   return {
-    isPlaying,
-    currentSong,
     playableSongs,
     albums,
     play,
     pause,
-    player,
     next,
     previous,
     setCurrentTime,
-    progress,
     selectSong,
     setMetaData,
     setMediaSessionEventListeners,
