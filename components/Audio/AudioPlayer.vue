@@ -1,5 +1,15 @@
 <script setup lang="ts">
-const { currentSong, isPlaying, player, progress } = useAudio();
+const {
+  currentSong,
+  isPlaying,
+  player,
+  progress,
+  pause,
+  play,
+  next,
+  previous,
+  setMetaData,
+} = useAudio();
 const preload = ref("none");
 
 const userHasFastConnection = () => {
@@ -19,13 +29,48 @@ const setPreloadOnFastConnection = () => {
   }
 };
 
+const setMediaSessionEventListeners = () => {
+  if (!process.client) return;
+  if (!("mediaSession" in window.navigator)) return;
+  navigator.mediaSession.setActionHandler("pause", () => {
+    pause();
+  });
+  navigator.mediaSession.setActionHandler("play", () => {
+    play();
+  });
+  navigator.mediaSession.setActionHandler("seekbackward", (details) => {
+    if (!player.value) {
+      return;
+    }
+    player.value.currentTime =
+      player.value.currentTime - (details.seekOffset || 10);
+  });
+  navigator.mediaSession.setActionHandler("seekforward", (details) => {
+    if (!player.value) {
+      return;
+    }
+    player.value.currentTime =
+      player.value.currentTime + (details.seekOffset || 10);
+  });
+  navigator.mediaSession.setActionHandler("previoustrack", () => {
+    previous();
+  });
+
+  navigator.mediaSession.setActionHandler("nexttrack", () => {
+    next();
+  });
+};
+
 onMounted(() => {
   setPreloadOnFastConnection();
+  setMediaSessionEventListeners();
+  setMetaData();
 });
-const next = () => {};
+
 const setPlayState = (state: boolean) => {
   isPlaying.value = state;
 };
+
 const timeupdate = () => {
   if (!player.value) {
     return;

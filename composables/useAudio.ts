@@ -28,6 +28,38 @@ export const useAudio = () => {
     }
     player.value.pause();
   };
+
+  const updateMetaData = () => {
+    if (!process.client) return;
+    if (!("mediaSession" in window.navigator)) return;
+    if (!navigator.mediaSession.metadata) {
+      return;
+    }
+
+    navigator.mediaSession.metadata.title = currentSong.value.title;
+    navigator.mediaSession.metadata.album = currentSong.value.album.title;
+    const sizes = [96, 128, 192, 256, 384, 512];
+    const artwork = sizes.map((size) => {
+      return {
+        // src: `/media/albums/${currentSong.value.album.image}/${size}.png`,
+        src: `/media/albums/changes/${size}.png`,
+        sizes: `${size}x${size}`,
+        type: "image/png",
+      };
+    });
+    navigator.mediaSession.metadata.artwork = artwork;
+  };
+
+  const setMetaData = () => {
+    if (!process.client) return;
+    if (!("mediaSession" in window.navigator)) return;
+    // eslint-disable-next-line no-undef
+    navigator.mediaSession.metadata = new MediaMetadata({
+      artist: "Nordgarden",
+    });
+    updateMetaData();
+  };
+
   const previous = async () => {
     const currentSongIndex = playableSongs.findIndex((song) => {
       return song.title === currentSong.value?.title;
@@ -40,6 +72,7 @@ export const useAudio = () => {
     }
 
     await selectSong(playableSongs[previousSongIndex]);
+    updateMetaData();
   };
 
   const next = async () => {
@@ -53,6 +86,7 @@ export const useAudio = () => {
       nextSongIndex = currentSongIndex + 1;
     }
     await selectSong(playableSongs[nextSongIndex]);
+    updateMetaData();
   };
 
   const setCurrentTime = (offsetX: number) => {
@@ -76,5 +110,6 @@ export const useAudio = () => {
     setCurrentTime,
     progress,
     selectSong,
+    setMetaData,
   };
 };
