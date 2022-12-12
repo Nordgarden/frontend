@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       "~/components/Menu",
       "~/components/Posts",
       "~/components/Shared",
-      "~/components/Tour",
+      "~/components/Events",
       "~/components/Videos",
     ],
   },
