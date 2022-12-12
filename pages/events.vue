@@ -8,6 +8,6 @@ defineI18nRoute({
 
 <template>
   <app-page :title="$t('tour')">
-    <tour-dates />
+    <event-list />
   </app-page>
 </template>
