@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+const menuIsExpanded = ref(false);
+const toggleMenu = (state: boolean) => {};
+
+const { keys, play, pause } = useAudio();
+
+const isPlaying = useState<boolean>(keys.isPlaying);
+</script>
+
 <template>
   <div class="wrapper">
     <notch-wrapper>
@@ -7,57 +16,24 @@
           class="btn"
           @click="toggleMenu(!menuIsExpanded)"
         >
-          <icon-bars aria-hidden="true" width="24" height="24" />
+          <app-icon icon="bars" />
           {{ $t("menu") }}
         </button>
-        <!-- <template v-if="songs.length">
-          <button v-if="isPlaying" @click="pauseAudio">
-            <icon-pause width="24" height="24" aria-hidden="true" />
-            <span class="sr-only">{{ $t("pause") }}</span>
-          </button>
-          <button v-else @click="playAudio()">
-            <icon-play width="24" height="24" aria-hidden="true" />
-            <span class="sr-only">{{ $t("play") }}</span>
-          </button>
-        </template> -->
+        <button v-if="isPlaying" @click="pause">
+          <app-icon icon="pause" :title="$t('pause')" />
+        </button>
+        <button v-else @click="play">
+          <app-icon icon="play" :title="$t('play')" />
+        </button>
       </div>
     </notch-wrapper>
   </div>
 </template>
 
-<script>
-import IconPlay from "~/assets/icons/play.svg";
-import IconPause from "~/assets/icons/pause.svg";
-import IconBars from "~/assets/icons/bars.svg";
-import NotchWrapper from "~/components/Layout/NotchWrapper.vue";
-
-export default {
-  components: {
-    IconPlay,
-    IconPause,
-    IconBars,
-    NotchWrapper,
-  },
-  data() {
-    return {
-      menuIsExpanded: false,
-    };
-  },
-  methods: {
-    toggleMenu(status) {
-      this.menuIsExpanded = status;
-      this.$emit("toggleMenu", status);
-    },
-  },
-};
-</script>
-
 <style lang="postcss" scoped>
 .wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0 0 auto;
   background: var(--color-secondary);
   z-index: var(--mobile-navigation);
   border-bottom: 2px solid var(--color-white);
@@ -79,6 +55,7 @@ export default {
   font-size: var(--font-size-sm);
   display: flex;
   align-items: center;
+  gap: var(--spacing-xxs);
 
   &:hover {
     background: transparent;
@@ -89,9 +66,5 @@ export default {
     background: var(--color-primary);
     color: var(--color-white);
   }
-}
-
-svg {
-  margin-right: var(--spacing-xxs);
 }
 </style>

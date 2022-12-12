@@ -12,6 +12,7 @@ onMounted(() => {
     <skip-links />
     <audio-player />
     <audio-player-controls />
+    <mobile-navigation />
     <SocialLinks />
     <nuxt-link :to="localePath({ name: 'index' })">Home</nuxt-link>
     <nuxt-link :to="localePath({ name: 'albums' })">Albums</nuxt-link>
