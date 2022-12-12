@@ -1,41 +1,39 @@
 <script setup lang="ts">
-  const { currentSong, setPlayableSongs, isPlaying, player, progress } =
-    useAudio();
-  const preload = ref("none");
+const { currentSong, isPlaying, player, progress } = useAudio();
+const preload = ref("none");
 
-  const userHasFastConnection = () => {
-    if (!process.client) return false;
-    const connection = window.navigator.connection;
-    if (!connection) return false;
+const userHasFastConnection = () => {
+  if (!process.client) return false;
+  const connection = window.navigator.connection;
+  if (!connection) return false;
 
-    const slowConnections = ["slow-2g", "2g", "3g"];
-    return !slowConnections.includes(connection.effectiveType);
-  };
+  const slowConnections = ["slow-2g", "2g", "3g"];
+  return !slowConnections.includes(connection.effectiveType);
+};
 
-  const setPreloadOnFastConnection = () => {
-    if (userHasFastConnection()) {
-      preload.value = "auto";
-    } else {
-      preload.value = "none";
-    }
-  };
+const setPreloadOnFastConnection = () => {
+  if (userHasFastConnection()) {
+    preload.value = "auto";
+  } else {
+    preload.value = "none";
+  }
+};
 
-  onMounted(() => {
-    setPlayableSongs();
-    setPreloadOnFastConnection();
-  });
-  const next = () => {};
-  const setPlayState = (state: boolean) => {
-    isPlaying.value = state;
-  };
-  const timeupdate = () => {
-    if (!player.value) {
-      return;
-    }
-    progress.value = `${
-      (player.value.currentTime / player.value.duration) * 100
-    }%`;
-  };
+onMounted(() => {
+  setPreloadOnFastConnection();
+});
+const next = () => {};
+const setPlayState = (state: boolean) => {
+  isPlaying.value = state;
+};
+const timeupdate = () => {
+  if (!player.value) {
+    return;
+  }
+  progress.value = `${
+    (player.value.currentTime / player.value.duration) * 100
+  }%`;
+};
 </script>
 
 <template>

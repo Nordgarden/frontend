@@ -1,5 +1,11 @@
 export interface ISong {
   title: string;
   file?: string;
-  permalink?: string;
+}
+
+export interface IPlayableSong extends ISong {
+  album: {
+    title: string;
+    image: string;
+  };
 }

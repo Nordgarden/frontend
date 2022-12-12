@@ -1,68 +1,40 @@
+<script lang="ts" setup>
+import { ISong } from "~~/types/ISong";
+
+const { selectSong, pause, currentSong, isPlaying } = useAudio();
+
+const props = defineProps<{
+  song: ISong;
+}>();
+
+const isPlayingCurrentSong = computed(() => {
+  return currentSong.value?.file === props.song.file && isPlaying.value;
+});
+</script>
+
 <template>
-  <li :class="$style.song">
-    <div :class="$style['button-wrapper']">
+  <li class="song">
+    <div class="button-wrapper">
       <template v-if="song.file">
         <button
-          v-if="!isPlayingCurrentSong(song)"
-          :class="$style.btn - play"
-          @click="play(song)"
+          v-if="!isPlayingCurrentSong"
+          class="btn-play"
+          @click="selectSong(song)"
         >
           <icon-play width="20" height="20" aria-hidden="true" />
-          <span class="sr-only">{{ $t('play') }}</span>
+          <span class="sr-only">{{ $t("play") }}</span>
         </button>
-        <button v-else :class="$style.btn - pause" @click="pause">
+        <button v-else class="btn-pause" @click="pause">
           <icon-pause width="20" height="20" aria-hidden="true" />
-          <span class="sr-only">{{ $t('pause') }}</span>
+          <span class="sr-only">{{ $t("pause") }}</span>
         </button>
       </template>
     </div>
-    <span :class="$style.title">{{ song.title }}</span>
+    <span class="title">{{ song.title }}</span>
   </li>
 </template>
 
-<script>
-import { mapActions, mapState } from 'vuex'
-import EventBusUtil from '~/utils/eventBusUtil'
-
-import IconPlay from '~/assets/icons/play.svg'
-import IconPause from '~/assets/icons/pause.svg'
-
-export default {
-  components: {
-    IconPlay,
-    IconPause,
-  },
-  props: {
-    song: {
-      type: Object,
-      required: true,
-    },
-  },
-  computed: {
-    ...mapState('albums', ['currentSong', 'isPlaying']),
-  },
-  methods: {
-    ...mapActions({
-      selectSong: 'albums/selectSong',
-      setPlayState: 'albums/setPlayState',
-    }),
-    isPlayingCurrentSong(song) {
-      if (!this.currentSong) return
-      return song.file === this.currentSong.file && this.isPlaying
-    },
-    play(song) {
-      this.selectSong(song).then(() => {
-        EventBusUtil.$emit('audio-play-song', true)
-      })
-    },
-    pause() {
-      EventBusUtil.$emit('audio-play-song', false)
-    },
-  },
-}
-</script>
-
-<style lang="postcss" module>
+<style lang="postcss" scoped>
 .song {
   padding: 0.1em 0;
   border-bottom: 1px solid #ccc;

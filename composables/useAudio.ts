@@ -1,37 +1,42 @@
 import { Ref } from "vue";
 import albums from "~/data/albums";
-import { ISong } from "~~/types/ISong";
+import { IPlayableSong } from "~~/types/ISong";
+
+const getPlayableSongs = () => {
+  let newArray: IPlayableSong[] = [];
+  albums.forEach((album) => {
+    const songs = album.songlist.filter((song) => song.file !== undefined);
+    const songsWithAlbum: IPlayableSong[] = songs.map((song) => {
+      return {
+        title: song.title,
+        file: song.file,
+        album: {
+          title: album.title,
+          image: album.image,
+        },
+      };
+    });
+    newArray = [...newArray, ...songsWithAlbum];
+  });
+  return newArray;
+};
+
+const playableSongs = getPlayableSongs();
+const currentSong: Ref<IPlayableSong> = ref(playableSongs[0]);
 
 const isPlaying = ref(false);
 const progress: Ref<null | string> = ref(null);
-const currentSong: Ref<ISong | undefined> = ref(undefined);
-const playableSongs: Ref<ISong[]> = ref([]);
 const player: Ref<HTMLAudioElement | null> = ref(null);
 
 export const useAudio = () => {
-  const setPlayableSongs = () => {
-    let newArray: ISong[] = [];
-    albums.forEach((album) => {
-      const songs = album.songlist.filter((song) => song.file !== undefined);
-      const songsWithAlbum = songs.map((song) => {
-        return {
-          ...song,
-          album: {
-            title: album.title,
-            image: album.image,
-          },
-        };
-      });
-      newArray = [...newArray, ...songsWithAlbum];
+  const selectSong = async (song: IPlayableSong) => {
+    currentSong.value = song;
+    nextTick(async () => {
+      await play();
     });
-    playableSongs.value = newArray;
-    if (newArray.length) {
-      currentSong.value = newArray[0];
-    }
   };
 
   const play = async () => {
-    console.log(player.value);
     if (!player.value) {
       return;
     }
@@ -44,35 +49,32 @@ export const useAudio = () => {
     player.value.pause();
   };
   const previous = async () => {
-    const currentSongIndex = playableSongs.value.findIndex((song) => {
+    const currentSongIndex = playableSongs.findIndex((song) => {
       return song.title === currentSong.value?.title;
     });
     let previousSongIndex;
     if (currentSongIndex === 0) {
-      previousSongIndex = playableSongs.value.length - 1;
+      previousSongIndex = playableSongs.length - 1;
     } else {
       previousSongIndex = currentSongIndex - 1;
     }
-    currentSong.value = playableSongs.value[previousSongIndex];
-    nextTick(async () => {
-      await play();
-    });
+
+    await selectSong(playableSongs[previousSongIndex]);
   };
+
   const next = async () => {
-    const currentSongIndex = playableSongs.value.findIndex((song) => {
+    const currentSongIndex = playableSongs.findIndex((song) => {
       return song.title === currentSong.value?.title;
     });
     let nextSongIndex;
-    if (currentSongIndex + 1 >= playableSongs.value.length) {
+    if (currentSongIndex + 1 >= playableSongs.length) {
       nextSongIndex = 0;
     } else {
       nextSongIndex = currentSongIndex + 1;
     }
-    currentSong.value = playableSongs.value[nextSongIndex];
-    nextTick(async () => {
-      await play();
-    });
+    await selectSong(playableSongs[nextSongIndex]);
   };
+
   const setCurrentTime = (offsetX: number) => {
     if (!player.value) {
       return;
@@ -86,7 +88,6 @@ export const useAudio = () => {
     currentSong,
     playableSongs,
     albums,
-    setPlayableSongs,
     play,
     pause,
     player,
@@ -94,5 +95,6 @@ export const useAudio = () => {
     previous,
     setCurrentTime,
     progress,
+    selectSong,
   };
 };

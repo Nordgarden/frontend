@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-  import { IAlbum } from "~~/types/IAlbum";
-  defineProps<{
-    album: IAlbum;
-  }>();
+import { IAlbum } from "~/types/IAlbum";
+defineProps<{
+  album: IAlbum;
+}>();
 </script>
 
 <template>
@@ -47,67 +47,67 @@
     </div>
     <div>
       <ul class="songlist">
-        <!-- <app-song
+        <app-song
           v-for="song in album.songlist"
           :key="song.title"
           :song="song"
           class="song"
-        /> -->
+        />
       </ul>
     </div>
   </li>
 </template>
 
 <style lang="postcss" scoped>
-  .songlist,
-  .shops {
-    @mixin list-reset;
+.songlist,
+.shops {
+  @mixin list-reset;
+}
+
+.title {
+  margin: 0;
+  grid-column: 1 / -1;
+}
+
+.album {
+  display: grid;
+  grid-gap: var(--spacing-m);
+  margin-bottom: var(--spacing-l);
+
+  @media (--viewport-sm) {
+    grid-template-columns: 10em auto;
   }
+}
 
-  .title {
-    margin: 0;
-    grid-column: 1 / -1;
+.date {
+  margin-bottom: var(--spacing-xxs);
+  display: block;
+}
+
+.image {
+  display: block;
+  max-width: 10em;
+  margin-bottom: var(--spacing-xxs);
+  width: 100%;
+
+  @media (--viewport-sm) {
+    max-width: none;
   }
+}
 
-  .album {
-    display: grid;
-    grid-gap: var(--spacing-m);
-    margin-bottom: var(--spacing-l);
+.songlist {
+  max-width: var(--container-width-sm);
+  border-top: 1px solid #ccc;
+}
 
-    @media (--viewport-sm) {
-      grid-template-columns: 10em auto;
-    }
-  }
+.shops {
+  display: flex;
+}
 
-  .date {
-    margin-bottom: var(--spacing-xxs);
-    display: block;
-  }
+.shop-link {
+  @mixin link-reset;
 
-  .image {
-    display: block;
-    max-width: 10em;
-    margin-bottom: var(--spacing-xxs);
-    width: 100%;
-
-    @media (--viewport-sm) {
-      max-width: none;
-    }
-  }
-
-  .songlist {
-    max-width: var(--container-width-sm);
-    border-top: 1px solid #ccc;
-  }
-
-  .shops {
-    display: flex;
-  }
-
-  .shop-link {
-    @mixin link-reset;
-
-    flex: 0 0 var(--spacing-m);
-    margin-right: var(--spacing-xs);
-  }
+  flex: 0 0 var(--spacing-m);
+  margin-right: var(--spacing-xs);
+}
 </style>
