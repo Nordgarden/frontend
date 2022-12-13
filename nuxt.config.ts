@@ -1,4 +1,11 @@
 export default defineNuxtConfig({
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        types: ["@types/body-scroll-lock"],
+      },
+    },
+  },
   telemetry: false,
   app: {
     head: {

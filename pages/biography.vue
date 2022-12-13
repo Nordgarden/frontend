@@ -40,8 +40,8 @@ const page = computed(() => {
 
 <template>
   <div>
-    <BiographyIntro />
     <app-page v-if="page" :title="page.title">
+      <BiographyIntro />
       <div v-html="page.content" />
     </app-page>
   </div>

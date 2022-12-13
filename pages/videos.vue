@@ -7,5 +7,5 @@ defineI18nRoute({
 </script>
 
 <template>
-  <div></div>
+  <app-page :title="$t('videos')"> </app-page>
 </template>

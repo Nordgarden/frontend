@@ -1,17 +1,41 @@
+<script lang="ts" setup>
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { Ref } from "vue";
+
+const menuIsOpen = useMenu();
+const afterLeave = () => {
+  lockBodyScoll(false);
+};
+const afterEnter = () => {
+  lockBodyScoll(true);
+};
+const bg: Ref<HTMLDivElement | null> = ref(null);
+
+const lockBodyScoll = (isOpen: boolean) => {
+  if (!bg.value) {
+    return;
+  }
+
+  if (isOpen) {
+    disableBodyScroll(bg.value);
+  } else {
+    enableBodyScroll(bg.value);
+  }
+};
+</script>
+
 <template>
   <header>
-    <skip-links />
-    <mobile-navigation @toggleMenu="toggleMenu" />
+    <mobile-navigation />
 
     <transition
       name="fade2"
       @after-enter="afterEnter"
       @after-leave="afterLeave"
-      @before-leave="beforeLeave"
     >
-      <div v-show="showMenu" class="bg">
+      <div v-show="menuIsOpen" class="bg">
         <transition name="fade">
-          <div v-show="showMenu" ref="bg" class="content">
+          <div v-show="menuIsOpen" ref="bg" class="content">
             <h1>
               <router-link to="/">Nordgarden</router-link>
             </h1>
@@ -29,55 +53,6 @@
     </transition>
   </header>
 </template>
-
-<script>
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import SkipLinks from "~/components/Menu/SkipLinks.vue";
-import IconWaves from "~/assets/icons/waves.svg";
-
-import MainNavigation from "~/components/Menu/MainNavigation.vue";
-import SocialLinks from "~/components/Menu/SocialLinks.vue";
-import MobileNavigation from "~/components/Menu/MobileNavigation.vue";
-
-export default {
-  components: {
-    SkipLinks,
-    SocialLinks,
-    MainNavigation,
-    MobileNavigation,
-    IconWaves,
-  },
-  data() {
-    return {
-      showMenu: false,
-    };
-  },
-
-  methods: {
-    toggleMenu(status) {
-      this.showMenu = status;
-    },
-    afterEnter() {
-      this.lockBodyScoll(true);
-    },
-    beforeLeave() {
-      const bg = this.$refs.bg;
-      bg.scrollTop = 0;
-    },
-    afterLeave() {
-      this.lockBodyScoll(false);
-    },
-    lockBodyScoll(isOpen) {
-      const { bg } = this.$refs;
-      if (isOpen) {
-        disableBodyScroll(bg);
-      } else {
-        enableBodyScroll(bg);
-      }
-    },
-  },
-};
-</script>
 
 <style lang="postcss" scoped>
 .content {
@@ -151,7 +126,7 @@ h1 {
   transition: all 0.3s 0.2s;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   transform: translateY(calc(var(--spacing-l) * -1));
   opacity: 0;
@@ -162,7 +137,7 @@ h1 {
   transition: transform 0.3s;
 }
 
-.fade2-enter,
+.fade2-enter-from,
 .fade2-leave-to {
   transform: translateY(-100vh);
 }
