@@ -62,10 +62,6 @@
     margin-bottom: var(--spacing-xs);
   }
 
-  .date {
-    order: -1;
-  }
-
   .text {
     @mixin text-overflow;
   }

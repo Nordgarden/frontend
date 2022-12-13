@@ -18,8 +18,9 @@
     if (data.value) {
       return data.value.post;
     }
-    return undefined;
+    return null;
   });
+  useMeta(post);
 </script>
 
 <template>
@@ -28,13 +29,19 @@
     <div class="text" v-html="post.content" />
     <section class="news-list" aria-labelledby="news-list-title">
       <h1 id="news-list-title">{{ $t("latestPosts") }}</h1>
-      <latest-posts :not-in="post.databaseId" />
+      <posts-list :not-in="post.databaseId" />
     </section>
   </app-page>
 </template>
 
 <style lang="postcss" scoped>
+  .post {
+    display: flex;
+    flex-direction: column;
+  }
+
   .text {
     max-width: 60ch;
+    margin-bottom: var(--spacing-l);
   }
 </style>

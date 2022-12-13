@@ -17,8 +17,10 @@
     if (data.value) {
       return data.value.page;
     }
-    return undefined;
+    return null;
   });
+
+  useMeta(page);
 </script>
 
 <template>

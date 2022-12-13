@@ -1,5 +1,3 @@
 <template>
-  <div>
-    <LatestPosts />
-  </div>
+  <posts-list />
 </template>

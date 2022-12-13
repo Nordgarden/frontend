@@ -1,4 +1,5 @@
 #import "./Fragments/Post.gql"
+#import "./Fragments/Seo.gql"
 
 query Post($uri: ID!) {
   post(id: $uri, idType: URI) {
@@ -6,8 +7,7 @@ query Post($uri: ID!) {
     databaseId
     content
     seo {
-      metaDesc
-      title
+      ...seo
     }
   }
 }

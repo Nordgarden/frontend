@@ -45,7 +45,7 @@
 <template>
   <div v-if="data">
     <transition-group name="list" tag="ul">
-      <app-post
+      <PostsListItem
         v-for="post in data.posts.edges"
         :key="post.node.id"
         :post="post.node"

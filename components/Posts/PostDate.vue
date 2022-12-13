@@ -12,7 +12,7 @@
   .date {
     font-size: var(--font-size-sm);
     color: var(--color-gray);
-    margin-bottom: var(--spacing-m);
     display: block;
+    order: -1;
   }
 </style>
