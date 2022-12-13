@@ -13,7 +13,6 @@
       height="456"
       alt
     />
-    a
   </main>
 </template>
 
