@@ -1,13 +1,11 @@
 #import "./Fragments/Post.gql"
-#import "./Fragments/ImageArchive.gql"
+#import "./Fragments/FeaturedImage.gql"
 
-query Posts($first: Int, $after: String, $notIn: [ID]) {
-  posts(first: $first, after: $after, where: { notIn: $notIn }) {
+query Posts($after: String, $notIn: [ID]) {
+  posts(first: 12, after: $after, where: { notIn: $notIn }) {
     pageInfo {
       hasNextPage
       endCursor
-      hasPreviousPage
-      startCursor
     }
     edges {
       node {
@@ -16,9 +14,7 @@ query Posts($first: Int, $after: String, $notIn: [ID]) {
         slug
         excerpt
         featuredImage {
-          node {
-            ...imageArchive
-          }
+          ...featuredImage
         }
       }
     }

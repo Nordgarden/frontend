@@ -3,6 +3,7 @@
 query Post($uri: ID!) {
   post(id: $uri, idType: URI) {
     ...post
+    databaseId
     content
     seo {
       metaDesc

@@ -1,87 +1,76 @@
+<script setup lang="ts">
+  import { IPost } from "~~/types/IContent";
+
+  const props = defineProps<{
+    post: IPost;
+  }>();
+  const router = useRouter();
+  const goToPost = () => {
+    router.push(props.post.slug);
+  };
+</script>
+
 <template>
-  <ClickableListItem :to="post.slug" @click="click">
-    <!-- eslint-disable-next-line -->
+  <ClickableListItem :to="post.slug" @click="goToPost">
     <h2>
-      <router-link :to="post.slug">{{ post.title }}</router-link>
+      <router-link :to="post.slug"><span v-html="post.title" /></router-link>
     </h2>
-    <post-date :date="post.date" />
-    <!-- eslint-disable-next-line -->
+    <post-date :date="post.date" class="date" />
     <div class="text" v-html="post.excerpt" />
     <div class="link-wrapper">
       <span class="read-more">
         {{ $t("readMore") }}
-        <nuxt-icon
-          name="chevron-right"
-          aria-hidden="true"
-          width="16"
-          height="16"
-        />
+        <app-icon icon="chevron-right" :size="16" />
       </span>
     </div>
-    <image-archive
+    <featured-image
       v-if="post.featuredImage"
       :image="post.featuredImage.node"
       class="image"
+      sizes="sm:100vw md:50vw lg:400px"
     />
   </ClickableListItem>
 </template>
 
-<script>
-export default {
-  props: {
-    post: {
-      type: Object,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      down: null,
-    };
-  },
-};
-</script>
-
 <style lang="postcss" scoped>
-li {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var(--spacing-m);
-  border-bottom: 2px dashed var(--color-white);
-  cursor: pointer;
+  li {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--spacing-m);
+    border-bottom: 2px dashed var(--color-white);
+    cursor: pointer;
 
-  &:hover .read-more,
-  &:focus-within .read-more {
-    box-shadow: 0 3px 0 0 var(--color-primary);
+    &:hover .read-more,
+    &:focus-within .read-more {
+      box-shadow: 0 3px 0 0 var(--color-primary);
 
-    & svg {
-      margin-left: var(--spacing-xxs);
+      & svg {
+        margin-left: var(--spacing-xxs);
+      }
     }
   }
-}
 
-a {
-  @mixin link-reset;
-}
+  a {
+    @mixin link-reset;
+  }
 
-.image {
-  width: 100%;
-  height: 8em;
-  object-fit: cover;
-  order: -2;
-  margin-bottom: var(--spacing-xs);
-}
+  .image:deep(img) {
+    width: 100%;
+    height: 8em;
+    object-fit: cover;
+    order: -2;
+    margin-bottom: var(--spacing-xs);
+  }
 
-time {
-  order: -1;
-  font-size: var(--font-size-sm);
-}
+  .date {
+    order: -1;
+  }
 
-.text {
-  @mixin text-overflow;
-}
+  .text {
+    @mixin text-overflow;
+  }
 
-.link-wrapper {
-  margin-top: auto;
-}
+  .link-wrapper {
+    margin-top: auto;
+  }
 </style>

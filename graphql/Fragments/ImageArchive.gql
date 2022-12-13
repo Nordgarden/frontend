@@ -1,4 +1,0 @@
-fragment imageArchive on MediaItem {
-  altText
-  srcSet
-}

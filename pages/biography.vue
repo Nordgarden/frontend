@@ -1,25 +1,24 @@
 <script setup lang="ts">
-import PageQuery from "~/graphql/Page.gql";
-import { IPage } from "~~/types/IPage";
-import { ComputedRef } from "vue";
+  import PageQuery from "~/graphql/Page.gql";
+  import { IPage } from "~~/types/IContent";
 
-defineI18nRoute({
-  paths: {
-    en: "/biography",
-  },
-});
+  defineI18nRoute({
+    paths: {
+      en: "/biography",
+    },
+  });
 
-const { pageId } = useAppConfig();
-const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
-  pageId: pageId.biography,
-});
+  const { pageId } = useAppConfig();
+  const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
+    pageId: pageId.biography,
+  });
 
-const page = computed(() => {
-  if (data.value) {
-    return data.value.page;
-  }
-  return undefined;
-});
+  const page = computed(() => {
+    if (data.value) {
+      return data.value.page;
+    }
+    return undefined;
+  });
 </script>
 
 <template>
