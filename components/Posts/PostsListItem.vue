@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <ClickableListItem :to="post.slug" @click="goToPost">
+  <ClickableListItem :to="post.slug" @click="goToPost" class="post">
     <h2>
       <router-link :to="post.slug"><span v-html="post.title" /></router-link>
     </h2>
@@ -33,12 +33,11 @@
 </template>
 
 <style lang="postcss" scoped>
-  li {
+  .post {
     display: flex;
     flex-direction: column;
     padding-bottom: var(--spacing-m);
     border-bottom: 2px dashed var(--color-white);
-    cursor: pointer;
 
     &:hover .read-more,
     &:focus-within .read-more {
@@ -54,12 +53,15 @@
     @mixin link-reset;
   }
 
-  .image:deep(img) {
-    width: 100%;
-    height: 8em;
-    object-fit: cover;
+  .image {
     order: -2;
     margin-bottom: var(--spacing-xs);
+
+    &:deep(img) {
+      width: 100%;
+      height: 8em;
+      object-fit: cover;
+    }
   }
 
   .text {

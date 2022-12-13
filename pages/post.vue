@@ -24,9 +24,11 @@
 </script>
 
 <template>
-  <app-page :title="post.title" class="post" v-if="post">
-    <post-date :date="post.date" class="date" />
-    <div class="text" v-html="post.content" />
+  <app-page :title="post.title" v-if="post">
+    <div class="post">
+      <post-date :date="post.date" class="date" />
+      <div class="text" v-html="post.content" />
+    </div>
     <section class="news-list" aria-labelledby="news-list-title">
       <h1 id="news-list-title">{{ $t("latestPosts") }}</h1>
       <posts-list :not-in="post.databaseId" />
@@ -41,6 +43,8 @@
   }
 
   .text {
+    @mixin text-overflow;
+
     max-width: 60ch;
     margin-bottom: var(--spacing-l);
   }

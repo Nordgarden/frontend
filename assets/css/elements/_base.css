@@ -1,6 +1,5 @@
-@import './typography.css';
+@import './buttons.css';
+@import './icons.css';
 @import './images.css';
 @import './lists.css';
-@import './buttons.css';
-@import './video.css';
-@import './icons.css';
+@import './typography.css';

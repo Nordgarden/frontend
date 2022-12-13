@@ -31,3 +31,11 @@
     </app-page>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+  .text {
+    @mixin text-overflow;
+
+    max-width: 60ch;
+  }
+</style>
