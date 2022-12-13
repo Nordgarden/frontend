@@ -40,13 +40,8 @@ const lockBodyScoll = (isOpen: boolean) => {
               <router-link to="/">Nordgarden</router-link>
             </h1>
             <main-navigation />
+            <audio-player-controls />
             <social-links />
-            <icon-waves
-              class="waves"
-              aria-hidden="true"
-              width="186"
-              height="108"
-            />
           </div>
         </transition>
       </div>
@@ -82,18 +77,6 @@ h1 {
 
   & a {
     text-decoration: none;
-  }
-}
-
-.waves {
-  display: none;
-
-  @media (--navigation-position-left) {
-    margin-top: auto;
-    fill: var(--color-primary);
-    display: block;
-    align-self: flex-start;
-    margin-left: calc(var(--gutter) * -1);
   }
 }
 

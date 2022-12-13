@@ -2,6 +2,7 @@
 import { IAlbum } from "~/types/IAlbum";
 defineProps<{
   album: IAlbum;
+  lazy?: boolean;
 }>();
 </script>
 
@@ -12,7 +13,8 @@ defineProps<{
       <nuxt-img
         :src="album.image"
         format="avif"
-        loading="lazy"
+        legacyFormat="webp"
+        :loading="lazy ? 'lazy' : 'eager'"
         sizes="sm:100vw md:50vw lg:400px"
         alt=""
       />

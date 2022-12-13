@@ -1,31 +1,25 @@
 <script lang="ts" setup>
-  import { Ref } from "vue";
-  const props = defineProps<{
-    to: string;
-  }>();
-  const down: Ref<number | null> = ref(null);
-  const router = useRouter();
+import { Ref } from "vue";
+const down: Ref<number | null> = ref(null);
 
-  const goToItem = () => {
-    router.push(props.to);
-  };
+const emit = defineEmits(["click"]);
 
-  const mouseDown = (event: { target: Element }) => {
-    if (event.target.nodeName === "A") {
-      down.value = null;
-    } else {
-      down.value = +new Date();
-    }
-  };
-  const mouseUp = () => {
-    if (!down.value) {
-      return;
-    }
-    const up = +new Date();
-    if (up - down.value < 200) {
-      goToItem();
-    }
-  };
+const mouseDown = (event: { target: Element }) => {
+  if (event.target.nodeName === "A") {
+    down.value = null;
+  } else {
+    down.value = +new Date();
+  }
+};
+const mouseUp = () => {
+  if (!down.value) {
+    return;
+  }
+  const up = +new Date();
+  if (up - down.value < 200) {
+    emit("click");
+  }
+};
 </script>
 
 <template>
@@ -35,16 +29,16 @@
 </template>
 
 <style lang="postcss" scoped>
-  .list-item {
-    cursor: pointer;
+.list-item {
+  cursor: pointer;
 
-    &:hover,
-    &:focus-within {
-      & :global(.read-more) {
-        & :global(.icon) {
-          margin-left: 0.25em;
-        }
+  &:hover,
+  &:focus-within {
+    & :global(.read-more) {
+      & :global(.icon) {
+        margin-left: 0.25em;
       }
     }
   }
+}
 </style>

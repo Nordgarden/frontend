@@ -1,0 +1,12 @@
+#import "./Fragments/Post.gql"
+
+query Post($uri: ID!) {
+  post(id: $uri, idType: URI) {
+    ...post
+    content
+    seo {
+      metaDesc
+      title
+    }
+  }
+}

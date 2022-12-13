@@ -1,13 +1,11 @@
 <script setup lang="ts">
 defineI18nRoute({
   paths: {
-    en: "/videos",
+    en: "/:slug",
   },
 });
 </script>
 
 <template>
-  <app-page :title="$t('videos')">
-    <videos-list />
-  </app-page>
+  <div></div>
 </template>

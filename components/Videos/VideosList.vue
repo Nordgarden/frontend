@@ -1,25 +1,43 @@
+<script lang="ts" setup>
+import videos from "~/data/videos";
+
+const { pause } = useAudio();
+
+const videoId = ref(videos[0].videoId);
+const autoPlay = ref(0);
+
+const isCurrentVideo = (id: string) => {
+  return id === videoId.value;
+};
+
+const playVideo = (id: string) => {
+  pause();
+  videoId.value = id;
+  autoPlay.value = 1;
+};
+</script>
+
 <template>
   <div class="videos">
     <div class="player">
-      <youtube
-        ref="youtube"
-        :video-id="videoId"
-        :player-vars="playerVars"
-        :fit-parent="true"
-        :resize-delay="10"
-        :resize="true"
-        @playing="playing"
-      ></youtube>
+      <iframe
+        autoplay="1"
+        class="player"
+        :src="`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=${autoPlay}&rel=0&modestbranding=1`"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      />
     </div>
 
     <ul class="list">
-      <li
+      <clickable-list-item
         v-for="video in videos"
         :key="video.videoId"
-        :class="{ 'is-active': isCurrentVideo(video) }"
+        :class="{ 'is-active': isCurrentVideo(video.videoId) }"
         class="list-item"
-        @mousedown="mouseDown"
-        @mouseup="mouseUp(video.videoId)"
+        @click="playVideo(video.videoId)"
       >
         <div class="image-wrapper">
           <img
@@ -27,93 +45,18 @@
             width="480"
             height="360"
             loading="lazy"
-            alt
+            alt=""
           />
-          <icon-play aria-hidden="true" />
+          <app-icon icon="play" class="icon" />
         </div>
         <button class="btn-video" @click="playVideo(video.videoId)">
-          <span class="sr-only">{{ $t('play') }}</span>
+          <span class="sr-only">{{ $t("play") }}</span>
           {{ video.title }}
         </button>
-      </li>
+      </clickable-list-item>
     </ul>
   </div>
 </template>
-
-<script>
-import { mapState } from 'vuex'
-import EventBusUtil from '~/utils/eventBusUtil'
-import IconPlay from '~/assets/icons/play.svg'
-import videos from '~/data/videos'
-
-export default {
-  components: {
-    IconPlay,
-  },
-
-  props: {
-    videos: {
-      type: Array,
-      required: true,
-    },
-  },
-
-  data() {
-    return {
-      videoId: videos[0].videoId,
-      playerVars: {
-        rel: 0,
-      },
-      isPlayingVideo: false,
-      down: null,
-    }
-  },
-  computed: {
-    ...mapState('albums', ['isPlaying']),
-
-    player() {
-      return this.$refs.youtube.player
-    },
-  },
-  watch: {
-    isPlaying(value) {
-      if (value) {
-        this.pauseVideo()
-      }
-    },
-  },
-  methods: {
-    mouseUp(videoId) {
-      const up = +new Date()
-      if (up - this.down < 200) {
-        this.playVideo(videoId)
-      }
-    },
-    mouseDown() {
-      this.down = +new Date()
-    },
-    goToPost() {
-      this.$router.push(this.post.slug)
-    },
-    playVideo(videoId) {
-      this.videoId = videoId
-      this.$nextTick(() => {
-        this.player.playVideo()
-      })
-    },
-    pauseVideo() {
-      this.player.pauseVideo()
-    },
-    isCurrentVideo(video) {
-      return this.videoId === video.videoId
-    },
-
-    playing() {
-      EventBusUtil.$emit('audio-play-song', false)
-    },
-  },
-}
-</script>
 
 <style lang="postcss" scoped>
 @custom-media --video-tiles (--viewport-sm);
@@ -128,7 +71,7 @@ img {
   position: relative;
 }
 
-svg {
+.icon {
   --video-button-size: var(--spacing-m);
 
   @media (--video-tiles) {
@@ -140,10 +83,7 @@ svg {
   top: 50%;
   width: var(--video-button-size);
   height: var(--video-button-size);
-
-  /* prettier-ignore */
-  margin:
-    calc(var(--video-button-size) / -2) 0 0
+  margin: calc(var(--video-button-size) / -2) 0 0
     calc(var(--video-button-size) / -2);
   fill: var(--color-white);
 }
@@ -190,7 +130,8 @@ svg {
   }
 }
 
->>> iframe {
+.player {
+  aspect-ratio: 16 / 9;
   width: 100%;
   display: block;
   margin-bottom: var(--spacing-m);

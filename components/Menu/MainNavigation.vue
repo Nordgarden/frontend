@@ -112,7 +112,7 @@ a {
   padding: 0.45em 0;
   border-bottom: 1px dashed var(--color-gray);
 
-  &.nuxt-link-exact-active .title {
+  &.router-link-exact-active .title {
     box-shadow: 0 2px 0 0 var(--color-primary);
   }
 
