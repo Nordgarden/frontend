@@ -106,7 +106,7 @@ h1 {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s 0.2s;
+  transition: all 0.3s 0.2s var(--transition-timing-function);
 }
 
 .fade-enter-from,
@@ -117,7 +117,7 @@ h1 {
 
 .fade2-enter-active,
 .fade2-leave-active {
-  transition: transform 0.3s;
+  transition: transform 0.3s var(--transition-timing-function);
 }
 
 .fade2-enter-from,

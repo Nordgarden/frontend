@@ -63,12 +63,9 @@ a {
 .image {
   order: -2;
   margin-bottom: var(--spacing-xs);
-
-  &:deep(img) {
-    width: 100%;
-    height: 8em;
-    object-fit: cover;
-  }
+  width: 100%;
+  height: 8em;
+  object-fit: cover;
 }
 
 .text {

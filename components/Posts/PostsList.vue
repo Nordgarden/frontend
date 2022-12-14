@@ -42,8 +42,8 @@ const loadMore = async () => {
 </script>
 
 <template>
-  <div v-if="data" class="wrapper">
-    <transition-group name="list" tag="ul" class="list">
+  <div v-if="data" :class="$style.wrapper">
+    <transition-group name="list" tag="ul" :class="$style.posts">
       <PostsListItem
         v-for="post in data.posts.edges"
         :key="post.node.id"
@@ -51,20 +51,23 @@ const loadMore = async () => {
       />
     </transition-group>
     <app-loader v-if="loading" />
-    <div v-else-if="data.posts.pageInfo.hasNextPage" class="button-wrapper">
-      <button class="btn" @click="loadMore">
+    <div
+      v-else-if="data.posts.pageInfo.hasNextPage"
+      :class="$style['button-wrapper']"
+    >
+      <button :class="$style.btn" class="btn" @click="loadMore">
         {{ $t("loadMore") }}
       </button>
     </div>
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<style lang="postcss" module>
 .wrapper {
   margin-bottom: 5em;
 }
 
-.list {
+.posts {
   @mixin list-reset;
 
   display: grid;
@@ -74,7 +77,7 @@ const loadMore = async () => {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.2s;
+  transition: all var(--animation);
 }
 
 .list-enter-from,

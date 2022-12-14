@@ -93,7 +93,7 @@ ul {
 }
 
 .title {
-  transition: box-shadow 0.1s ease-out;
+  transition: box-shadow 0.1s var(--transition-timing-function);
 
   &.link-active {
     box-shadow: 0 2px 0 0 var(--color-primary);
@@ -139,7 +139,7 @@ a {
     position: absolute;
     top: 0;
     right: calc(var(--spacing-l) * -1);
-    transition: transform 0.2s ease-out;
+    transition: transform 0.2s var(--transition-timing-function);
 
     &::after {
       position: absolute;
