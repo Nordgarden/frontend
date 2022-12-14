@@ -1,20 +1,20 @@
 <script lang="ts" setup>
-import videos from "~/data/videos";
+  import videos from "~/data/videos";
 
-const { pause } = useAudio();
+  const { pause } = useAudio();
 
-const videoId = ref(videos[0].videoId);
-const autoPlay = ref(0);
+  const videoId = ref(videos[0].videoId);
+  const autoPlay = ref(0);
 
-const isCurrentVideo = (id: string) => {
-  return id === videoId.value;
-};
+  const isCurrentVideo = (id: string) => {
+    return id === videoId.value;
+  };
 
-const playVideo = (id: string) => {
-  pause();
-  videoId.value = id;
-  autoPlay.value = 1;
-};
+  const playVideo = (id: string) => {
+    pause();
+    videoId.value = id;
+    autoPlay.value = 1;
+  };
 </script>
 
 <template>
@@ -47,7 +47,9 @@ const playVideo = (id: string) => {
             loading="lazy"
             alt=""
           />
-          <app-icon icon="play" class="icon" />
+          <div class="icon-wrapper">
+            <app-icon icon="play" class="icon" />
+          </div>
         </div>
         <button class="btn-video" @click="playVideo(video.videoId)">
           <span class="sr-only">{{ $t("play") }}</span>
@@ -59,85 +61,88 @@ const playVideo = (id: string) => {
 </template>
 
 <style lang="postcss" scoped>
-@custom-media --video-tiles (--viewport-sm);
+  @custom-media --video-tiles (--viewport-sm);
 
-img {
-  width: 100%;
-  display: block;
-  margin-bottom: var(--spacing-xxs);
-}
-
-.image-wrapper {
-  position: relative;
-}
-
-.icon {
-  --video-button-size: var(--spacing-m);
-
-  @media (--video-tiles) {
-    --video-button-size: var(--spacing-l);
-  }
-
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: var(--video-button-size);
-  height: var(--video-button-size);
-  margin: calc(var(--video-button-size) / -2) 0 0
-    calc(var(--video-button-size) / -2);
-  fill: var(--color-white);
-}
-
-.list-item {
-  border: 2px solid transparent;
-  border-bottom: 2px dashed var(--color-primary);
-  padding-bottom: var(--spacing-xs);
-  display: grid;
-  grid-gap: var(--spacing-m);
-  grid-template-columns: 5em auto;
-
-  &:hover,
-  &:focus-within,
-  &.is-active {
-    border-style: solid;
-  }
-
-  @media (--video-tiles) {
+  img {
+    width: 100%;
     display: block;
+    margin-bottom: var(--spacing-xxs);
   }
-}
 
-.btn-video {
-  text-align: left;
-
-  @media (--video-tiles) {
-    text-align: center;
+  .image-wrapper {
+    position: relative;
   }
-}
 
-.videos {
-  max-width: 48em;
-}
+  .icon-wrapper {
+    --video-button-size: var(--spacing-m);
 
-.list {
-  @mixin list-reset;
+    @media (--video-tiles) {
+      --video-button-size: var(--spacing-l);
+    }
 
-  display: grid;
-  grid-gap: var(--spacing-m);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: calc(var(--video-button-size) / -2) 0 0
+      calc(var(--video-button-size) / -2);
+    color: var(--color-white);
 
-  @media (--video-tiles) {
-    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+    & :global(svg) {
+      width: var(--video-button-size);
+      height: var(--video-button-size);
+    }
   }
-}
 
-.player {
-  aspect-ratio: 16 / 9;
-  width: 100%;
-  display: block;
-  margin-bottom: var(--spacing-m);
-}
+  .list-item {
+    border: 2px solid transparent;
+    border-bottom: 2px dashed var(--color-primary);
+    padding-bottom: var(--spacing-xs);
+    display: grid;
+    grid-gap: var(--spacing-m);
+    grid-template-columns: 5em auto;
 
-.btn-video:focus {
-  outline: none;
-}
+    &:hover,
+    &:focus-within,
+    &.is-active {
+      border-style: solid;
+    }
+
+    @media (--video-tiles) {
+      display: block;
+    }
+  }
+
+  .btn-video {
+    text-align: left;
+
+    @media (--video-tiles) {
+      text-align: center;
+    }
+  }
+
+  .videos {
+    max-width: 48em;
+  }
+
+  .list {
+    @mixin list-reset;
+
+    display: grid;
+    grid-gap: var(--spacing-m);
+
+    @media (--video-tiles) {
+      grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+    }
+  }
+
+  .player {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    display: block;
+    margin-bottom: var(--spacing-m);
+  }
+
+  .btn-video:focus {
+    outline: none;
+  }
 </style>
