@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    preset: "netlify-builder",
+  },
   telemetry: false,
   app: {
     head: {
