@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useContext } from "unctx";
 import PostsQuery from "~/graphql/Posts.gql";
 import { IPosts } from "~~/types/IContent";
 
