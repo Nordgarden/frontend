@@ -50,7 +50,7 @@ export default defineNuxtConfig({
       },
 
       "postcss-preset-env": {
-        importFrom: ["./assets/css/media-queries/media-queries.css"],
+        // importFrom: ["./assets/css/media-queries/media-queries.css"],
 
         features: {
           "nesting-rules": true,
