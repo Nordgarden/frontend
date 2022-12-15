@@ -6,9 +6,20 @@ export default defineNuxtConfig({
       },
     },
   },
-  generate: {
-    routes: ["/users/1", "/users/2", "/users/3"],
-  },
+  // generate: {
+  //   async routes() {
+  //     try {
+  //       const response = await $fetch(
+  //         "https://shop.loesje.nl/wp-json/wp/v2/posts?_fields=slug&per_page=10"
+  //       );
+
+  //       console.log(response);
+  //       return [];
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   },
+  // },
   nitro: {
     preset: "netlify",
   },
