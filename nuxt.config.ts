@@ -6,6 +6,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  generate: {
+    routes: ["/users/1", "/users/2", "/users/3"],
+  },
   nitro: {
     preset: "netlify",
   },
