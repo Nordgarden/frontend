@@ -1,3 +1,5 @@
+import routes from "./data/routes";
+
 export default defineNuxtConfig({
   typescript: {
     tsConfig: {
@@ -6,20 +8,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  // generate: {
-  //   async routes() {
-  //     try {
-  //       const response = await $fetch(
-  //         "https://shop.loesje.nl/wp-json/wp/v2/posts?_fields=slug&per_page=10"
-  //       );
-
-  //       console.log(response);
-  //       return [];
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   },
-  // },
+  generate: {
+    routes,
+  },
   nitro: {
     preset: "netlify",
   },
