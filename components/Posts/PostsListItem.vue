@@ -48,7 +48,7 @@ const goToPost = () => {
 
   &:hover .read-more,
   &:focus-within .read-more {
-    box-shadow: 0 3px 0 0 var(--color-primary);
+    text-decoration-thickness: 3px;
 
     & svg {
       margin-left: var(--spacing-xxs);
