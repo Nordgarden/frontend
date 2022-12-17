@@ -10,7 +10,7 @@
   <li class="album">
     <h2 class="title">{{ album.title }}</h2>
     <div>
-      <nuxt-img
+      <img
         :src="album.image"
         :loading="lazy ? 'lazy' : 'eager'"
         alt=""

@@ -44,10 +44,11 @@ export const useAudio = () => {
 
   const getMediaImages = (image: string) => {
     const images = mediaSizes.map((size) => {
-      const src = $img(image, {
-        width: size,
-        height: size,
-      }) as string;
+      // const src = $img(image, {
+      //   width: size,
+      //   height: size,
+      // }) as string;
+      const src = image;
       return {
         src,
         sizes: `${size}x${size}`,
