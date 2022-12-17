@@ -4,6 +4,8 @@ export default defineNuxtConfig({
   typescript: {
     tsConfig: {
       compilerOptions: {
+        isolatedModules: true,
+        esModuleInterop: true,
         types: ["@types/body-scroll-lock"],
       },
     },
@@ -63,7 +65,8 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        httpEndpoint: "https://api.nordgarden.info/graphql",
+        // httpEndpoint: "https://api.nordgarden.info/graphql",
+        httpEndpoint: "/.netlify/functions/graphql",
       },
     },
   },

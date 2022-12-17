@@ -1,6 +1,8 @@
+import { Handler } from "@netlify/functions";
+
 import mockEvents from "./mockEvents.json";
 
-export async function handler() {
+const handler: Handler = async () => {
   return {
     statusCode: 200,
     body: JSON.stringify(mockEvents),
@@ -8,4 +10,6 @@ export async function handler() {
       "Content-Type": "application/json",
     },
   };
-}
+};
+
+export { handler };
