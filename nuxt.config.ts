@@ -10,9 +10,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  // generate: {
-  //   routes,
-  // },
+  generate: {
+    routes,
+  },
   nitro: {
     preset: "netlify",
   },
@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         },
         {
           rel: "manifest",
-          href: "/site.webmanifest",
+          href: "/manifest.json",
         },
       ],
     },
