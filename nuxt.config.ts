@@ -10,9 +10,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  generate: {
-    routes,
-  },
+  // generate: {
+  //   routes,
+  // },
   nitro: {
     preset: "netlify",
   },
