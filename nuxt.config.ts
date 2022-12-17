@@ -52,8 +52,6 @@ export default defineNuxtConfig({
       },
 
       "postcss-preset-env": {
-        // importFrom: ["./assets/css/media-queries/media-queries.css"],
-
         features: {
           "nesting-rules": true,
           "custom-media-queries": true,
@@ -65,8 +63,8 @@ export default defineNuxtConfig({
   apollo: {
     clients: {
       default: {
-        // httpEndpoint: "https://api.nordgarden.info/graphql",
-        httpEndpoint: "/.netlify/functions/graphql",
+        httpEndpoint: "https://api.nordgarden.info/graphql",
+        // httpEndpoint: "/.netlify/functions/graphql",
       },
     },
   },
