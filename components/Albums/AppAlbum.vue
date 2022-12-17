@@ -13,9 +13,8 @@
       <img
         :src="album.image"
         :loading="lazy ? 'lazy' : 'eager'"
+        sizes="xs:200px sm:400px"
         alt=""
-        width="200"
-        height="200"
       />
       <app-date :date="album.releaseDate" class="date" />
       <ul class="stores" v-if="album.spotify || album.apple">
