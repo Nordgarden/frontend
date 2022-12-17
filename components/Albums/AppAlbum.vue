@@ -62,6 +62,8 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "./../../assets/css/media-queries/media-queries.css";
+
   .songlist,
   .stores {
     @mixin list-reset;
