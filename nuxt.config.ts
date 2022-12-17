@@ -1,4 +1,4 @@
-import routes from "./data/routes";
+// import routes from "./data/routes";
 
 export default defineNuxtConfig({
   typescript: {
@@ -10,8 +10,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  generate: {
-    routes,
+  // generate: {
+  //   routes,
+  // },
+  image: {
+    dir: "public/images",
   },
   nitro: {
     preset: "netlify",
