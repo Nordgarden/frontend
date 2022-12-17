@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { IPost } from "~~/types/IContent";
-const localePath = useLocalePath();
-const props = defineProps<{
-  post: IPost;
-}>();
-const router = useRouter();
-const url = localePath({
-  name: "post",
-  params: {
-    slug: props.post.slug,
-  },
-});
+  import { IPost } from "~~/types/IContent";
+  const localePath = useLocalePath();
+  const props = defineProps<{
+    post: IPost;
+  }>();
+  const router = useRouter();
+  const url = localePath({
+    name: "post",
+    params: {
+      slug: props.post.slug,
+    },
+  });
 
-const goToPost = () => {
-  router.push(url);
-};
+  const goToPost = () => {
+    router.push(url);
+  };
 </script>
 
 <template>
@@ -34,45 +34,45 @@ const goToPost = () => {
       v-if="post.featuredImage"
       :image="post.featuredImage.node"
       class="image"
-      sizes="sm:100vw md:50vw lg:400px"
+      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 500px"
     />
   </ClickableListItem>
 </template>
 
 <style lang="postcss" scoped>
-.post {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: var(--spacing-m);
-  border-bottom: 2px dashed var(--color-white);
+  .post {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--spacing-m);
+    border-bottom: 2px dashed var(--color-white);
 
-  &:hover .read-more,
-  &:focus-within .read-more {
-    text-decoration-thickness: 3px;
+    &:hover .read-more,
+    &:focus-within .read-more {
+      text-decoration-thickness: 3px;
 
-    & svg {
-      margin-left: var(--spacing-xxs);
+      & svg {
+        margin-left: var(--spacing-xxs);
+      }
     }
   }
-}
 
-a {
-  @mixin link-reset;
-}
+  a {
+    @mixin link-reset;
+  }
 
-.image {
-  order: -2;
-  margin-bottom: var(--spacing-xs);
-  width: 100%;
-  height: 8em;
-  object-fit: cover;
-}
+  .image {
+    order: -2;
+    margin-bottom: var(--spacing-xs);
+    width: 100%;
+    height: 8em;
+    object-fit: cover;
+  }
 
-.text {
-  @mixin text-overflow;
-}
+  .text {
+    @mixin text-overflow;
+  }
 
-.link-wrapper {
-  margin-top: auto;
-}
+  .link-wrapper {
+    margin-top: auto;
+  }
 </style>

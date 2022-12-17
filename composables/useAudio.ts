@@ -17,6 +17,7 @@ export const useAudio = () => {
   useState<boolean>(keys.isPlaying, () => false);
   useState<string | null>(keys.progress, () => null);
   const player = useState<HTMLAudioElement | null>(keys.player, () => null);
+  const $img = useImage();
 
   const selectSong = async (song: IPlayableSong) => {
     currentSong.value = song;
@@ -39,6 +40,23 @@ export const useAudio = () => {
     player.value.pause();
   };
 
+  const { mediaSizes } = useAppConfig();
+
+  const getMediaImages = (image: string) => {
+    const images = mediaSizes.map((size) => {
+      const src = $img(image, {
+        width: size,
+        height: size,
+      }) as string;
+      return {
+        src,
+        sizes: `${size}x${size}`,
+        type: "image/jpg",
+      };
+    });
+    return images;
+  };
+
   const updateMetaData = () => {
     if (!process.client) return;
     if (!("mediaSession" in window.navigator)) return;
@@ -48,15 +66,7 @@ export const useAudio = () => {
 
     navigator.mediaSession.metadata.title = currentSong.value.title;
     navigator.mediaSession.metadata.album = currentSong.value.album.title;
-    const sizes = [96, 128, 192, 256, 384, 512];
-    const artwork = sizes.map((size) => {
-      return {
-        // src: `/media/albums/${currentSong.value.album.image}/${size}.png`,
-        src: `/media/albums/changes/${size}.png`,
-        sizes: `${size}x${size}`,
-        type: "image/png",
-      };
-    });
+    const artwork = getMediaImages(currentSong.value.album.image);
     navigator.mediaSession.metadata.artwork = artwork;
   };
 

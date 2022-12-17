@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { IAlbum } from "~/types/IAlbum";
-defineProps<{
-  album: IAlbum;
-  lazy?: boolean;
-}>();
+  import { IAlbum } from "~/types/IAlbum";
+  const props = defineProps<{
+    album: IAlbum;
+    lazy?: boolean;
+  }>();
 </script>
 
 <template>
@@ -12,13 +12,12 @@ defineProps<{
     <div>
       <nuxt-img
         :src="album.image"
-        format="avif"
-        legacyFormat="webp"
         :loading="lazy ? 'lazy' : 'eager'"
-        sizes="sm:100vw md:50vw lg:400px"
         alt=""
+        width="200"
+        height="200"
       />
-      <!-- <post-date :date="album.releaseDate" class="date" /> -->
+      <app-date :date="album.releaseDate" class="date" />
       <ul class="stores" v-if="album.spotify || album.apple">
         <li v-if="album.spotify">
           <a
@@ -64,55 +63,55 @@ defineProps<{
 </template>
 
 <style lang="postcss" scoped>
-.songlist,
-.stores {
-  @mixin list-reset;
-}
-
-.title {
-  margin: 0;
-  grid-column: 1 / -1;
-}
-
-.album {
-  display: grid;
-  grid-gap: var(--spacing-m);
-  margin-bottom: var(--spacing-l);
-
-  @media (--viewport-sm) {
-    grid-template-columns: 10em auto;
+  .songlist,
+  .stores {
+    @mixin list-reset;
   }
-}
 
-.date {
-  margin-bottom: var(--spacing-xxs);
-  display: block;
-}
-
-.image {
-  display: block;
-  max-width: 10em;
-  margin-bottom: var(--spacing-xxs);
-  width: 100%;
-
-  @media (--viewport-sm) {
-    max-width: none;
+  .title {
+    margin: 0;
+    grid-column: 1 / -1;
   }
-}
 
-.songlist {
-  max-width: var(--container-width-sm);
-  border-top: 1px solid #ccc;
-}
+  .album {
+    display: grid;
+    grid-gap: var(--spacing-m);
+    margin-bottom: var(--spacing-l);
 
-.stores {
-  display: flex;
-}
+    @media (--viewport-sm) {
+      grid-template-columns: 10em auto;
+    }
+  }
 
-.shop-link {
-  @mixin link-reset;
+  .date {
+    margin-bottom: var(--spacing-xxs);
+    display: block;
+  }
 
-  flex: 0 0 var(--spacing-m);
-  margin-right: var(--spacing-xs);
-}
+  .image {
+    display: block;
+    max-width: 10em;
+    margin-bottom: var(--spacing-xxs);
+    width: 100%;
+
+    @media (--viewport-sm) {
+      max-width: none;
+    }
+  }
+
+  .songlist {
+    max-width: var(--container-width-sm);
+    border-top: 1px solid #ccc;
+  }
+
+  .stores {
+    display: flex;
+  }
+
+  .shop-link {
+    @mixin link-reset;
+
+    flex: 0 0 var(--spacing-m);
+    margin-right: var(--spacing-xs);
+  }
 </style>
