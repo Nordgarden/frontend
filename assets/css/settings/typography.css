@@ -1,5 +1,5 @@
 :root {
-  --font-size-base: 20px;
+  font-size: clamp(18px, 2.75vw, 20px);
   --font-family-base: 'ABeeZee', sans-serif;
   --line-height-base: 1.5;
   --font-weight-normal: 400;
