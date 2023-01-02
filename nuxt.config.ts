@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   pwa: {
     workbox: {
       // importScripts: ['/badge.js', '/update.js'],
-      templatePath: "/update.js",
+      templatePath: "~/public/sw.js",
     },
     manifest: {
       name: "Nordgarden",
