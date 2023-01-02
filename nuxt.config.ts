@@ -16,6 +16,73 @@ export default defineNuxtConfig({
   nitro: {
     preset: "netlify",
   },
+  pwa: {
+    manifest: {
+      name: "Nordgarden",
+      background_color: "#dcac4c",
+      theme_color: "#dcac4c",
+      short_name: "Nordgarden",
+      orientation: "portrait-primary",
+      shortcuts: [
+        {
+          name: "Tour",
+          short_name: "Tour",
+          url: "/tour",
+          icons: [],
+        },
+        {
+          name: "Albums",
+          short_name: "Albums",
+          url: "/albums",
+          icons: [],
+        },
+        {
+          name: "Videos",
+          short_name: "Videos",
+          url: "/videos",
+          icons: [],
+        },
+        {
+          name: "Biography",
+          short_name: "Biography",
+          url: "/biography",
+          icons: [],
+        },
+      ],
+      categories: ["music"],
+      screenshots: [
+        {
+          src: "/screenshots/desktop-home.png",
+          sizes: "1280x800",
+          type: "image/png",
+        },
+        {
+          src: "/screenshots/desktop-albums.png",
+          sizes: "1280x800",
+          type: "image/png",
+        },
+        {
+          src: "/screenshots/mobile-home.png",
+          sizes: "375x667",
+          type: "image/png",
+        },
+        {
+          src: "/screenshots/mobile-albums.png",
+          sizes: "375x667",
+          type: "image/png",
+        },
+      ],
+    },
+    meta: {
+      // appleStatusBarStyle: "black-translucent",
+      mobileApp: true,
+      mobileAppIOS: true,
+      theme_color: "#dcac4c",
+      twitterCard: "summary_large_image",
+      twitterCreator: "TerjeNordgarden",
+      twitterSite: "TerjeNordgarden",
+    },
+  },
   telemetry: false,
   app: {
     head: {
@@ -24,33 +91,9 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width,initial-scale=1,viewport-fit=cover",
         },
-
         {
-          name: "theme-color",
-          content: "#e02830",
-        },
-      ],
-      link: [
-        {
-          rel: "apple-touch-icon",
-          sizes: "180x180",
-          href: "/apple-touch-icon.png",
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "32x32",
-          href: "/favicon-32x32.png",
-        },
-        {
-          rel: "icon",
-          type: "image/png",
-          sizes: "16x16",
-          href: "/favicon-16x16.png",
-        },
-        {
-          rel: "manifest",
-          href: "/manifest.json",
+          name: "apple-mobile-web-app-status-bar-style",
+          content: "black-translucent",
         },
       ],
     },
@@ -97,7 +140,13 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/base.css"],
-  modules: ["@nuxt/image-edge", "@nuxtjs/i18n", "@nuxtjs/apollo", "nuxt-svgo"],
+  modules: [
+    "@nuxt/image-edge",
+    "@nuxtjs/i18n",
+    "@nuxtjs/apollo",
+    "nuxt-svgo",
+    "@kevinmarrec/nuxt-pwa",
+  ],
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
