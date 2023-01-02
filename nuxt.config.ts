@@ -17,6 +17,10 @@ export default defineNuxtConfig({
     preset: "netlify",
   },
   pwa: {
+    workbox: {
+      // importScripts: ['/badge.js', '/update.js'],
+      templatePath: "/update.js",
+    },
     manifest: {
       name: "Nordgarden",
       background_color: "#dcac4c",
