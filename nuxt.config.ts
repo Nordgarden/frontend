@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       compilerOptions: {
         isolatedModules: true,
         esModuleInterop: true,
-        types: ["@types/body-scroll-lock"],
+        types: ["@types/body-scroll-lock", "@types/workbox-window"],
       },
     },
   },
@@ -23,32 +23,32 @@ export default defineNuxtConfig({
       theme_color: "#dcac4c",
       short_name: "Nordgarden",
       orientation: "portrait-primary",
-      shortcuts: [
-        {
-          name: "Tour",
-          short_name: "Tour",
-          url: "/tour",
-          icons: [],
-        },
-        {
-          name: "Albums",
-          short_name: "Albums",
-          url: "/albums",
-          icons: [],
-        },
-        {
-          name: "Videos",
-          short_name: "Videos",
-          url: "/videos",
-          icons: [],
-        },
-        {
-          name: "Biography",
-          short_name: "Biography",
-          url: "/biography",
-          icons: [],
-        },
-      ],
+      // shortcuts: [
+      //   {
+      //     name: "Tour",
+      //     short_name: "Tour",
+      //     url: "/tour",
+      //     icons: [],
+      //   },
+      //   {
+      //     name: "Albums",
+      //     short_name: "Albums",
+      //     url: "/albums",
+      //     icons: [],
+      //   },
+      //   {
+      //     name: "Videos",
+      //     short_name: "Videos",
+      //     url: "/videos",
+      //     icons: [],
+      //   },
+      //   {
+      //     name: "Biography",
+      //     short_name: "Biography",
+      //     url: "/biography",
+      //     icons: [],
+      //   },
+      // ],
       categories: ["music"],
       screenshots: [
         {
@@ -74,7 +74,6 @@ export default defineNuxtConfig({
       ],
     },
     meta: {
-      // appleStatusBarStyle: "black-translucent",
       mobileApp: true,
       mobileAppIOS: true,
       theme_color: "#dcac4c",
