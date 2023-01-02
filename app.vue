@@ -25,7 +25,9 @@ onMounted(() => {
         </NuxtLayout>
       </main>
     </notch-wrapper>
-    <pwa-update />
+    <client-only>
+      <pwa-update />
+    </client-only>
   </div>
 </template>
 
