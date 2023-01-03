@@ -9,17 +9,17 @@
   const afterEnter = () => {
     lockBodyScoll(true);
   };
-  const bg: Ref<HTMLDivElement | null> = ref(null);
+  const content: Ref<HTMLDivElement | null> = ref(null);
 
   const lockBodyScoll = (isOpen: boolean) => {
-    if (!bg.value) {
+    if (!content.value) {
       return;
     }
 
     if (isOpen) {
-      disableBodyScroll(bg.value);
+      disableBodyScroll(content.value);
     } else {
-      enableBodyScroll(bg.value);
+      enableBodyScroll(content.value);
     }
   };
 </script>
@@ -27,35 +27,31 @@
 <template>
   <header>
     <mobile-navigation />
-
-    <!-- <transition
+    <transition
       name="fade2"
       @after-enter="afterEnter"
       @after-leave="afterLeave"
     >
-      <div v-show="menuIsOpen" class="bag">
+      <div v-show="menuIsOpen" class="bg">
         <transition name="fade">
-          <div v-show="menuIsOpen" ref="bg" class="content"> -->
-    <!-- <h1>
-              <nuxt-link to="/">Nordgarden</nuxt-link>
-            </h1> -->
-    <div class="navigation">
-      <center-wrapper>
-        <main-navigation />
-      </center-wrapper>
-    </div>
-    <div class="player">
-      <center-wrapper>
-        <div class="footer">
-          <audio-player-controls />
-          <social-links />
-        </div>
-      </center-wrapper>
-    </div>
-    <!-- </div> -->
-    <!-- </transition>
+          <div v-show="menuIsOpen" ref="content" class="content">
+            <div class="navigation">
+              <center-wrapper>
+                <main-navigation />
+              </center-wrapper>
+            </div>
+            <div class="player">
+              <center-wrapper>
+                <div class="footer">
+                  <audio-player-controls />
+                  <social-links />
+                </div>
+              </center-wrapper>
+            </div>
+          </div>
+        </transition>
       </div>
-    </transition> -->
+    </transition>
   </header>
 </template>
 
@@ -63,15 +59,13 @@
   .content {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    max-height: 100vh;
+    max-height: 100dvh;
 
     @media (--navigation-position-left) {
       overflow: visible;
-      transform: translateY(0);
+      transform: none;
       display: block !important;
-      flex-direction: row;
       max-height: none;
-      position: relative;
     }
   }
 
@@ -90,32 +84,32 @@
   .bg {
     background: var(--color-secondary);
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100vh;
+    inset: 0 0 auto;
+    height: 100dvh;
     overflow: hidden;
     z-index: var(--z-index-main-navigation);
-    padding: var(--notch);
+    padding-top: 5em;
 
     @media (--navigation-position-left) {
+      padding-top: 0;
       background: transparent;
-      border-bottom: 2px solid #fff;
       overflow: visible;
-      display: flex !important;
-      flex-direction: column;
+      display: block !important;
       justify-content: space-between;
       width: var(--width-navigation-left);
       padding: 0;
       height: auto;
-      position: relative;
+      inset: auto;
+      position: static;
     }
   }
 
   .fade-enter-active,
   .fade-leave-active {
     transition: all 0.3s 0.2s var(--transition-timing-function);
+    @media (--navigation-position-left) {
+      transition: none;
+    }
   }
 
   .fade-enter-from,
@@ -127,6 +121,9 @@
   .fade2-enter-active,
   .fade2-leave-active {
     transition: transform 0.3s var(--transition-timing-function);
+    @media (--navigation-position-left) {
+      transition: none;
+    }
   }
 
   .fade2-enter-from,
@@ -142,6 +139,7 @@
 
   @media (--navigation-position-left) {
     .navigation {
+      z-index: var(--z-index-audio-player);
       background: #f0f;
       position: fixed;
       inset: 0 0 auto;

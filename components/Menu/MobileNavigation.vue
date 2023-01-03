@@ -49,6 +49,7 @@
     padding-block: var(--spacing-s);
     display: flex;
     justify-content: space-between;
+    gap: 1em;
   }
 
   .btn {

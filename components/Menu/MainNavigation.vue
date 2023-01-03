@@ -103,10 +103,11 @@
     @mixin list-reset;
 
     border-top: 1px dashed var(--color-gray);
-    padding-block: 0.5em;
-    margin-bottom: 0;
+    margin-bottom: 1em;
 
     @media (--navigation-position-left) {
+      margin-bottom: 0;
+      padding-block: 0.5em;
       border-top: 0;
       display: flex;
       gap: var(--gutter);
