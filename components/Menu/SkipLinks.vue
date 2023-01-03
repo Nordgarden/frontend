@@ -6,25 +6,25 @@
 </template>
 
 <style lang="postcss" scoped>
-.btn {
-  @mixin link-reset;
+  .btn {
+    @mixin link-reset;
 
-  background: var(--color-secondary);
+    background: var(--color-secondary);
 
-  &:not(:focus) {
-    @mixin sr-only;
+    &:not(:focus) {
+      @mixin sr-only;
+    }
+
+    &:hover {
+      background: var(--color-secondary);
+    }
+
+    &:focus,
+    &:active {
+      position: fixed;
+      z-index: var(--z-index-skip-links);
+      top: var(--spacing-m);
+      left: var(--spacing-m);
+    }
   }
-
-  &:hover {
-    background: #f0f;
-  }
-
-  &:focus,
-  &:active {
-    position: fixed;
-    z-index: 100;
-    top: var(--spacing-m);
-    left: var(--spacing-m);
-  }
-}
 </style>

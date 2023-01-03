@@ -96,7 +96,7 @@
     bottom: 0;
     height: 100vh;
     overflow: hidden;
-    z-index: var(--main-navigation);
+    z-index: var(--z-index-main-navigation);
     padding: var(--notch);
 
     @media (--navigation-position-left) {
@@ -148,7 +148,7 @@
     }
 
     .player {
-      z-index: var(--audio-player);
+      z-index: var(--z-index-audio-player);
       background: #f0f;
       position: fixed;
       inset: auto 0 0;

@@ -16,7 +16,7 @@
   <div class="wrapper">
     <div class="text"><slot /></div>
     <div class="image-wrapper">
-      <nuxt-picture
+      <nuxt-img
         v-if="image"
         :src="image"
         :loading="lazy ? 'lazy' : 'eager'"

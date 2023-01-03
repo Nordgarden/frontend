@@ -1,6 +1,6 @@
 :root {
-  --error-handler: 9;
-  --audio-player: 3;
-  --mobile-navigation: 2;
-  --main-navigation: 1;
+  --z-index-skip-links: 4;
+  --z-index-audio-player: 3;
+  --z-index-mobile-navigation: 2;
+  --z-index-main-navigation: 1;
 }

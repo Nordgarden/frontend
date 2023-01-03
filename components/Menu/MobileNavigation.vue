@@ -37,7 +37,7 @@
     position: fixed;
     inset: 0 0 auto;
     background: var(--color-secondary);
-    z-index: var(--mobile-navigation);
+    z-index: var(--z-index-mobile-navigation);
     border-bottom: 2px solid var(--color-white);
 
     @media (--navigation-position-left) {
