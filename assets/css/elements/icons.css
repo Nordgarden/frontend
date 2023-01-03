@@ -1,5 +1,5 @@
 svg {
-  display: inline-block;
+  display: block;
   fill: currentColor;
   position: relative;
 }

@@ -35,7 +35,7 @@
       <div class="link-wrapper">
         <span class="read-more">
           {{ $t("readMore") }}
-          <app-icon icon="chevron-right" :size="16" />
+          <app-icon icon="chevron-right" :size="16" class="icon" />
         </span>
       </div>
     </image-wrapper>
@@ -48,12 +48,13 @@
     margin-bottom: var(--spacing-m);
     border-bottom: 2px dashed var(--color-white);
 
-    &:hover .read-more,
-    &:focus-within .read-more {
-      text-decoration-thickness: 3px;
-
-      & svg {
-        margin-left: var(--spacing-xxs);
+    &:hover,
+    &:focus-within {
+      & .read-more {
+        text-decoration-thickness: 3px;
+      }
+      & :deep(svg) {
+        transform: translateX(var(--spacing-xxs));
       }
     }
   }

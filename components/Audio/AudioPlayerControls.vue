@@ -55,7 +55,7 @@
   .wrapper {
     gap: var(--spacing-m);
     display: flex;
-    padding-block: 1em;
+    align-items: center;
   }
 
   audio {

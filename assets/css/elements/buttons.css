@@ -36,13 +36,15 @@ a {
 }
 
 .read-more {
+  display: flex;
+  gap: 0.25em;
+
   &:hover svg {
-    margin-left: var(--spacing-xxs);
+    transform: translateX(var(--spacing-xxs));
   }
 
-  & svg {
-    transition: margin var(--animation);
-    transform: translate3d(2px, 2px, 0);
+  & .icon {
+    transition: transform var(--animation);
   }
 }
 

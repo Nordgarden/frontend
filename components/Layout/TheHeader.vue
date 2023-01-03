@@ -46,10 +46,12 @@
     </div>
     <div class="player">
       <center-wrapper>
-        <audio-player-controls />
+        <div class="footer">
+          <audio-player-controls />
+          <social-links />
+        </div>
       </center-wrapper>
     </div>
-    <!-- <social-links />  -->
     <!-- </div> -->
     <!-- </transition>
       </div>
@@ -132,6 +134,12 @@
     transform: translateY(-100vh);
   }
 
+  .footer {
+    flex-direction: column;
+    display: flex;
+    gap: 1em;
+  }
+
   @media (--navigation-position-left) {
     .navigation {
       background: #f0f;
@@ -144,6 +152,12 @@
       background: #f0f;
       position: fixed;
       inset: auto 0 0;
+    }
+
+    .footer {
+      padding-block: 0.5em;
+      justify-content: space-between;
+      flex-direction: row;
     }
   }
 </style>
