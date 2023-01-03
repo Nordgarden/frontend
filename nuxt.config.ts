@@ -1,4 +1,4 @@
-import routes from "./data/routes";
+// import routes from "./data/routes";
 
 export default defineNuxtConfig({
   typescript: {
@@ -10,9 +10,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  generate: {
-    routes,
-  },
+  // generate: {
+  //   routes,
+  // },
   nitro: {
     preset: "netlify",
   },
@@ -126,6 +126,7 @@ export default defineNuxtConfig({
       },
 
       "postcss-preset-env": {
+        importFrom: ["./assets/css/media-queries/media-queries.css"],
         features: {
           "nesting-rules": true,
           "custom-media-queries": true,
@@ -150,6 +151,7 @@ export default defineNuxtConfig({
     "nuxt-svgo",
     "@kevinmarrec/nuxt-pwa",
   ],
+  image: { domains: ["api.nordgarden.info"] },
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
