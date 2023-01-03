@@ -21,7 +21,7 @@
         :src="image"
         :loading="lazy ? 'lazy' : 'eager'"
         sizes="xs:200px sm:400px"
-        format="avif"
+        format="webp"
         :alt="alt"
         class="image"
       />
