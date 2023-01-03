@@ -151,7 +151,9 @@ export default defineNuxtConfig({
     "nuxt-svgo",
     "@kevinmarrec/nuxt-pwa",
   ],
-  image: { domains: ["api.nordgarden.info"] },
+  image: {
+    domains: ["api.nordgarden.info"],
+  },
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",

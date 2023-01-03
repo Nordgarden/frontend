@@ -16,11 +16,12 @@
   <div class="wrapper">
     <div class="text"><slot /></div>
     <div class="image-wrapper">
-      <nuxt-img
+      <nuxt-picture
         v-if="image"
         :src="image"
         :loading="lazy ? 'lazy' : 'eager'"
         sizes="xs:200px sm:400px"
+        format="avif"
         :alt="alt"
         class="image"
       />

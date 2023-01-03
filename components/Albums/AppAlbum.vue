@@ -23,7 +23,10 @@
               <app-icon
                 icon="spotify"
                 :title="
-                  $t('viewOn', { title: album.title, network: 'Spotify' })
+                  $t('viewOn', {
+                    title: album.title,
+                    network: 'Spotify',
+                  })
                 "
               />
             </a>
@@ -38,7 +41,10 @@
               <app-icon
                 icon="apple"
                 :title="
-                  $t('viewOn', { title: album.title, network: 'Apple Music' })
+                  $t('viewOn', {
+                    title: album.title,
+                    network: 'Apple Music',
+                  })
                 "
               />
             </a>
