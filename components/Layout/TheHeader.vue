@@ -132,16 +132,18 @@
     transform: translateY(-100vh);
   }
 
-  .navigation {
-    background: #f0f;
-    position: fixed;
-    inset: 0 0 auto;
-  }
+  @media (--navigation-position-left) {
+    .navigation {
+      background: #f0f;
+      position: fixed;
+      inset: 0 0 auto;
+    }
 
-  .player {
-    z-index: var(--audio-player);
-    background: #f0f;
-    position: fixed;
-    inset: auto 0 0;
+    .player {
+      z-index: var(--audio-player);
+      background: #f0f;
+      position: fixed;
+      inset: auto 0 0;
+    }
   }
 </style>

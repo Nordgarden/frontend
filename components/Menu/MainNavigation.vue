@@ -110,6 +110,7 @@
       border-top: 0;
       display: flex;
       gap: var(--gutter);
+      justify-content: center;
     }
   }
 
