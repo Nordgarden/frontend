@@ -37,7 +37,7 @@
         <transition name="fade">
           <div v-show="menuIsOpen" ref="bg" class="content"> -->
     <!-- <h1>
-              <router-link to="/">Nordgarden</router-link>
+              <nuxt-link to="/">Nordgarden</nuxt-link>
             </h1> -->
     <div class="navigation">
       <center-wrapper>

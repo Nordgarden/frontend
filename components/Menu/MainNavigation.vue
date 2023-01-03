@@ -2,6 +2,8 @@
   import { IEvent } from "~~/types/IEvent";
   import { Ref } from "vue";
 
+  const localePath = useLocalePath();
+
   const { keys } = useEvents();
   const menuIsOpen = useMenu();
   const menu: Ref<HTMLAnchorElement | null> = ref(null);
@@ -40,30 +42,46 @@
     </h2>
     <ul ref="menu">
       <li>
-        <nuxt-link id="menu" to="/" @click.native="changePage">
+        <nuxt-link
+          id="menu"
+          :to="localePath({ name: 'index' })"
+          @click.native="changePage"
+        >
           <span class="title">
             {{ $t("home") }}
           </span>
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/tour" @click.native="changePage">
+        <nuxt-link
+          :to="localePath({ name: 'events' })"
+          @click.native="changePage"
+        >
           <span class="title">{{ $t("tour") }}</span>
           <app-badge :amount="events.length" />
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/albums" @click.native="changePage">
+        <nuxt-link
+          :to="localePath({ name: 'albums' })"
+          @click.native="changePage"
+        >
           <span class="title">{{ $t("albums") }}</span>
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/videos" @click.native="changePage">
+        <nuxt-link
+          :to="localePath({ name: 'videos' })"
+          @click.native="changePage"
+        >
           <span class="title">{{ $t("videos") }}</span>
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/biography" @click.native="changePage">
+        <nuxt-link
+          :to="localePath({ name: 'biography' })"
+          @click.native="changePage"
+        >
           <span class="title">{{ $t("biography") }}</span>
         </nuxt-link>
       </li>

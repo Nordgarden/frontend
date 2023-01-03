@@ -28,7 +28,7 @@
   <ClickableListItem @click="goToPost" class="post">
     <image-wrapper :image="image">
       <h2>
-        <router-link :to="url"><span v-html="post.title" /></router-link>
+        <nuxt-link :to="url"><span v-html="post.title" /></nuxt-link>
       </h2>
       <post-date :date="post.date" class="date" />
       <div class="text" v-html="post.excerpt" />
