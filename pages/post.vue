@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import PostQuery from "~/graphql/Post.gql";
-import { IPost } from "~~/types/IContent";
+  import PostQuery from "~/graphql/Post.gql";
+  import { IPost } from "~~/types/IContent";
 
-defineI18nRoute({
-  paths: {
-    en: "/:slug",
-  },
-});
+  defineI18nRoute({
+    paths: {
+      en: "/:slug",
+    },
+  });
 
-const route = useRoute();
+  const route = useRoute();
 
-const { data } = await useAsyncQuery<{ post: IPost }>(PostQuery, {
-  uri: route.params.slug,
-});
+  const { data } = await useAsyncQuery<{ post: IPost }>(PostQuery, {
+    uri: route.params.slug,
+  });
 
-const post = computed(() => {
-  if (data.value) {
-    return data.value.post;
-  }
-  return null;
-});
-useMeta(post);
+  const post = computed(() => {
+    if (data.value) {
+      return data.value.post;
+    }
+    return null;
+  });
+  useMeta(post);
 </script>
 
 <template>
@@ -37,15 +37,14 @@ useMeta(post);
 </template>
 
 <style lang="postcss" scoped>
-.post {
-  display: flex;
-  flex-direction: column;
-}
+  .post {
+    display: flex;
+    flex-direction: column;
+  }
 
-.text {
-  @mixin text-overflow;
+  .text {
+    @mixin text-overflow;
 
-  max-width: 60ch;
-  margin-bottom: var(--spacing-l);
-}
+    margin-bottom: var(--spacing-l);
+  }
 </style>

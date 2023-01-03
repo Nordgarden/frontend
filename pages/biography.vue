@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import PageQuery from "~/graphql/Page.gql";
-import { IPage } from "~~/types/IContent";
-import Ref from "vue";
+  import PageQuery from "~/graphql/Page.gql";
+  import { IPage } from "~~/types/IContent";
+  import Ref from "vue";
 
-defineI18nRoute({
-  paths: {
-    en: "/biography",
-  },
-});
+  defineI18nRoute({
+    paths: {
+      en: "/biography",
+    },
+  });
 
-const { pageId } = useAppConfig();
-const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
-  pageId: pageId.biography,
-});
+  const { pageId } = useAppConfig();
+  const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
+    pageId: pageId.biography,
+  });
 
-const page = computed(() => {
-  if (data.value) {
-    return data.value.page;
-  }
-  return null;
-});
+  const page = computed(() => {
+    if (data.value) {
+      return data.value.page;
+    }
+    return null;
+  });
 
-useMeta(page);
+  useMeta(page);
 </script>
 
 <template>
@@ -34,9 +34,7 @@ useMeta(page);
 </template>
 
 <style lang="postcss" scoped>
-.text {
-  @mixin text-overflow;
-
-  max-width: 60ch;
-}
+  .text {
+    @mixin text-overflow;
+  }
 </style>

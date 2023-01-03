@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-const menuIsOpen = useMenu();
-const toggleMenu = () => {
-  menuIsOpen.value = !menuIsOpen.value;
-};
+  const menuIsOpen = useMenu();
+  const toggleMenu = () => {
+    menuIsOpen.value = !menuIsOpen.value;
+  };
 
-const { keys, play, pause } = useAudio();
+  const { keys, play, pause } = useAudio();
 
-const isPlaying = useState<boolean>(keys.isPlaying);
+  const isPlaying = useState<boolean>(keys.isPlaying);
 </script>
 
 <template>
   <div class="wrapper">
-    <notch-wrapper>
+    <center-wrapper>
       <div class="buttons">
         <button
           :aria-expanded="menuIsOpen ? 'true' : 'false'"
@@ -28,45 +28,45 @@ const isPlaying = useState<boolean>(keys.isPlaying);
           <app-icon icon="play" :title="$t('play')" />
         </button>
       </div>
-    </notch-wrapper>
+    </center-wrapper>
   </div>
 </template>
 
 <style lang="postcss" scoped>
-.wrapper {
-  position: fixed;
-  inset: 0 0 auto;
-  background: var(--color-secondary);
-  z-index: var(--mobile-navigation);
-  border-bottom: 2px solid var(--color-white);
+  .wrapper {
+    position: fixed;
+    inset: 0 0 auto;
+    background: var(--color-secondary);
+    z-index: var(--mobile-navigation);
+    border-bottom: 2px solid var(--color-white);
 
-  @media (--navigation-position-left) {
-    display: none;
-  }
-}
-
-.buttons {
-  padding: var(--spacing-s) var(--gutter);
-  display: flex;
-  justify-content: space-between;
-}
-
-.btn {
-  padding: var(--spacing-xs) var(--spacing-s) var(--spacing-xs)
-    var(--spacing-xs);
-  font-size: var(--font-size-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xxs);
-
-  &:hover {
-    background: transparent;
-    color: var(--text-color);
+    @media (--navigation-position-left) {
+      display: none;
+    }
   }
 
-  &[aria-expanded="true"] {
-    background: var(--color-primary);
-    color: var(--color-white);
+  .buttons {
+    padding: var(--spacing-s) var(--gutter);
+    display: flex;
+    justify-content: space-between;
   }
-}
+
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-s) var(--spacing-xs)
+      var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xxs);
+
+    &:hover {
+      background: transparent;
+      color: var(--text-color);
+    }
+
+    &[aria-expanded="true"] {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
 </style>

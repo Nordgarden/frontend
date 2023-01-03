@@ -53,9 +53,9 @@
 
 <style lang="postcss" scoped>
   .wrapper {
-    margin-bottom: var(--spacing-l);
     gap: var(--spacing-m);
     display: flex;
+    padding-block: 1em;
   }
 
   audio {

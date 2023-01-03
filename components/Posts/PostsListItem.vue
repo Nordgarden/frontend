@@ -19,31 +19,39 @@
 
 <template>
   <ClickableListItem @click="goToPost" class="post">
-    <h2>
-      <router-link :to="url"><span v-html="post.title" /></router-link>
-    </h2>
-    <post-date :date="post.date" class="date" />
-    <div class="text" v-html="post.excerpt" />
-    <div class="link-wrapper">
-      <span class="read-more">
-        {{ $t("readMore") }}
-        <app-icon icon="chevron-right" :size="16" />
-      </span>
+    <div class="text">
+      <h2>
+        <router-link :to="url"><span v-html="post.title" /></router-link>
+      </h2>
+      <post-date :date="post.date" class="date" />
+      <div class="text" v-html="post.excerpt" />
+      <div class="link-wrapper">
+        <span class="read-more">
+          {{ $t("readMore") }}
+          <app-icon icon="chevron-right" :size="16" />
+        </span>
+      </div>
     </div>
-    <featured-image
-      v-if="post.featuredImage"
-      :image="post.featuredImage.node"
-      class="image"
-      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 500px"
-    />
+    <div class="image-wrapper">
+      <featured-image
+        v-if="post.featuredImage"
+        :image="post.featuredImage.node"
+        class="image"
+        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 500px"
+      />
+    </div>
   </ClickableListItem>
 </template>
 
 <style lang="postcss" scoped>
   .post {
-    display: flex;
+    display: grid;
+    grid-template-columns: 10em auto;
+    grid-template-areas: "image text";
+    gap: 1em;
     flex-direction: column;
     padding-bottom: var(--spacing-m);
+    margin-bottom: var(--spacing-m);
     border-bottom: 2px dashed var(--color-white);
 
     &:hover .read-more,
@@ -60,12 +68,8 @@
     @mixin link-reset;
   }
 
-  .image {
-    order: -2;
-    margin-bottom: var(--spacing-xs);
-    width: 100%;
-    height: 8em;
-    object-fit: cover;
+  .image-wrapper {
+    grid-area: image;
   }
 
   .text {
