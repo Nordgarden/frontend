@@ -15,11 +15,18 @@
   const goToPost = () => {
     router.push(url);
   };
+
+  const image = computed(() => {
+    if (props.post.featuredImage) {
+      return props.post.featuredImage.node.src;
+    }
+    return undefined;
+  });
 </script>
 
 <template>
   <ClickableListItem @click="goToPost" class="post">
-    <div class="text">
+    <image-wrapper :image="image">
       <h2>
         <router-link :to="url"><span v-html="post.title" /></router-link>
       </h2>
@@ -31,25 +38,12 @@
           <app-icon icon="chevron-right" :size="16" />
         </span>
       </div>
-    </div>
-    <div class="image-wrapper">
-      <featured-image
-        v-if="post.featuredImage"
-        :image="post.featuredImage.node"
-        class="image"
-        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 500px"
-      />
-    </div>
+    </image-wrapper>
   </ClickableListItem>
 </template>
 
 <style lang="postcss" scoped>
   .post {
-    display: grid;
-    grid-template-columns: 10em auto;
-    grid-template-areas: "image text";
-    gap: 1em;
-    flex-direction: column;
     padding-bottom: var(--spacing-m);
     margin-bottom: var(--spacing-m);
     border-bottom: 2px dashed var(--color-white);
@@ -66,17 +60,5 @@
 
   a {
     @mixin link-reset;
-  }
-
-  .image-wrapper {
-    grid-area: image;
-  }
-
-  .text {
-    @mixin text-overflow;
-  }
-
-  .link-wrapper {
-    margin-top: auto;
   }
 </style>

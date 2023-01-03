@@ -39,9 +39,11 @@
     <!-- <h1>
               <router-link to="/">Nordgarden</router-link>
             </h1> -->
-    <center-wrapper>
-      <main-navigation />
-    </center-wrapper>
+    <div class="navigation">
+      <center-wrapper>
+        <main-navigation />
+      </center-wrapper>
+    </div>
     <div class="player">
       <center-wrapper>
         <audio-player-controls />
@@ -128,6 +130,12 @@
   .fade2-enter-from,
   .fade2-leave-to {
     transform: translateY(-100vh);
+  }
+
+  .navigation {
+    background: #f0f;
+    position: fixed;
+    inset: 0 0 auto;
   }
 
   .player {

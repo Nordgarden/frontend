@@ -1,5 +1,6 @@
 #import "./Fragments/Post.gql"
 #import "./Fragments/Seo.gql"
+#import "./Fragments/FeaturedImage.gql"
 
 query Post($uri: ID!) {
   post(id: $uri, idType: URI) {
@@ -8,6 +9,9 @@ query Post($uri: ID!) {
     content
     seo {
       ...seo
+    }
+    featuredImage {
+      ...featuredImage
     }
   }
 }

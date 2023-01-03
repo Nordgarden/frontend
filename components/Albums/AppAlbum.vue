@@ -9,46 +9,42 @@
 <template>
   <li class="album">
     <h2 class="title">{{ album.title }}</h2>
-    <div>
-      <img
-        :src="album.image"
-        :loading="lazy ? 'lazy' : 'eager'"
-        sizes="xs:200px sm:400px"
-        alt=""
-      />
-      <app-date :date="album.releaseDate" class="date" />
-      <ul class="stores" v-if="album.spotify || album.apple">
-        <li v-if="album.spotify">
-          <a
-            :href="album.spotify"
-            rel="noopener"
-            target="_blank"
-            class="shop-link"
-          >
-            <app-icon
-              icon="spotify"
-              :title="$t('viewOn', { title: album.title, network: 'Spotify' })"
-            />
-          </a>
-        </li>
-        <li v-if="album.apple">
-          <a
-            :href="album.apple"
-            rel="noopener"
-            target="_blank"
-            class="shop-link"
-          >
-            <app-icon
-              icon="apple"
-              :title="
-                $t('viewOn', { title: album.title, network: 'Apple Music' })
-              "
-            />
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div>
+    <image-wrapper :image="album.image" :lazy="lazy">
+      <template v-slot:image>
+        <app-date :date="album.releaseDate" class="date" />
+        <ul class="stores" v-if="album.spotify || album.apple">
+          <li v-if="album.spotify">
+            <a
+              :href="album.spotify"
+              rel="noopener"
+              target="_blank"
+              class="shop-link"
+            >
+              <app-icon
+                icon="spotify"
+                :title="
+                  $t('viewOn', { title: album.title, network: 'Spotify' })
+                "
+              />
+            </a>
+          </li>
+          <li v-if="album.apple">
+            <a
+              :href="album.apple"
+              rel="noopener"
+              target="_blank"
+              class="shop-link"
+            >
+              <app-icon
+                icon="apple"
+                :title="
+                  $t('viewOn', { title: album.title, network: 'Apple Music' })
+                "
+              />
+            </a>
+          </li>
+        </ul>
+      </template>
       <ul class="songlist">
         <app-song
           v-for="song in album.songlist"
@@ -57,12 +53,14 @@
           class="song"
         />
       </ul>
-    </div>
+    </image-wrapper>
   </li>
 </template>
 
 <style lang="postcss" scoped>
-  @import "./../../assets/css/media-queries/media-queries.css";
+  .album {
+    margin-bottom: 2em;
+  }
 
   .songlist,
   .stores {
@@ -70,34 +68,12 @@
   }
 
   .title {
-    margin: 0;
-    grid-column: 1 / -1;
-  }
-
-  .album {
-    display: grid;
-    grid-gap: var(--spacing-m);
-    margin-bottom: var(--spacing-l);
-
-    @media (--viewport-sm) {
-      grid-template-columns: 10em auto;
-    }
+    margin: 0 0 0.25em;
   }
 
   .date {
     margin-bottom: var(--spacing-xxs);
     display: block;
-  }
-
-  .image {
-    display: block;
-    max-width: 10em;
-    margin-bottom: var(--spacing-xxs);
-    width: 100%;
-
-    @media (--viewport-sm) {
-      max-width: none;
-    }
   }
 
   .songlist {
@@ -106,6 +82,7 @@
   }
 
   .stores {
+    gap: var(--spacing-xs);
     display: flex;
   }
 
@@ -113,6 +90,5 @@
     @mixin link-reset;
 
     flex: 0 0 var(--spacing-m);
-    margin-right: var(--spacing-xs);
   }
 </style>

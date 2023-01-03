@@ -33,6 +33,6 @@
 
 <style lang="postcss" scoped>
   .main {
-    margin-bottom: 8em;
+    margin-block: 5em 8em;
   }
 </style>

@@ -1,22 +1,22 @@
 <script setup lang="ts">
-const { albums } = useAudio();
-const { t } = useI18n();
+  const { albums } = useAudio();
+  const { t } = useI18n();
 
-defineI18nRoute({
-  paths: {
-    en: "/albums",
-  },
-});
-useHead({
-  title: t("albums"),
-  meta: [
-    {
-      name: "description",
-      hid: "description",
-      content: "The new album KORSVEI is out!",
+  defineI18nRoute({
+    paths: {
+      en: "/albums",
     },
-  ],
-});
+  });
+  useHead({
+    title: t("albums"),
+    meta: [
+      {
+        name: "description",
+        hid: "description",
+        content: "The new album KORSVEI is out!",
+      },
+    ],
+  });
 </script>
 
 <template>
@@ -32,7 +32,7 @@ useHead({
 </template>
 
 <style lang="postcss" scoped>
-.albums {
-  @mixin list-reset;
-}
+  .albums {
+    @mixin list-reset;
+  }
 </style>
