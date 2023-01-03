@@ -46,7 +46,7 @@
   }
 
   .buttons {
-    padding: var(--spacing-s) var(--gutter);
+    padding-block: var(--spacing-s);
     display: flex;
     justify-content: space-between;
   }
