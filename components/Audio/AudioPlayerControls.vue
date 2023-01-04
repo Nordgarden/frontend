@@ -37,7 +37,7 @@
       <div v-if="currentSong" class="title">{{ currentSong.title }}</div>
     </div>
   </div>
-  <!-- <div class="media-images">
+  <div class="media-images">
     <div v-for="album in albums" :key="album.title">
       <nuxt-img
         :src="album.image"
@@ -48,7 +48,7 @@
         :key="size"
       />
     </div>
-  </div> -->
+  </div>
 </template>
 
 <style lang="postcss" scoped>

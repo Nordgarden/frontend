@@ -245,7 +245,6 @@ const albums: IAlbum[] = [
     songlist: [
       {
         title: "Up the Hillside",
-        permalink: "http://nordgarden.info/new/songs/up-the-hillside/",
       },
       {
         title: "The Path of Love",
