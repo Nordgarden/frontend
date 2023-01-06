@@ -43,7 +43,7 @@
             <div class="player">
               <center-wrapper>
                 <div class="footer">
-                  <audio-player-controls />
+                  <audio-player-controls class="player-controls" />
                   <social-links />
                 </div>
               </center-wrapper>
@@ -135,6 +135,10 @@
     flex-direction: column;
     display: flex;
     gap: 1em;
+  }
+
+  .player-controls {
+    flex: 1 0 auto;
   }
 
   @media (--navigation-position-left) {
