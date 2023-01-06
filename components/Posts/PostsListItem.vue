@@ -27,16 +27,18 @@
 <template>
   <ClickableListItem @click="goToPost" class="post">
     <image-wrapper :image="image">
-      <h2>
-        <nuxt-link :to="url"><span v-html="post.title" /></nuxt-link>
-      </h2>
-      <post-date :date="post.date" class="date" />
-      <div class="text" v-html="post.excerpt" />
-      <div class="link-wrapper">
-        <span class="read-more">
-          {{ $t("readMore") }}
-          <app-icon icon="chevron-right" :size="16" class="icon" />
-        </span>
+      <div class="content">
+        <h2>
+          <nuxt-link :to="url"><span v-html="post.title" /></nuxt-link>
+        </h2>
+        <post-date :date="post.date" class="date" />
+        <div class="text" v-html="post.excerpt" />
+        <div class="link-wrapper">
+          <span class="read-more">
+            {{ $t("readMore") }}
+            <app-icon icon="chevron-right" :size="16" class="icon" />
+          </span>
+        </div>
       </div>
     </image-wrapper>
   </ClickableListItem>
@@ -44,10 +46,6 @@
 
 <style lang="postcss" scoped>
   .post {
-    padding-bottom: var(--spacing-m);
-    margin-bottom: var(--spacing-m);
-    border-bottom: 2px dashed var(--color-white);
-
     &:hover,
     &:focus-within {
       & .read-more {
@@ -57,6 +55,12 @@
         transform: translateX(var(--spacing-xxs));
       }
     }
+  }
+
+  .content {
+    border-bottom: 2px dashed var(--color-primary);
+    margin-bottom: var(--spacing-l);
+    padding-bottom: var(--spacing-l);
   }
 
   a {

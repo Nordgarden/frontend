@@ -11,7 +11,6 @@
 <style lang="postcss" scoped>
   .date {
     font-size: var(--font-size-sm);
-    color: var(--color-gray);
     display: block;
     order: -1;
   }

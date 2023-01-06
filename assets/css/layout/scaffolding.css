@@ -7,8 +7,8 @@
 }
 
 ::selection {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: var(--color-text);
+  color: var(--color-background);
 }
 
 html {
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  background: var(--color-secondary);
+  background: var(--color-background);
   margin: 0;
 }
 
@@ -24,6 +24,3 @@ p:empty {
   display: none;
 }
 
-h1 {
-  color: var(--color-primary);
-}

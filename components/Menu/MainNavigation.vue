@@ -139,11 +139,6 @@
       box-shadow: 0 2px 0 0 var(--color-primary);
     }
 
-    &:focus {
-      outline: none;
-    }
-
-    &:focus,
     &:hover {
       & .title {
         box-shadow: 0 3px 0 0 var(--color-primary);

@@ -1,26 +1,26 @@
 <script lang="ts" setup>
-import { IPlayableSong, ISong } from "~~/types/ISong";
+  import { IPlayableSong, ISong } from "~~/types/ISong";
 
-const { selectSong, pause, playableSongs, keys } = useAudio();
+  const { selectSong, pause, playableSongs, keys } = useAudio();
 
-const isPlaying = useState<boolean>(keys.isPlaying);
-const currentSong = useState<IPlayableSong>(keys.currentSong);
+  const isPlaying = useState<boolean>(keys.isPlaying);
+  const currentSong = useState<IPlayableSong>(keys.currentSong);
 
-const props = defineProps<{
-  song: ISong;
-}>();
+  const props = defineProps<{
+    song: ISong;
+  }>();
 
-const select = (song: ISong) => {
-  const playableSong = playableSongs.find((s) => s.file === song.file);
-  if (!playableSong) {
-    return;
-  }
-  selectSong(playableSong);
-};
+  const select = (song: ISong) => {
+    const playableSong = playableSongs.find((s) => s.file === song.file);
+    if (!playableSong) {
+      return;
+    }
+    selectSong(playableSong);
+  };
 
-const isPlayingCurrentSong = computed(() => {
-  return currentSong.value?.file === props.song.file && isPlaying.value;
-});
+  const isPlayingCurrentSong = computed(() => {
+    return currentSong.value?.file === props.song.file && isPlaying.value;
+  });
 </script>
 
 <template>
@@ -44,25 +44,25 @@ const isPlayingCurrentSong = computed(() => {
 </template>
 
 <style lang="postcss" scoped>
-.song {
-  padding: 0.1em 0;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-}
+  .song {
+    padding: 0.1em 0;
+    border-bottom: 1px solid var(--color-primary);
+    display: flex;
+  }
 
-.title {
-  flex: 1 1 auto;
-}
+  .title {
+    flex: 1 1 auto;
+  }
 
-.button-wrapper {
-  width: 1.5em;
-}
+  .button-wrapper {
+    width: 1.5em;
+  }
 
-.btn-pause,
-.btn-play {
-  height: 1.5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .btn-pause,
+  .btn-play {
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

@@ -138,17 +138,21 @@
   }
 
   @media (--navigation-position-left) {
+    .player,
     .navigation {
       z-index: var(--z-index-audio-player);
-      background: #f0f;
       position: fixed;
+      background-color: var(--color-background);
+      border: 0 solid var(--color-primary);
+    }
+
+    .navigation {
+      border-bottom-width: 2px;
       inset: 0 0 auto;
     }
 
     .player {
-      z-index: var(--z-index-audio-player);
-      background: #f0f;
-      position: fixed;
+      border-top-width: 2px;
       inset: auto 0 0;
     }
 

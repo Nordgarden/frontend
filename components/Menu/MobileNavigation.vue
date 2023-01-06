@@ -62,7 +62,7 @@
 
     &:hover {
       background: transparent;
-      color: var(--text-color);
+      color: var(--color-text);
     }
 
     &[aria-expanded="true"] {
