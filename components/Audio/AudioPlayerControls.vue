@@ -56,6 +56,7 @@
     gap: var(--spacing-m);
     display: flex;
     align-items: center;
+    flex: 1 0 auto;
   }
 
   audio {
