@@ -14,6 +14,8 @@
   };
 
   const route = useRoute();
+  const router = useRouter();
+  const localeRoute = useLocaleRoute();
   watch(route, () => {
     nextTick(() => {
       setArrowPosition();
@@ -36,6 +38,16 @@
       activeLink.parentElement.offsetWidth / 2;
     arrowPosition.value = `translateX(${translateX}px)`;
   };
+
+  const isNewsPage = computed(() => {
+    const indexPath = localeRoute({ name: "index" });
+    const postPath = localeRoute({ name: "post", params: { slug: "a" } });
+    const routeName = router.currentRoute.value.name;
+    if (!indexPath || !postPath) {
+      return false;
+    }
+    return routeName === indexPath.name || routeName === postPath.name;
+  });
 </script>
 
 <template>
@@ -47,6 +59,7 @@
       <li>
         <nuxt-link
           id="menu"
+          :class="{ 'router-link-exact-active': isNewsPage }"
           :to="localePath({ name: 'index' })"
           @click.native="changePage"
         >

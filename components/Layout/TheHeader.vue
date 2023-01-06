@@ -82,7 +82,7 @@
   }
 
   .bg {
-    background: var(--color-background);
+    background: var(--color-white);
     position: fixed;
     inset: 0 0 auto;
     height: 100dvh;
@@ -142,7 +142,7 @@
     .navigation {
       z-index: var(--z-index-audio-player);
       position: fixed;
-      background-color: var(--color-background);
+      background-color: var(--color-white);
       border: 0 solid currentColor;
     }
 

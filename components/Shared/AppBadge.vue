@@ -11,7 +11,7 @@
 <style lang="postcss" scoped>
   .badge {
     font-size: var(--font-size-sm);
-    background: var(--color-text);
+    background: var(--color-black);
     min-width: 1.5em;
     height: 1.5em;
     border-radius: 1.5em;

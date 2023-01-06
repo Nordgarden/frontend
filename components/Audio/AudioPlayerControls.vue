@@ -89,7 +89,7 @@
     transition: width linear 0.1s;
     position: absolute;
     inset: 0 auto 0 0;
-    background: var(--color-primary);
+    background: var(--color-gray);
   }
 
   .media-images {

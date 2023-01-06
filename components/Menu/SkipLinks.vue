@@ -9,15 +9,15 @@
   .btn {
     @mixin link-reset;
 
-    color: var(--color-background);
-    background: var(--color-text);
+    color: var(--color-white);
+    background: var(--color-black);
 
     &:not(:focus) {
       @mixin sr-only;
     }
 
     &:hover {
-      background: var(--color-text);
+      background: var(--color-black);
     }
 
     &:focus,

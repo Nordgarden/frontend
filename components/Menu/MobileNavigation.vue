@@ -36,7 +36,7 @@
   .wrapper {
     position: fixed;
     inset: 0 0 auto;
-    background: var(--color-background);
+    background: var(--color-white);
     z-index: var(--z-index-mobile-navigation);
     border-bottom: 2px solid currentColor;
 
@@ -61,7 +61,7 @@
     gap: var(--spacing-xxs);
 
     &[aria-expanded="true"] {
-      background: var(--color-primary);
+      background: var(--color-black);
       color: var(--color-white);
     }
   }

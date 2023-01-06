@@ -17,7 +17,7 @@
 <style scoped lang="postcss">
   .alert {
     z-index: var(--z-alert);
-    background-color: var(--color-background);
+    background-color: var(--color-white);
     padding-block: 0.5em;
     line-height: 1.2;
     position: fixed;

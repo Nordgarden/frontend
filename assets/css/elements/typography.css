@@ -18,7 +18,7 @@ body {
   -webkit-text-size-adjust: 100%;
   line-height: var(--line-height-base);
   font-weight: var(--font-weight-normal);
-  color: var(--color-text);
+  color: var(--color-black);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: var(--font-family-base);
@@ -85,7 +85,7 @@ blockquote {
 cite {
   display: block;
   font-style: normal;
-  color: var(--color-primary);
+  color: var(--color-black);
 
   &::before {
     content: '—';

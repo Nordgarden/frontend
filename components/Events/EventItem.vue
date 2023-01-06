@@ -35,6 +35,6 @@
   }
 
   .venue {
-    color: var(--color-primary);
+    color: var(--color-black);
   }
 </style>
