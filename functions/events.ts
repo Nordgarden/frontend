@@ -1,14 +1,19 @@
-import { Handler } from "@netlify/functions";
+import { Handler, HandlerEvent } from "@netlify/functions";
 
-import mockEvents from "./mockEvents.json";
+import fetch from "node-fetch";
 
-const handler: Handler = async () => {
+const url =
+  "https://rest.bandsintown.com/artists/Nordgarden/events?app_id=TerjeNordgardenWebsite";
+const handler: Handler = async (event: HandlerEvent) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  const response = await fetch(url);
+  const data = await response.text();
   return {
     statusCode: 200,
-    body: JSON.stringify(mockEvents),
-    headers: {
-      "Content-Type": "application/json",
-    },
+    body: data,
+    headers,
   };
 };
 

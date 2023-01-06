@@ -83,8 +83,9 @@
   }
 
   .button-wrapper {
-    display: flex;
-    justify-content: center;
+    @media (--viewport-sm) {
+      margin-left: 11em;
+    }
   }
 
   .btn {

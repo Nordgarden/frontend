@@ -9,7 +9,7 @@
 
 <template>
   <li>
-    <span class="date">{{ d(event.date, "short") }}</span>
+    <span class="date">{{ event.date }}</span>
     <div>
       <span class="venue">{{ event.venue }}</span>
       <span class="city">{{ event.city }}</span>

@@ -15,9 +15,12 @@ export const useEvents = () => {
       const data = (await $fetch(eventsApiUrl)) as IEventResponse[];
       if (data) {
         events.value = data.map((event) => {
+          const datetime = new Date(event.datetime);
+
+          const date = `${datetime.getDate()}.${datetime.getMonth() + 1}`;
           return {
             name: event.lineup.name,
-            date: event.datetime,
+            date,
             venue:
               event.venue.name !== "Unknown venue"
                 ? event.venue.name
