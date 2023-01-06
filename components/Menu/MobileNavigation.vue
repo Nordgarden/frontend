@@ -62,6 +62,7 @@
 
     &[aria-expanded="true"] {
       background: var(--color-black);
+      border-color: var(--color-black);
       color: var(--color-white);
     }
   }
