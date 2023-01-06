@@ -71,6 +71,8 @@
   .songlist,
   .stores {
     @mixin list-reset;
+
+    margin-bottom: 1em;
   }
 
   .title {
