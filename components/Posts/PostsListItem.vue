@@ -58,7 +58,7 @@
   }
 
   .content {
-    border-bottom: 2px dashed var(--color-primary);
+    border-bottom: 2px dashed currentColor;
     margin-bottom: var(--spacing-l);
     padding-bottom: var(--spacing-l);
   }

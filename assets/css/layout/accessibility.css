@@ -4,7 +4,7 @@
 }
 
 *:focus {
-  outline: 1px dashed var(--color-text);
+  outline: 1px dashed currentColor;
 }
 
 .visuallyhidden {

@@ -36,9 +36,9 @@
   .wrapper {
     position: fixed;
     inset: 0 0 auto;
-    background: var(--color-secondary);
+    background: var(--color-background);
     z-index: var(--z-index-mobile-navigation);
-    border-bottom: 2px solid var(--color-white);
+    border-bottom: 2px solid currentColor;
 
     @media (--navigation-position-left) {
       display: none;
@@ -59,11 +59,6 @@
     display: flex;
     align-items: center;
     gap: var(--spacing-xxs);
-
-    &:hover {
-      background: transparent;
-      color: var(--color-text);
-    }
 
     &[aria-expanded="true"] {
       background: var(--color-primary);

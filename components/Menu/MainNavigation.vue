@@ -31,7 +31,10 @@
     if (!activeLink?.parentElement) {
       return;
     }
-    arrowPosition.value = `translateY(${activeLink.parentElement.offsetTop}px)`;
+    const translateX =
+      activeLink.parentElement.offsetLeft +
+      activeLink.parentElement.offsetWidth / 2;
+    arrowPosition.value = `translateX(${translateX}px)`;
   };
 </script>
 
@@ -86,11 +89,11 @@
         </nuxt-link>
       </li>
     </ul>
-    <!-- <div
+    <div
       :style="{ transform: arrowPosition }"
       class="arrow"
       v-if="arrowPosition"
-    /> -->
+    />
   </nav>
 </template>
 
@@ -102,7 +105,7 @@
   ul {
     @mixin list-reset;
 
-    border-top: 1px dashed var(--color-gray);
+    border-top: 1px dashed currentColor;
     margin-bottom: 1em;
 
     @media (--navigation-position-left) {
@@ -119,7 +122,7 @@
     transition: box-shadow 0.1s var(--transition-timing-function);
 
     &.link-active {
-      box-shadow: 0 2px 0 0 var(--color-primary);
+      box-shadow: 0 2px 0 0 currentColor;
     }
   }
 
@@ -133,15 +136,15 @@
     font-size: var(--font-size-lg);
     line-height: 1.1;
     padding: 0.45em 0;
-    border-bottom: 1px dashed var(--color-gray);
+    border-bottom: 1px dashed currentColor;
 
     &.router-link-exact-active .title {
-      box-shadow: 0 2px 0 0 var(--color-primary);
+      box-shadow: 0 2px 0 0 currentColor;
     }
 
     &:hover {
       & .title {
-        box-shadow: 0 3px 0 0 var(--color-primary);
+        box-shadow: 0 3px 0 0 currentColor;
       }
     }
 
@@ -155,27 +158,26 @@
     @media (--navigation-position-left) {
       display: block;
       position: absolute;
-      top: 0;
-      right: calc(var(--spacing-l) * -1);
       transition: transform 0.2s var(--transition-timing-function);
+      left: calc(var(--spacing-s) / -2);
 
       &::after {
         position: absolute;
         display: block;
         content: "";
-        border-top: var(--spacing-s) solid transparent;
-        border-bottom: var(--spacing-s) solid transparent;
-        border-left: var(--spacing-m) solid var(--color-secondary);
+        border-left: var(--spacing-xs) solid transparent;
+        border-right: var(--spacing-xs) solid transparent;
+        border-top: var(--spacing-xs) solid var(--color-white);
       }
 
       &::before {
         position: absolute;
         display: block;
         content: "";
-        margin-top: -3px;
-        border-top: calc(var(--spacing-s) + 3px) solid transparent;
-        border-bottom: calc(var(--spacing-s) + 3px) solid transparent;
-        border-left: calc(var(--spacing-m) + 6px) solid #fff;
+        margin-left: -3px;
+        border-left: calc(var(--spacing-xs) + 3px) solid transparent;
+        border-right: calc(var(--spacing-xs) + 3px) solid transparent;
+        border-top: calc(var(--spacing-xs) + 3px) solid var(--color-black);
       }
     }
   }

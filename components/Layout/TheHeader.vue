@@ -82,7 +82,7 @@
   }
 
   .bg {
-    background: var(--color-secondary);
+    background: var(--color-background);
     position: fixed;
     inset: 0 0 auto;
     height: 100dvh;
@@ -143,7 +143,7 @@
       z-index: var(--z-index-audio-player);
       position: fixed;
       background-color: var(--color-background);
-      border: 0 solid var(--color-primary);
+      border: 0 solid currentColor;
     }
 
     .navigation {

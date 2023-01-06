@@ -20,6 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--color-secondary);
+    color: var(--color-white);
   }
 </style>

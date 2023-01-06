@@ -46,7 +46,7 @@
 <style lang="postcss" scoped>
   .song {
     padding: 0.1em 0;
-    border-bottom: 1px solid var(--color-primary);
+    border-bottom: 1px solid currentColor;
     display: flex;
   }
 

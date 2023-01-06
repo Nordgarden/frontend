@@ -84,7 +84,7 @@
 
   .songlist {
     max-width: var(--container-width-sm);
-    border-top: 1px solid var(--color-primary);
+    border-top: 1px solid currentColor;
   }
 
   .stores {
