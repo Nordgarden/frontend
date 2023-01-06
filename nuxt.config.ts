@@ -80,7 +80,7 @@ export default defineNuxtConfig({
     meta: {
       mobileApp: true,
       mobileAppIOS: true,
-      theme_color: "#dcac4c",
+      theme_color: "#1f1f1f",
       twitterCard: "summary_large_image",
       twitterCreator: "TerjeNordgarden",
       twitterSite: "TerjeNordgarden",
