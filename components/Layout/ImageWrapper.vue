@@ -49,4 +49,8 @@
     max-width: 15em;
     width: 100%;
   }
+
+  .text {
+    @mixin text-overflow;
+  }
 </style>

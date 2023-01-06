@@ -23,8 +23,8 @@ export default defineNuxtConfig({
     },
     manifest: {
       name: "Nordgarden",
-      background_color: "#dcac4c",
-      theme_color: "#dcac4c",
+      background_color: "#fff",
+      theme_color: "#1f1f1f",
       short_name: "Nordgarden",
       orientation: "portrait-primary",
       // shortcuts: [
