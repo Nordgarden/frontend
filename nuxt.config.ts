@@ -78,6 +78,7 @@ export default defineNuxtConfig({
       ],
     },
     meta: {
+      appleStatusBarStyle: "black-translucent",
       mobileApp: true,
       mobileAppIOS: true,
       theme_color: "#1f1f1f",
