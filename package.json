@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.15.0",
-    "@nuxt/image-edge": "^1.0.0-27840416.dc1ed65",
+    "@nuxt/image-edge": "^1.0.0-27907872.f4dd19d",
     "@nuxtjs/apollo": "^5.0.0-alpha.4",
     "@nuxtjs/i18n": "^8.0.0-beta.7",
     "@types/body-scroll-lock": "^3.1.0",
@@ -17,11 +17,11 @@
     "nuxt": "3.0.0",
     "nuxt-svgo": "^1.1.0",
     "postcss-mixins": "^9.0.4",
-    "postcss-preset-env": "^7.8.3"
+    "postcss-preset-env": "^8.0.0"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
     "node-fetch": "^3.3.0",
-    "nuxt-icons": "^3.0.0"
+    "nuxt-icons": "^3.1.0"
   }
 }
