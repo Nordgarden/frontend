@@ -164,6 +164,7 @@ export default defineNuxtConfig({
     locales: [{ code: "en", file: "en.json", iso: "en-US" }],
     langDir: "locales",
     vueI18n: {
+      legacy: false,
       datetimeFormats: {
         en: {
           short: {
