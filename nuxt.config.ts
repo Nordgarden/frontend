@@ -154,8 +154,6 @@ export default defineNuxtConfig({
   ],
   image: {
     domains: ["api.nordgarden.info"],
-    dir: "public",
-    provider: "ipx",
   },
   i18n: {
     baseUrl: "https://nordgarden.info",
