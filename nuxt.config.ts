@@ -1,4 +1,5 @@
 // import routes from "./data/routes";
+import en from "./locales/en";
 
 export default defineNuxtConfig({
   typescript: {
@@ -158,10 +159,17 @@ export default defineNuxtConfig({
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
     defaultLocale: "en",
-    locales: [{ code: "en", file: "en.json", iso: "en-US" }],
-    langDir: "locales",
+    locales: [
+      {
+        code: "en",
+        iso: "en-US",
+      },
+    ],
     vueI18n: {
       legacy: false,
+      messages: {
+        en,
+      },
       datetimeFormats: {
         en: {
           short: {
