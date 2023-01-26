@@ -33,6 +33,8 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "~/assets/css/media-queries/media-queries.css";
+
   .wrapper {
     position: fixed;
     inset: 0 0 auto;

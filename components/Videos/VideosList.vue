@@ -61,6 +61,7 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "~/assets/css/media-queries/media-queries.css";
   @custom-media --video-tiles (--viewport-sm);
 
   img {

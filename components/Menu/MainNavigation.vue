@@ -111,6 +111,8 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "~/assets/css/media-queries/media-queries.css";
+
   nav {
     position: relative;
   }

@@ -31,6 +31,8 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "~/assets/css/media-queries/media-queries.css";
+
   .wrapper {
     display: grid;
     grid-template-areas: "image" "text";

@@ -56,6 +56,8 @@
 </template>
 
 <style lang="postcss" scoped>
+  @import "~/assets/css/media-queries/media-queries.css";
+
   .content {
     overflow: auto;
     -webkit-overflow-scrolling: touch;

@@ -63,6 +63,8 @@
 </template>
 
 <style lang="postcss" module>
+  @import "~/assets/css/media-queries/media-queries.css";
+
   .wrapper {
     margin-bottom: 5em;
   }
