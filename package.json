@@ -20,7 +20,7 @@
     "@vue-a11y/announcer": "^2.1.0",
     "body-scroll-lock": "^3.1.5",
     "cross-env": "^7.0.3",
-    "graphql-tag": "^2.11.0",
+    "graphql-tag": "^2.12.6",
     "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.21.1",
     "vue": "^2.6.12",
