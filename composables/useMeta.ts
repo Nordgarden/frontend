@@ -57,13 +57,13 @@ export const useMeta = (content: ComputedRef<IPage | IPost | null>) => {
         content: content.value?.seo.twitterTitle || content.value?.seo.title,
       },
       {
-        hide: "twitter:description",
+        hid: "twitter:description",
         name: "twitter:description",
         content:
           content.value?.seo.twitterDescription || content.value?.seo.metaDesc,
       },
       {
-        hide: "twitter:image",
+        hid: "twitter:image",
         name: "twitter:image",
         content: getMetaImage(content.value?.seo, "twitterImage"),
       },

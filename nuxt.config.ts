@@ -1,4 +1,4 @@
-import routes from "./data/routes";
+// import routes from "./data/routes";
 import en from "./locales/en";
 const apiUrl = "https://api.nordgarden.info/graphql";
 
@@ -16,15 +16,15 @@ export default defineNuxtConfig({
     preset: "netlify",
   },
   hooks: {
-    async "nitro:config"(nitroConfig) {
-      if (nitroConfig.dev) {
-        return;
-      }
-      let slugs = await routes();
-      // @ts-ignore
-      nitroConfig.prerender.routes.push(...slugs);
-      return;
-    },
+    // async "nitro:config"(nitroConfig) {
+    //   if (nitroConfig.dev) {
+    //     return;
+    //   }
+    //   let slugs = await routes();
+    //   // @ts-ignore
+    //   nitroConfig.prerender.routes.push(...slugs);
+    //   return;
+    // },
   },
   pwa: {
     workbox: {
@@ -104,6 +104,14 @@ export default defineNuxtConfig({
         {
           name: "viewport",
           content: "width=device-width,initial-scale=1,viewport-fit=cover",
+        },
+      ],
+      link: [
+        {
+          type: "application/atom+xml",
+          rel: "alternate",
+          href: `${apiUrl}feed/`,
+          title: "News - Nordgarden",
         },
       ],
     },

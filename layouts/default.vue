@@ -1,11 +1,10 @@
 <script setup>
-const route = useRoute();
-const { t } = useI18n();
-const head = useLocaleHead({
-  addDirAttribute: true,
-  identifierAttribute: "id",
-  addSeoAttributes: true,
-});
+  const route = useRoute();
+  const head = useLocaleHead({
+    addDirAttribute: true,
+    identifierAttribute: "id",
+    addSeoAttributes: true,
+  });
 </script>
 
 <template>
