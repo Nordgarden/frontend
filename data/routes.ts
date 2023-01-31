@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export default async () => {
   const apiUrl =
     "https://api.nordgarden.info/wp-json/wp/v2/posts/?_fields[]=slug&per_page=99";
