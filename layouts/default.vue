@@ -20,6 +20,7 @@ const head = useLocaleHead({
             :hreflang="link.hreflang"
           />
         </template>
+
         <template v-for="meta in head.meta" :key="meta.id">
           <Meta
             :id="meta.id"

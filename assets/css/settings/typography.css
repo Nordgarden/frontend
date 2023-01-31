@@ -4,7 +4,7 @@
   --line-height-base: 1.5;
   --font-weight-normal: 400;
   --font-weight-bold: 700;
-  --font-family-header: var(--font-family-base);
+  --font-family-header: 'Arsilon', cursive;
   --line-height-header: 1.2;
   --font-size-sm: 0.75rem;
   --font-size-lg: 1.25rem;

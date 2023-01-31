@@ -1,27 +1,27 @@
 <script setup lang="ts">
-  import { IPost } from "~~/types/IContent";
-  const localePath = useLocalePath();
-  const props = defineProps<{
-    post: IPost;
-  }>();
-  const router = useRouter();
-  const url = localePath({
-    name: "post",
-    params: {
-      slug: props.post.slug,
-    },
-  });
+import { IPost } from "~~/types/IContent";
+const localePath = useLocalePath();
+const props = defineProps<{
+  post: IPost;
+}>();
+const router = useRouter();
+const url = localePath({
+  name: "post",
+  params: {
+    slug: props.post.slug,
+  },
+});
 
-  const goToPost = () => {
-    router.push(url);
-  };
+const goToPost = () => {
+  router.push(url);
+};
 
-  const image = computed(() => {
-    if (props.post.featuredImage) {
-      return props.post.featuredImage.node.src;
-    }
-    return undefined;
-  });
+const image = computed(() => {
+  if (props.post.featuredImage) {
+    return props.post.featuredImage.node.src;
+  }
+  return undefined;
+});
 </script>
 
 <template>
@@ -45,25 +45,26 @@
 </template>
 
 <style lang="postcss" scoped>
-  .post {
-    &:hover,
-    &:focus-within {
-      & .read-more {
-        text-decoration-thickness: 3px;
-      }
-      & :deep(svg) {
-        transform: translateX(var(--spacing-xxs));
-      }
+.post {
+  &:hover,
+  &:focus-within {
+    & .read-more {
+      text-decoration-thickness: 3px;
+    }
+    & :deep(svg) {
+      transform: translateX(var(--spacing-xxs));
     }
   }
+}
 
-  .content {
-    border-bottom: 2px dashed currentColor;
-    margin-bottom: var(--spacing-l);
-    padding-bottom: var(--spacing-l);
-  }
+.content {
+  border-bottom: 2px dashed currentColor;
+  margin-bottom: var(--spacing-l);
+  padding-bottom: var(--spacing-l);
+}
 
-  a {
-    @mixin link-reset;
-  }
+a {
+  @mixin link-reset;
+  color: var(--color-primary);
+}
 </style>

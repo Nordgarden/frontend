@@ -2,12 +2,22 @@
   font-family: 'ABeeZee';
   src:
     url('~/assets/fonts/abeezee.woff2')
-    format('woff2'),
-    url('~/assets/fonts/abeezee.woff') format('woff');
+    format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Arsilon';
+  src:
+    url('~/assets/fonts/arsilon.woff2')
+    format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 html {
   font-size: var(--font-size-base);
@@ -42,16 +52,18 @@ h2,
 h3 {
   line-height: var(--line-height-header);
   font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  font-family: var(--font-family-header);
 }
 
 h1 {
   margin: 0 0 var(--spacing-xs);
-  font-size: 2.25rem;
+  font-size: 4rem;
 }
 
 h2 {
   margin: 0 0 var(--spacing-xs);
-  font-size: 1.5rem;
+  font-size: 2em;
 }
 
 h3 {

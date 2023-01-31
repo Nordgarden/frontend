@@ -22,7 +22,7 @@ button {
 
 .read-more,
 a {
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: underline;
   text-decoration-color: currentColor;
   text-decoration-thickness: 2px;
@@ -60,11 +60,11 @@ a {
   border: 2px solid currentColor;
   background: transparent;
   max-width: 20em;
-  color: var(--color-black);
+  color: var(--color-primary);
 
   &:hover {
-    background: var(--color-black);
-    border-color: var(--color-black);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-white);
   }
 
