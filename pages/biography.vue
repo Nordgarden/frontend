@@ -1,27 +1,11 @@
 <script setup lang="ts">
-  import PageQuery from "~/graphql/Page.gql";
-  import { IPage } from "~~/types/IContent";
-  import Ref from "vue";
-
-  defineI18nRoute({
-    paths: {
-      en: "/biography",
-    },
-  });
-
-  const { pageId } = useAppConfig();
-  const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
-    pageId: pageId.biography,
-  });
-
-  const page = computed(() => {
-    if (data.value) {
-      return data.value.page;
-    }
-    return null;
-  });
-
-  useMeta(page);
+defineI18nRoute({
+  paths: {
+    en: "/biography",
+  },
+});
+const { pageIds } = useAppConfig();
+const { page } = usePage(pageIds.biography);
 </script>
 
 <template>
@@ -34,7 +18,7 @@
 </template>
 
 <style lang="postcss" scoped>
-  .text {
-    @mixin text-overflow;
-  }
+.text {
+  @mixin text-overflow;
+}
 </style>
