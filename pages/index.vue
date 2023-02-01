@@ -1,14 +1,11 @@
 <script setup lang="ts">
-const { t } = useI18n();
+  defineI18nRoute({
+    paths: {
+      en: "/",
+    },
+  });
 
-defineI18nRoute({
-  paths: {
-    en: "/",
-  },
-});
-
-const { pageIds } = useAppConfig();
-const { page } = usePage(pageIds.home);
+  const { page } = usePage(152);
 </script>
 
 <template>

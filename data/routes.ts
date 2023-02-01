@@ -1,10 +1,13 @@
 import fetch from "node-fetch";
 
+const fetchByType = async (type: string) => {
+  const apiUrl = `https://api.nordgarden.info/wp-json/wp/v2/${type}/?_fields[]=slug&per_page=99`;
+  const posts = await fetch(apiUrl);
+  const data = await posts.json();
+  return data.map((r) => `/${r.slug}`);
+};
+
 export default async () => {
-  const apiUrl =
-    "https://api.nordgarden.info/wp-json/wp/v2/posts/?_fields[]=slug&per_page=99";
-  const response = await fetch(apiUrl);
-  const data = await response.json();
-  const routes = data.map((r) => `/${r.slug}`);
-  return routes;
+  const posts = await fetchByType("posts");
+  return [...posts];
 };

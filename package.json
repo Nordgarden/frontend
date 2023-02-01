@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.15.0",
-    "@nuxt/image-edge": "^1.0.0-27913696.5d122a3",
-    "@nuxtjs/apollo": "^5.0.0-alpha.4",
+    "@nuxt/image-edge": "^1.0.0-27919678.2f5b64b",
+    "@nuxtjs/apollo": "^5.0.0-alpha.5",
     "@nuxtjs/i18n": "^8.0.0-beta.8",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/workbox-window": "^4.3.4",
