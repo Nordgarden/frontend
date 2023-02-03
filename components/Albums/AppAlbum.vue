@@ -1,15 +1,34 @@
 <script lang="ts" setup>
+  import { ComputedRef } from "vue";
   import { IAlbum } from "~/types/IAlbum";
+  import { IFeaturedImage } from "~~/types/IContent";
   const props = defineProps<{
     album: IAlbum;
     lazy?: boolean;
   }>();
+
+  const image: ComputedRef<IFeaturedImage> = computed(() => {
+    const sizes = [512, 384];
+    const srcSets = sizes.map((size) => {
+      return `/images/${props.album.image}-${size}.webp ${size}w`;
+    });
+    return {
+      id: props.album.title,
+      srcSet: srcSets.join(", "),
+      src: `/images/${props.album.image}-512.webp`,
+      alt: props.album.title,
+      mediaDetails: {
+        width: "512",
+        height: "512",
+      },
+    };
+  });
 </script>
 
 <template>
   <li class="album">
     <h2 class="title">{{ album.title }}</h2>
-    <image-wrapper :image="album.image" :lazy="lazy">
+    <image-wrapper :image="image" :lazy="lazy">
       <template v-slot:image>
         <app-date :date="album.releaseDate" class="date" />
         <ul class="stores" v-if="album.spotify || album.apple">

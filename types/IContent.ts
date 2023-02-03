@@ -4,6 +4,7 @@ export interface IFeaturedImage {
   id: string;
   srcSet: string;
   src: string;
+  alt: string;
   mediaDetails: {
     width: string;
     height: string;

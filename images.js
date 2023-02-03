@@ -12,19 +12,23 @@ const dir = "./assets/images/";
 
     // files object contains all files names
     // log them on console
+    const mediaSizes = [96, 128, 192, 256, 384, 512];
+
     files.forEach((file) => {
       const formats = ["webp", "avif"];
       formats.forEach((format) => {
-        const newFile = file.replace(".jpg", `.${format}`);
-        sharp(`assets/images/${file}`)
-          .resize(512)
-          .toFile(`public/images/${newFile}`)
-          .then(() => {
-            console.log("Successfully resized an image!");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        mediaSizes.forEach((size) => {
+          const newFile = file.replace(".jpg", `-${size}.${format}`);
+          sharp(`assets/images/${file}`)
+            .resize(size)
+            .toFile(`public/images/${newFile}`)
+            .then(() => {
+              console.log("Successfully resized an image!");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        });
       });
     });
   });

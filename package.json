@@ -5,7 +5,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate-images": "node ./images"
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.15.0",

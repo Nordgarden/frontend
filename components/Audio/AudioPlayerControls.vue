@@ -18,7 +18,6 @@
     const offsetX = event.offsetX / progressBar.value.offsetWidth;
     setCurrentTime(offsetX);
   };
-  const { mediaSizes } = useAppConfig();
 </script>
 
 <template>
@@ -35,18 +34,6 @@
     <div ref="progressBar" class="progress" @click="scrub">
       <div :style="{ width: progress }" class="bar"></div>
       <div v-if="currentSong" class="title">{{ currentSong.title }}</div>
-    </div>
-  </div>
-  <div class="media-images">
-    <div v-for="album in albums" :key="album.title">
-      <nuxt-img
-        :src="album.image"
-        alt=""
-        :width="size"
-        :height="size"
-        v-for="size in mediaSizes"
-        :key="size"
-      />
     </div>
   </div>
 </template>

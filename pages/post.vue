@@ -24,7 +24,7 @@
 
   const image = computed(() => {
     if (data.value?.post.featuredImage) {
-      return data.value?.post.featuredImage.node.src;
+      return data.value?.post.featuredImage.node;
     }
     return undefined;
   });

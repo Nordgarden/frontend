@@ -17,7 +17,6 @@ export const useAudio = () => {
   useState<boolean>(keys.isPlaying, () => false);
   useState<string | null>(keys.progress, () => null);
   const player = useState<HTMLAudioElement | null>(keys.player, () => null);
-  const $img = useImage();
 
   const selectSong = async (song: IPlayableSong) => {
     currentSong.value = song;
@@ -41,19 +40,19 @@ export const useAudio = () => {
   };
 
   const { mediaSizes } = useAppConfig();
+  const formats = ["webp", "avif"];
 
   const getMediaImages = (image: string) => {
-    const images = mediaSizes.map((size) => {
-      // const src = $img(image, {
-      //   width: size,
-      //   height: size,
-      // }) as string;
-      const src = image;
-      return {
-        src,
-        sizes: `${size}x${size}`,
-        type: "image/jpg",
-      };
+    const images: MediaImage[] = [];
+    mediaSizes.forEach((size) => {
+      formats.forEach((format) => {
+        const src = `${image}-${size}.${format}`;
+        images.push({
+          src,
+          sizes: `${size}x${size}`,
+          type: `image/${format}`,
+        });
+      });
     });
     return images;
   };

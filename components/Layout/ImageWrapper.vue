@@ -1,16 +1,10 @@
 <script lang="ts" setup>
-  withDefaults(
-    defineProps<{
-      image?: string;
-      alt?: string;
-      lazy?: boolean;
-      srcset?: string;
-    }>(),
+  import { IFeaturedImage } from "~~/types/IContent";
 
-    {
-      alt: "",
-    }
-  );
+  defineProps<{
+    image?: IFeaturedImage | undefined;
+    lazy?: boolean;
+  }>();
 </script>
 
 <template>
@@ -19,11 +13,12 @@
     <div class="image-wrapper">
       <img
         v-if="image"
-        :src="image"
-        :srcset="srcset"
+        :src="image.src"
+        :srcset="image.srcSet"
         :loading="lazy ? 'lazy' : 'eager'"
-        :alt="alt"
+        :alt="image.alt"
         class="image"
+        sizes=""
       />
       <slot name="image" />
     </div>
