@@ -1,24 +1,41 @@
 <script lang="ts" setup>
   import { IFeaturedImage } from "~~/types/IContent";
+  import RemoteImage from "~/components/Images/RemoteImage.vue";
+  import StaticImage from "~/components/Images/StaticImage.vue";
 
-  defineProps<{
-    image?: IFeaturedImage | undefined;
-    lazy?: boolean;
-  }>();
+  const props = withDefaults(
+    defineProps<{
+      image?: string | IFeaturedImage;
+      remote?: boolean;
+      lazy?: boolean;
+      alt?: string;
+    }>(),
+    {
+      remote: true,
+      lazy: false,
+    }
+  );
+
+  const component = computed(() => {
+    if (props.remote) {
+      return RemoteImage;
+    }
+    return StaticImage;
+  });
 </script>
 
 <template>
   <div class="wrapper">
     <div class="text"><slot /></div>
     <div class="image-wrapper">
-      <img
-        v-if="image"
-        :src="image.src"
-        :srcset="image.srcSet"
-        :loading="lazy ? 'lazy' : 'eager'"
-        :alt="image.alt"
+      <component
+        :alt="alt"
+        :is="component"
+        :image="image"
+        :lazy="props.lazy"
         class="image"
-        sizes=""
+        sizes="(max-width: 320px) 270px, 200px"
+        v-if="image"
       />
       <slot name="image" />
     </div>
@@ -42,10 +59,11 @@
     grid-area: image;
   }
 
-  .image {
+  .image :deep(img) {
     margin-bottom: 0.5em;
     max-width: 15em;
     width: 100%;
+    display: block;
   }
 
   .text {
