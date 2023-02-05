@@ -20,7 +20,7 @@
     <center-wrapper>
       <main class="main">
         <NuxtLayout>
-          <NuxtLoadingIndicator color="var(--color-black)" />
+          <NuxtLoadingIndicator color="var(--color-primary)" />
           <NuxtPage />
         </NuxtLayout>
       </main>

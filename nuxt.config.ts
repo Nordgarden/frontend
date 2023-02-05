@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     manifest: {
       name: "Nordgarden",
       background_color: "#fff",
-      theme_color: "#1f1f1f",
+      theme_color: "#ca242c",
       short_name: "Nordgarden",
       orientation: "portrait-primary",
       // shortcuts: [
@@ -91,7 +91,7 @@ export default defineNuxtConfig({
       appleStatusBarStyle: "black-translucent",
       mobileApp: true,
       mobileAppIOS: true,
-      theme_color: "#1f1f1f",
+      theme_color: "#ca242c",
       twitterCard: "summary_large_image",
       twitterCreator: "TerjeNordgarden",
       twitterSite: "TerjeNordgarden",
