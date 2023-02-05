@@ -87,6 +87,9 @@ export default defineNuxtConfig({
         },
       ],
     },
+    icon: {
+      maskablePadding: 0,
+    },
     meta: {
       appleStatusBarStyle: "black-translucent",
       mobileApp: true,
