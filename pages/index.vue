@@ -4,8 +4,9 @@
       en: "/",
     },
   });
+  const { pageIds } = useAppConfig();
 
-  const { page } = usePage(152);
+  const { page } = await usePage(pageIds.home);
 </script>
 
 <template>

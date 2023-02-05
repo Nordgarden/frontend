@@ -1,11 +1,11 @@
 <script setup lang="ts">
-defineI18nRoute({
-  paths: {
-    en: "/biography",
-  },
-});
-const { pageIds } = useAppConfig();
-const { page } = usePage(pageIds.biography);
+  defineI18nRoute({
+    paths: {
+      en: "/biography",
+    },
+  });
+  const { pageIds } = useAppConfig();
+  const { page } = await usePage(pageIds.biography);
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const { page } = usePage(pageIds.biography);
 </template>
 
 <style lang="postcss" scoped>
-.text {
-  @mixin text-overflow;
-}
+  .text {
+    @mixin text-overflow;
+  }
 </style>

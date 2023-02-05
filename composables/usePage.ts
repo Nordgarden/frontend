@@ -1,8 +1,8 @@
 import PageQuery from "~/graphql/Page.gql";
 import { IPage } from "~~/types/IContent";
 
-export const usePage = (pageId: Number) => {
-  const { data } = useAsyncQuery<{ page: IPage }>(PageQuery, {
+export const usePage = async (pageId: Number) => {
+  const { data } = await useAsyncQuery<{ page: IPage }>(PageQuery, {
     pageId: pageId,
   });
 

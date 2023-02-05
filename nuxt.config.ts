@@ -32,6 +32,8 @@ export default defineNuxtConfig({
       templatePath: "~/public/sw.js",
     },
     manifest: {
+      description:
+        "Nordgarden is a Norwegian artist deriving from the American old school of classic songwriting.",
       name: "Nordgarden",
       background_color: "#fff",
       theme_color: "#ca242c",
@@ -64,34 +66,36 @@ export default defineNuxtConfig({
         },
       ],
       categories: ["music"],
-      screenshots: [
-        {
-          src: "/screenshots/desktop-home.png",
-          sizes: "1280x800",
-          type: "image/png",
-        },
-        {
-          src: "/screenshots/desktop-albums.png",
-          sizes: "1280x800",
-          type: "image/png",
-        },
-        {
-          src: "/screenshots/mobile-home.png",
-          sizes: "375x667",
-          type: "image/png",
-        },
-        {
-          src: "/screenshots/mobile-albums.png",
-          sizes: "375x667",
-          type: "image/png",
-        },
-      ],
+      // screenshots: [
+      //   {
+      //     src: "/screenshots/desktop-home.png",
+      //     sizes: "1280x800",
+      //     type: "image/png",
+      //   },
+      //   {
+      //     src: "/screenshots/desktop-albums.png",
+      //     sizes: "1280x800",
+      //     type: "image/png",
+      //   },
+      //   {
+      //     src: "/screenshots/mobile-home.png",
+      //     sizes: "375x667",
+      //     type: "image/png",
+      //   },
+      //   {
+      //     src: "/screenshots/mobile-albums.png",
+      //     sizes: "375x667",
+      //     type: "image/png",
+      //   },
+      // ],
     },
     icon: {
       maskablePadding: 0,
     },
     meta: {
+      ogSiteName: "Nordgarden",
       appleStatusBarStyle: "black-translucent",
+      title: "Nordgarden",
       mobileApp: true,
       mobileAppIOS: true,
       theme_color: "#ca242c",

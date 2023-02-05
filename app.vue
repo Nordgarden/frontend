@@ -1,12 +1,6 @@
 <script setup lang="ts">
   const { fetchEvents } = useEvents();
 
-  useHead({
-    titleTemplate: (titleChunk) => {
-      return titleChunk ? `${titleChunk} - Nordgarden` : "Nordgarden";
-    },
-  });
-
   onMounted(() => {
     fetchEvents();
   });
