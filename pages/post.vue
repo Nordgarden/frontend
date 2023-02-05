@@ -14,6 +14,13 @@
     uri: route.params.slug,
   });
 
+  if (!data.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
+  }
+
   const post = computed(() => {
     if (data.value) {
       return data.value.post;
