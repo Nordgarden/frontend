@@ -1,7 +1,5 @@
 <script lang="ts" setup>
   import { IFeaturedImage } from "~~/types/IContent";
-  import RemoteImage from "~/components/Images/RemoteImage.vue";
-  import StaticImage from "~/components/Images/StaticImage.vue";
 
   const props = withDefaults(
     defineProps<{
@@ -18,9 +16,9 @@
 
   const component = computed(() => {
     if (props.remote) {
-      return RemoteImage;
+      return resolveComponent("remote-image");
     }
-    return StaticImage;
+    return resolveComponent("static-image");
   });
 </script>
 
