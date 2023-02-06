@@ -120,6 +120,10 @@ export default defineNuxtConfig({
           href: `${apiUrl}feed/`,
           title: "News - Nordgarden",
         },
+        {
+          rel: "dns-prefetch",
+          href: apiUrl,
+        },
       ],
     },
   },
