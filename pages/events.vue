@@ -1,25 +1,15 @@
 <script setup lang="ts">
-const { t } = useI18n();
-
 defineI18nRoute({
   paths: {
     en: "/tour",
   },
 });
 
-useHead({
-  title: t("tour"),
-  meta: [
-    {
-      name: "description",
-      hid: "description",
-      content: "The new album KORSVEI is out!",
-    },
-  ],
-});
+const { pageIds } = useAppConfig();
+const { page } = await usePage(pageIds.events);
 </script>
 
 <template>
-  <app-page :title="$t('tour')" />
+  <app-page :title="page.title" v-if="page" />
   <event-list />
 </template>

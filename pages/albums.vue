@@ -1,26 +1,18 @@
 <script setup lang="ts">
-  const { albums } = useAudio();
-  const { t } = useI18n();
+const { albums } = useAudio();
 
-  defineI18nRoute({
-    paths: {
-      en: "/albums",
-    },
-  });
-  useHead({
-    title: t("albums"),
-    meta: [
-      {
-        name: "description",
-        hid: "description",
-        content: "The new album KORSVEI is out!",
-      },
-    ],
-  });
+defineI18nRoute({
+  paths: {
+    en: "/albums",
+  },
+});
+
+const { pageIds } = useAppConfig();
+const { page } = await usePage(pageIds.albums);
 </script>
 
 <template>
-  <app-page :title="$t('albums')" />
+  <app-page :title="page.title" v-if="page" />
   <ul v-if="albums.length" class="albums">
     <app-album
       v-for="(album, index) in albums"
@@ -32,7 +24,7 @@
 </template>
 
 <style lang="postcss" scoped>
-  .albums {
-    @mixin list-reset;
-  }
+.albums {
+  @mixin list-reset;
+}
 </style>
