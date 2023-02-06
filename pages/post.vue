@@ -1,47 +1,48 @@
 <script setup lang="ts">
-  import PostQuery from "~/graphql/Post.gql";
-  import { IPost } from "~~/types/IContent";
+import PostQuery from "~/graphql/Post.gql";
+import { IPost } from "~~/types/IContent";
 
-  defineI18nRoute({
-    paths: {
-      en: "/:slug",
-    },
-  });
+defineI18nRoute({
+  paths: {
+    en: "/:slug",
+  },
+});
 
-  const route = useRoute();
+const route = useRoute();
 
-  const { data } = await useAsyncQuery<{ post: IPost }>(PostQuery, {
-    uri: route.params.slug,
-  });
+const { data } = await useAsyncQuery<{ post: IPost }>(PostQuery, {
+  uri: route.params.slug,
+});
 
-  if (!data.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Page Not Found",
-    });
+const post = computed(() => {
+  if (data.value) {
+    return data.value.post;
   }
+  return null;
+});
 
-  const post = computed(() => {
-    if (data.value) {
-      return data.value.post;
-    }
-    return null;
+if (!post.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page Not Found",
   });
-  useMeta(post);
+}
 
-  const image = computed(() => {
-    if (data.value?.post.featuredImage) {
-      return data.value?.post.featuredImage.node;
-    }
-    return undefined;
-  });
+useMeta(post);
 
-  const component = computed(() => {
-    if (image.value) {
-      return resolveComponent("image-wrapper");
-    }
-    return "div";
-  });
+const image = computed(() => {
+  if (data.value?.post.featuredImage) {
+    return data.value?.post.featuredImage.node;
+  }
+  return undefined;
+});
+
+const component = computed(() => {
+  if (image.value) {
+    return resolveComponent("image-wrapper");
+  }
+  return "div";
+});
 </script>
 
 <template>
@@ -60,7 +61,7 @@
 </template>
 
 <style lang="postcss" scoped>
-  .text {
-    margin-bottom: var(--spacing-l);
-  }
+.text {
+  margin-bottom: var(--spacing-l);
+}
 </style>
