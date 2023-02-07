@@ -1,48 +1,67 @@
 <script setup lang="ts">
-import PostQuery from "~/graphql/Post.gql";
-import { IPost } from "~~/types/IContent";
+  import { IPost } from "~~/types/IContent";
+  import { ISEO } from "~~/types/ISEO";
 
-defineI18nRoute({
-  paths: {
-    en: "/:slug",
-  },
-});
-
-const route = useRoute();
-
-const { data } = await useAsyncQuery<{ post: IPost }>(PostQuery, {
-  uri: route.params.slug,
-});
-
-const post = computed(() => {
-  if (data.value) {
-    return data.value.post;
-  }
-  return null;
-});
-
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Page Not Found",
+  defineI18nRoute({
+    paths: {
+      en: "/:slug",
+    },
   });
-}
 
-useMeta(post);
+  const route = useRoute();
+  const { apiUrl } = useAppConfig();
 
-const image = computed(() => {
-  if (data.value?.post.featuredImage) {
-    return data.value?.post.featuredImage.node;
+  const { data: post, error } = await useAsyncData(
+    `post-${route.params.slug}`,
+    async () => {
+      const fields = ["title", "content", "yoast_head_json", "date"];
+      const includeFields = `&_fields=${fields.join(",")}`;
+      const response = await $fetch<
+        {
+          title: {
+            rendered: string;
+          };
+          content: {
+            rendered: string;
+          };
+          yoast_head_json: ISEO;
+          date: string;
+        }[]
+      >(`${apiUrl}posts/?slug=${route.params.slug}?${includeFields}`);
+      if (response.length) {
+        return {
+          title: response[0].title.rendered,
+          content: response[0].content.rendered,
+          seo: response[0].yoast_head_json,
+          date: response[0].date || "asd",
+        } as IPost;
+      }
+      return null;
+    }
+  );
+
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
   }
-  return undefined;
-});
 
-const component = computed(() => {
-  if (image.value) {
-    return resolveComponent("image-wrapper");
-  }
-  return "div";
-});
+  useMeta(post);
+
+  const image = computed(() => {
+    // if (data.value?.post.featuredImage) {
+    //   return data.value?.post.featuredImage.node;
+    // }
+    return undefined;
+  });
+
+  const component = computed(() => {
+    if (image.value) {
+      return resolveComponent("image-wrapper");
+    }
+    return "div";
+  });
 </script>
 
 <template>
@@ -61,7 +80,7 @@ const component = computed(() => {
 </template>
 
 <style lang="postcss" scoped>
-.text {
-  margin-bottom: var(--spacing-l);
-}
+  .text {
+    margin-bottom: var(--spacing-l);
+  }
 </style>

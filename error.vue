@@ -3,9 +3,9 @@
 </template>
 
 <script setup lang="ts">
-  const props = defineProps({
-    error: Error,
-  });
+  const props = defineProps<{
+    error: Error;
+  }>();
 
   const handleError = () => clearError({ redirect: "/" });
 </script>

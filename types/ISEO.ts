@@ -3,17 +3,17 @@ export interface ISEOImage {
 }
 
 export interface ISEO {
-  metaDesc: string;
+  description: string;
   canonical: string;
   cornerstone: boolean;
-  opengraphAuthor: string;
-  opengraphDescription: string;
-  opengraphImage?: ISEOImage;
-  opengraphModifiedTime: string;
-  opengraphPublishedTime: string;
-  opengraphPublisher: string;
-  opengraphTitle: string;
-  opengraphType:
+  og_author: string;
+  og_description: string;
+  og_image?: ISEOImage;
+  og_modifiedTime: string;
+  og_publishedTime: string;
+  og_publisher: string;
+  og_title: string;
+  og_type:
     | "website"
     | "article"
     | "book"
@@ -26,12 +26,10 @@ export interface ISEO {
     | "video.episode"
     | "video.tv_show"
     | "video.other";
-  opengraphUrl: string;
+  og_url: string;
   title: string;
   twitterDescription: string;
   twitterImage?: ISEOImage;
   twitterTitle: string;
-  schema: {
-    raw: string;
-  };
+  schema: Object;
 }
