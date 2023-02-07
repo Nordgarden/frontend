@@ -1,7 +1,7 @@
 #import "./Fragments/Post.gql"
 #import "./Fragments/FeaturedImage.gql"
 
-query Posts($after: String, $notIn: [ID]) {
+query GetPosts($after: String, $notIn: [ID]) {
   posts(first: 12, after: $after, where: { notIn: $notIn }) {
     pageInfo {
       hasNextPage

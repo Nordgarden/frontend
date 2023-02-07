@@ -2,7 +2,7 @@
 #import "./Fragments/Seo.gql"
 #import "./Fragments/FeaturedImage.gql"
 
-query Post($uri: ID!) {
+query GetPost($uri: ID!) {
   post(id: $uri, idType: URI) {
     ...post
     databaseId
