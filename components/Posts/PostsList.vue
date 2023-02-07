@@ -42,8 +42,8 @@
 </script>
 
 <template>
-  <div v-if="data" :class="$style.wrapper">
-    <transition-group name="list" tag="ul" :class="$style.posts">
+  <div v-if="data" class="wrapper">
+    <transition-group name="list" tag="ul" class="posts">
       <PostsListItem
         v-for="post in data.posts.edges"
         :key="post.node.id"
@@ -51,18 +51,15 @@
       />
     </transition-group>
     <app-loader v-if="loading" />
-    <div
-      v-else-if="data.posts.pageInfo.hasNextPage"
-      :class="$style['button-wrapper']"
-    >
-      <button :class="$style.btn" class="btn" @click="loadMore">
+    <div v-else-if="data.posts.pageInfo.hasNextPage" class="button-wrapper">
+      <button class="btn" @click="loadMore">
         {{ $t("loadMore") }}
       </button>
     </div>
   </div>
 </template>
 
-<style lang="postcss" module>
+<style lang="postcss" scoped>
   @import "~/assets/css/media-queries/media-queries.css";
 
   .wrapper {
