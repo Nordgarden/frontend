@@ -33,7 +33,7 @@
           title: response[0].title.rendered,
           content: response[0].content.rendered,
           seo: response[0].yoast_head_json,
-          date: response[0].date || "asd",
+          date: response[0].date,
         } as IPost;
       }
       return null;
