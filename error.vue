@@ -1,10 +1,10 @@
 <template>
-  <button @click="handleError">Clear errors</button>
+  <button @click="handleError">Clear errors {{ error?.message }}</button>
 </template>
 
-<script setup>
+<script setup lang="ts">
   const props = defineProps({
-    error: Object,
+    error: Error,
   });
 
   const handleError = () => clearError({ redirect: "/" });

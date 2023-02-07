@@ -1,6 +1,8 @@
 export default defineAppConfig({
   mediaSizes: [96, 128, 192, 256, 384, 512],
   eventsApiUrl: "/.netlify/functions/events",
+  apiUrl: "https://api.nordgarden.info/wp-json/wp/v2/",
+
   pageIds: {
     albums: 14,
     biography: 5,

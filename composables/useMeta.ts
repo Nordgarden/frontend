@@ -1,7 +1,7 @@
 import { IPage, IPost } from "~~/types/IContent";
-import { ComputedRef } from "vue";
+import { ComputedRef, Ref } from "vue";
 
-export const useMeta = (content: ComputedRef<IPage | IPost | null>) => {
+export const useMeta = (content: Ref<IPage> | ComputedRef<IPost | null>) => {
   useServerSeoMeta({
     ogUrl: () => content.value?.seo.opengraphUrl,
     ogTitle: () =>
