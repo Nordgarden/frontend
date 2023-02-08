@@ -1,31 +1,14 @@
 import { IPage } from "~~/types/IContent";
 import { ISEO } from "~~/types/ISEO";
+import { useServer } from "./useServer";
 
-export const usePage = async (pageId: Number) => {
-  const { apiUrl } = useAppConfig();
+export const usePage = async (pageId: number) => {
+  const { getPage } = useServer();
 
   const { data: page, error } = await useAsyncData(
     `page-${pageId}`,
     async () => {
-      const fields = ["title", "content", "yoast_head_json"];
-      const includeFields = `&_fields=${fields.join(",")}`;
-      const response = await $fetch<{
-        title: {
-          rendered: string;
-        };
-        content: {
-          rendered: string;
-        };
-        yoast_head_json: ISEO;
-      }>(`${apiUrl}pages/${pageId}?${includeFields}`);
-      if (response) {
-        return {
-          title: response.title.rendered,
-          content: response.content.rendered,
-          seo: response.yoast_head_json,
-        } as IPage;
-      }
-      return null;
+      return await getPage(pageId);
     }
   );
 
