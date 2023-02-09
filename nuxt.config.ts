@@ -161,20 +161,8 @@ export default defineNuxtConfig({
       },
     },
   },
-  apollo: {
-    clients: {
-      default: {
-        httpEndpoint: `${apiUrl}graphql`,
-      },
-    },
-  },
   css: ["~/assets/css/base.css"],
-  modules: [
-    "@nuxtjs/i18n",
-    "@nuxtjs/apollo",
-    "nuxt-svgo",
-    "@kevinmarrec/nuxt-pwa",
-  ],
+  modules: ["@nuxtjs/i18n", "nuxt-svgo", "@kevinmarrec/nuxt-pwa"],
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",

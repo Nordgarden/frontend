@@ -71,7 +71,6 @@ export const useServer = () => {
     });
 
     const response = await $fetch.raw(url).catch((error) => error.data);
-    console.log(response);
     if (response.status !== 200) {
       return {
         total: 0,
