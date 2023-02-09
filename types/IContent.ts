@@ -15,24 +15,25 @@ interface IFeaturedImageNode {
   node: IFeaturedImage;
 }
 
-export interface IContent {
+export interface IBasePage {
   title: string;
-}
-
-export interface IPage extends IContent {
   content: string;
   seo: ISEO;
 }
 
-export interface IPost extends IContent {
-  seo: ISEO;
+export interface IPage extends IBasePage {}
+
+export interface IPost extends IBasePage {
   date: string;
-  id: string;
+  featuredImage: IFeaturedImageNode | null;
+}
+
+export interface IPostListItem {
+  title: string;
+  date: string;
   slug: string;
   excerpt: string;
-  featuredImage: IFeaturedImageNode | null;
-  content: string;
-  databaseId: number;
+  featuredImage?: IFeaturedImageNode;
 }
 
 interface IPostNode {

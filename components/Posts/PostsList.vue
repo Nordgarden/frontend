@@ -1,61 +1,35 @@
 <script setup lang="ts">
-  import PostsQuery from "~/graphql/Posts.gql";
-  import { IPosts } from "~~/types/IContent";
+  const route = useRoute();
 
-  const props = defineProps<{
-    notIn?: number;
-  }>();
-  const { $apollo } = useNuxtApp();
+  const currentPage = route.query.page ? Number(route.query.page) : 1;
 
-  const { data } = await useAsyncQuery<{
-    posts: IPosts;
-  }>(PostsQuery, {
-    notIn: props.notIn,
-  });
-
-  const loading = ref(false);
-  const loadMore = async () => {
-    if (!data.value) {
-      return;
+  const page = ref(currentPage);
+  const { getPosts } = useServer();
+  const { data } = await useAsyncData(
+    "posts",
+    async () => {
+      return await getPosts(page.value);
+    },
+    {
+      watch: page,
     }
-    loading.value = true;
-    try {
-      const { data: moreData }: { data: { posts: IPosts } } =
-        await $apollo.defaultClient.query({
-          query: PostsQuery,
-          variables: {
-            first: 2,
-            notIn: props.notIn,
-            after: data.value.posts.pageInfo.endCursor,
-          },
-        });
-      data.value = {
-        posts: {
-          pageInfo: moreData.posts.pageInfo,
-          edges: [...data.value.posts.edges, ...moreData.posts.edges],
-        },
-      };
-    } finally {
-      loading.value = false;
-    }
+  );
+
+  const goToPage = (newPage: number) => {
+    page.value = newPage;
   };
 </script>
 
 <template>
   <div v-if="data" class="wrapper">
-    <transition-group name="list" tag="ul" class="posts">
-      <PostsListItem
-        v-for="post in data.posts.edges"
-        :key="post.node.id"
-        :post="post.node"
-      />
-    </transition-group>
-    <app-loader v-if="loading" />
-    <div v-else-if="data.posts.pageInfo.hasNextPage" class="button-wrapper">
-      <button class="btn" @click="loadMore">
-        {{ $t("loadMore") }}
-      </button>
-    </div>
+    <PostsListItem
+      v-if="data.items.length"
+      v-for="post in data.items"
+      :key="post.slug"
+      :post="post"
+    />
+    <p v-else>No posts found</p>
+    <app-paging :page="page" :total-pages="data.total" @go-to-page="goToPage" />
   </div>
 </template>
 

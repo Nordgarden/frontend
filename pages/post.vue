@@ -1,48 +1,45 @@
 <script setup lang="ts">
-import { IPost } from "~~/types/IContent";
-import { ISEO } from "~~/types/ISEO";
-
-defineI18nRoute({
-  paths: {
-    en: "/:slug",
-  },
-});
-
-const route = useRoute();
-const { getPost } = useServer();
-
-const { data: post, error } = await useAsyncData(
-  `post-${route.params.slug}`,
-  async () => {
-    if (Array.isArray(route.params.slug)) {
-      return await getPost(route.params.slug.join(","));
-    }
-    return await getPost(route.params.slug);
-  }
-);
-
-if (!post.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: "Page Not Found",
+  defineI18nRoute({
+    paths: {
+      en: "/:slug",
+    },
   });
-}
 
-useMeta(post);
+  const route = useRoute();
+  const { getPost } = useServer();
 
-const image = computed(() => {
-  // if (data.value?.post.featuredImage) {
-  //   return data.value?.post.featuredImage.node;
-  // }
-  return undefined;
-});
+  const { data: post, error } = await useAsyncData(
+    `post-${route.params.slug}`,
+    async () => {
+      if (Array.isArray(route.params.slug)) {
+        return await getPost(route.params.slug.join(","));
+      }
+      return await getPost(route.params.slug);
+    }
+  );
 
-const component = computed(() => {
-  if (image.value) {
-    return resolveComponent("image-wrapper");
+  if (!post.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: "Page Not Found",
+    });
   }
-  return "div";
-});
+
+  useMeta(post);
+
+  const image = computed(() => {
+    // if (data.value?.post.featuredImage) {
+    //   return data.value?.post.featuredImage.node;
+    // }
+    return undefined;
+  });
+
+  const component = computed(() => {
+    if (image.value) {
+      return resolveComponent("image-wrapper");
+    }
+    return "div";
+  });
 </script>
 
 <template>
@@ -56,12 +53,12 @@ const component = computed(() => {
   </app-page>
   <section class="news-list" aria-labelledby="news-list-title" v-if="post">
     <h1 id="news-list-title">{{ $t("latestPosts") }}</h1>
-    <posts-list :not-in="post.databaseId" />
+    <posts-list />
   </section>
 </template>
 
 <style lang="postcss" scoped>
-.text {
-  margin-bottom: var(--spacing-l);
-}
+  .text {
+    margin-bottom: var(--spacing-l);
+  }
 </style>

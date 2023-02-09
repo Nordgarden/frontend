@@ -1,4 +1,5 @@
-import { IPage, IPost } from "~~/types/IContent";
+import { title } from "process";
+import { IPage, IPost, IPostListItem } from "~~/types/IContent";
 import { ISEO } from "~~/types/ISEO";
 
 export const useServer = () => {
@@ -9,11 +10,13 @@ export const useServer = () => {
     type,
     id,
     slug,
+    page,
   }: {
     fields: string[];
     type: string;
     id?: number;
     slug?: string;
+    page?: number;
   }) => {
     let baseUrl = `${apiUrl}${type}/`;
     if (id) {
@@ -23,6 +26,10 @@ export const useServer = () => {
     url.searchParams.set("_fields", fields.join(","));
     if (slug) {
       url.searchParams.set("slug", slug);
+    }
+    if (page) {
+      url.searchParams.set("page", page.toString());
+      url.searchParams.set("per_page", "5");
     }
     return url.toString();
   };
@@ -56,6 +63,35 @@ export const useServer = () => {
     return null;
   };
 
+  const getPosts = async (page: number) => {
+    const url = getUrl({
+      type: "posts",
+      fields: ["title", "excerpt", "date", "slug"],
+      page,
+    });
+
+    const response = await $fetch.raw(url).catch((error) => error.data);
+    console.log(response);
+    if (response.status !== 200) {
+      return {
+        total: 0,
+        items: [],
+      };
+    }
+    const total = Number(response.headers.get("x-wp-totalpages")) as number;
+    const items = response._data.map((item) => {
+      return {
+        ...item,
+        title: item.title.rendered,
+        excerpt: item.excerpt.rendered,
+      };
+    }) as IPostListItem[];
+    return {
+      total,
+      items,
+    };
+  };
+
   const getPage = async (pageId: number) => {
     const url = getUrl({
       id: pageId,
@@ -83,5 +119,6 @@ export const useServer = () => {
   return {
     getPage,
     getPost,
+    getPosts,
   };
 };

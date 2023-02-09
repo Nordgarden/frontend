@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { IPost } from "~~/types/IContent";
+  import { IPostListItem } from "~~/types/IContent";
   const localePath = useLocalePath();
   const props = defineProps<{
-    post: IPost;
+    post: IPostListItem;
   }>();
   const router = useRouter();
   const url = localePath({
