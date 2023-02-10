@@ -20,4 +20,12 @@ export default {
   socialMediaLinks: "Social media links",
   readFullBiography: "Read the full biography",
   gallery: "Gallery",
+  paging: {
+    previous: "Previous page",
+    next: "Next page",
+  },
+  kiplinks: {
+    content: "To main content",
+    menu: "To main navigation",
+  },
 };

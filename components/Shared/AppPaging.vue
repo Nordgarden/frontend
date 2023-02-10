@@ -21,8 +21,9 @@
           },
         })
       "
-      >Volgende pagina</nuxt-link
     >
+      {{ $t("paging.previous") }}
+    </nuxt-link>
 
     <nuxt-link
       v-if="page < totalPages"
@@ -35,8 +36,9 @@
           },
         })
       "
-      >Volgende pagina</nuxt-link
     >
+      {{ $t("paging.next") }}
+    </nuxt-link>
   </div>
 </template>
 

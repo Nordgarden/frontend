@@ -5,7 +5,7 @@
 
   const page = ref(currentPage);
   const { getPosts } = useServer();
-  const { data } = await useLazyAsyncData(
+  const { data, pending } = await useAsyncData(
     "posts",
     async () => {
       return await getPosts(page.value);
@@ -26,7 +26,8 @@
 
 <template>
   <div v-if="data" class="wrapper">
-    <ul class="posts" v-if="data.items.length">
+    <app-loader v-if="pending" />
+    <ul class="posts" v-else-if="data.items.length">
       <PostsListItem v-for="post in data.items" :key="post.slug" :post="post" />
     </ul>
     <p v-else>No posts found</p>
