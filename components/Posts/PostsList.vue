@@ -5,7 +5,7 @@
 
   const page = ref(currentPage);
   const { getPosts } = useServer();
-  const { data } = await useAsyncData(
+  const { data } = await useLazyAsyncData(
     "posts",
     async () => {
       return await getPosts(page.value);
