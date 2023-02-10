@@ -1,4 +1,5 @@
 :root {
+  --z-index-alert: 4;
   --z-index-skip-links: 4;
   --z-index-audio-player: 3;
   --z-index-mobile-navigation: 2;

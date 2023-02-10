@@ -20,6 +20,7 @@ button {
   }
 }
 
+.btn-link,
 .read-more,
 a {
   color: var(--color-primary);

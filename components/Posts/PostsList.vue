@@ -26,12 +26,9 @@
 
 <template>
   <div v-if="data" class="wrapper">
-    <PostsListItem
-      v-if="data.items.length"
-      v-for="post in data.items"
-      :key="post.slug"
-      :post="post"
-    />
+    <ul class="posts" v-if="data.items.length">
+      <PostsListItem v-for="post in data.items" :key="post.slug" :post="post" />
+    </ul>
     <p v-else>No posts found</p>
     <app-paging :page="page" :total-pages="data.total" @go-to-page="goToPage" />
   </div>

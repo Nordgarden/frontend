@@ -1,6 +1,9 @@
-importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/6.5.3/workbox-sw.js"
-);
+const scripts = [
+  "https://storage.googleapis.com/workbox-cdn/releases/6.5.3/workbox-sw.js",
+  "/update.js",
+];
+
+importScripts(...scripts);
 
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", () => self.clients.claim());
