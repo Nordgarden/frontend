@@ -19,9 +19,9 @@
     page.value = newPage;
   };
 
-  onUnmounted(() => {
-    clearNuxtData("posts");
-  });
+  // onUnmounted(() => {
+  //   clearNuxtData("posts");
+  // });
 </script>
 
 <template>
