@@ -18,6 +18,10 @@
   const goToPage = (newPage: number) => {
     page.value = newPage;
   };
+
+  onUnmounted(() => {
+    clearNuxtData("posts");
+  });
 </script>
 
 <template>
