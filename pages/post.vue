@@ -1,45 +1,46 @@
 <script setup lang="ts">
-  defineI18nRoute({
-    paths: {
-      en: "/:slug",
-    },
-  });
+defineI18nRoute({
+  paths: {
+    en: "/:slug",
+  },
+});
 
-  const route = useRoute();
-  const { getPost } = useServer();
+const route = useRoute();
+const { getPost } = useServer();
 
-  const { data: post, error } = await useAsyncData(
-    `post-${route.params.slug}`,
-    async () => {
-      if (Array.isArray(route.params.slug)) {
-        return await getPost(route.params.slug.join(","));
-      }
-      return await getPost(route.params.slug);
+const { data: post, error } = await useAsyncData(
+  `post-${route.params.slug}`,
+  async () => {
+    if (Array.isArray(route.params.slug)) {
+      return await getPost(route.params.slug.join(","));
     }
-  );
-
-  if (!post.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: "Page Not Found",
-    });
+    return await getPost(route.params.slug);
   }
+);
 
-  useMeta(post);
-
-  const image = computed(() => {
-    // if (data.value?.post.featuredImage) {
-    //   return data.value?.post.featuredImage.node;
-    // }
-    return undefined;
+if (!post.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page Not Found",
+    fatal: true,
   });
+}
 
-  const component = computed(() => {
-    if (image.value) {
-      return resolveComponent("image-wrapper");
-    }
-    return "div";
-  });
+useMeta(post);
+
+const image = computed(() => {
+  // if (data.value?.post.featuredImage) {
+  //   return data.value?.post.featuredImage.node;
+  // }
+  return undefined;
+});
+
+const component = computed(() => {
+  if (image.value) {
+    return resolveComponent("image-wrapper");
+  }
+  return "div";
+});
 </script>
 
 <template>
@@ -58,7 +59,7 @@
 </template>
 
 <style lang="postcss" scoped>
-  .text {
-    margin-bottom: var(--spacing-l);
-  }
+.text {
+  margin-bottom: var(--spacing-l);
+}
 </style>

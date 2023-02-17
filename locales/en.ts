@@ -24,7 +24,7 @@ export default {
     previous: "Previous page",
     next: "Next page",
   },
-  kiplinks: {
+  skiplinks: {
     content: "To main content",
     menu: "To main navigation",
   },

@@ -1,11 +1,25 @@
+<script setup>
+const props = defineProps({
+  error: Object,
+});
+
+definePageMeta({
+  layout: "default",
+});
+</script>
+
 <template>
-  <button @click="handleError">Clear errors {{ error?.message }}</button>
+  <the-header />
+  <center-wrapper>
+    <main class="main">
+      <h1>404</h1>
+      <p>{{ error }}</p>
+    </main>
+  </center-wrapper>
 </template>
 
-<script setup lang="ts">
-  const props = defineProps<{
-    error: Error;
-  }>();
-
-  const handleError = () => clearError({ redirect: "/" });
-</script>
+<style lang="postcss" scoped>
+.main {
+  margin-block: 5em 8em;
+}
+</style>

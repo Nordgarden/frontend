@@ -1,30 +1,32 @@
 <script lang="ts" setup>
-  import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-  import { Ref } from "vue";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { Ref } from "vue";
 
-  const menuIsOpen = useMenu();
-  const afterLeave = () => {
-    lockBodyScoll(false);
-  };
-  const afterEnter = () => {
-    lockBodyScoll(true);
-  };
-  const content: Ref<HTMLDivElement | null> = ref(null);
+const menuIsOpen = useMenu();
+const afterLeave = () => {
+  lockBodyScoll(false);
+};
+const afterEnter = () => {
+  lockBodyScoll(true);
+};
+const content: Ref<HTMLDivElement | null> = ref(null);
 
-  const lockBodyScoll = (isOpen: boolean) => {
-    if (!content.value) {
-      return;
-    }
+const lockBodyScoll = (isOpen: boolean) => {
+  if (!content.value) {
+    return;
+  }
 
-    if (isOpen) {
-      disableBodyScroll(content.value);
-    } else {
-      enableBodyScroll(content.value);
-    }
-  };
+  if (isOpen) {
+    disableBodyScroll(content.value);
+  } else {
+    enableBodyScroll(content.value);
+  }
+};
 </script>
 
 <template>
+  <skip-links />
+  <audio-player />
   <header>
     <mobile-navigation />
     <transition
@@ -56,112 +58,112 @@
 </template>
 
 <style lang="postcss" scoped>
-  @import "~/assets/css/media-queries/media-queries.css";
+@import "~/assets/css/media-queries/media-queries.css";
 
-  .content {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    max-height: 100dvh;
+.content {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: 100dvh;
 
-    @media (--navigation-position-left) {
-      overflow: visible;
-      transform: none;
-      display: block !important;
-      max-height: none;
-    }
+  @media (--navigation-position-left) {
+    overflow: visible;
+    transform: none;
+    display: block !important;
+    max-height: none;
   }
+}
 
-  a {
-    @mixin link-reset;
+a {
+  @mixin link-reset;
+}
+
+h1 {
+  color: currentColor;
+
+  & a {
+    text-decoration: none;
   }
+}
 
-  h1 {
-    color: currentColor;
+.bg {
+  background: var(--color-white);
+  position: fixed;
+  inset: 0 0 auto;
+  height: 100dvh;
+  overflow: hidden;
+  z-index: var(--z-index-main-navigation);
+  padding-top: 5em;
 
-    & a {
-      text-decoration: none;
-    }
+  @media (--navigation-position-left) {
+    padding-top: 0;
+    background: transparent;
+    overflow: visible;
+    display: block !important;
+    justify-content: space-between;
+    width: var(--width-navigation-left);
+    padding: 0;
+    height: auto;
+    inset: auto;
+    position: static;
   }
+}
 
-  .bg {
-    background: var(--color-white);
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s 0.2s var(--transition-timing-function);
+  @media (--navigation-position-left) {
+    transition: none;
+  }
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  transform: translateY(calc(var(--spacing-l) * -1));
+  opacity: 0;
+}
+
+.fade2-enter-active,
+.fade2-leave-active {
+  transition: transform 0.3s var(--transition-timing-function);
+  @media (--navigation-position-left) {
+    transition: none;
+  }
+}
+
+.fade2-enter-from,
+.fade2-leave-to {
+  transform: translateY(-100vh);
+}
+
+.footer {
+  flex-direction: column;
+  display: flex;
+  gap: 1em;
+}
+
+@media (--navigation-position-left) {
+  .player,
+  .navigation {
+    z-index: var(--z-index-audio-player);
     position: fixed;
+    background-color: var(--color-white);
+    border: 0 solid currentColor;
+  }
+
+  .navigation {
+    border-bottom-width: 2px;
     inset: 0 0 auto;
-    height: 100dvh;
-    overflow: hidden;
-    z-index: var(--z-index-main-navigation);
-    padding-top: 5em;
-
-    @media (--navigation-position-left) {
-      padding-top: 0;
-      background: transparent;
-      overflow: visible;
-      display: block !important;
-      justify-content: space-between;
-      width: var(--width-navigation-left);
-      padding: 0;
-      height: auto;
-      inset: auto;
-      position: static;
-    }
   }
 
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: all 0.3s 0.2s var(--transition-timing-function);
-    @media (--navigation-position-left) {
-      transition: none;
-    }
-  }
-
-  .fade-enter-from,
-  .fade-leave-to {
-    transform: translateY(calc(var(--spacing-l) * -1));
-    opacity: 0;
-  }
-
-  .fade2-enter-active,
-  .fade2-leave-active {
-    transition: transform 0.3s var(--transition-timing-function);
-    @media (--navigation-position-left) {
-      transition: none;
-    }
-  }
-
-  .fade2-enter-from,
-  .fade2-leave-to {
-    transform: translateY(-100vh);
+  .player {
+    border-top-width: 2px;
+    inset: auto 0 0;
   }
 
   .footer {
-    flex-direction: column;
-    display: flex;
-    gap: 1em;
+    padding-block: 0.5em;
+    justify-content: space-between;
+    flex-direction: row;
   }
-
-  @media (--navigation-position-left) {
-    .player,
-    .navigation {
-      z-index: var(--z-index-audio-player);
-      position: fixed;
-      background-color: var(--color-white);
-      border: 0 solid currentColor;
-    }
-
-    .navigation {
-      border-bottom-width: 2px;
-      inset: 0 0 auto;
-    }
-
-    .player {
-      border-top-width: 2px;
-      inset: auto 0 0;
-    }
-
-    .footer {
-      padding-block: 0.5em;
-      justify-content: space-between;
-      flex-direction: row;
-    }
-  }
+}
 </style>

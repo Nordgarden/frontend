@@ -1,32 +1,28 @@
 <script setup lang="ts">
-  const { fetchEvents } = useEvents();
+const { fetchEvents } = useEvents();
 
-  onMounted(() => {
-    fetchEvents();
-  });
+onMounted(() => {
+  fetchEvents();
+});
 </script>
 
 <template>
-  <div>
-    <skip-links />
-    <audio-player />
-    <the-header />
-    <center-wrapper>
-      <main class="main">
-        <NuxtLayout>
-          <NuxtLoadingIndicator color="var(--color-primary)" />
-          <NuxtPage />
-        </NuxtLayout>
-      </main>
-    </center-wrapper>
-    <client-only>
-      <pwa-update />
-    </client-only>
-  </div>
+  <the-header />
+  <center-wrapper>
+    <main class="main">
+      <NuxtLayout>
+        <NuxtLoadingIndicator color="var(--color-primary)" />
+        <NuxtPage />
+      </NuxtLayout>
+    </main>
+  </center-wrapper>
+  <client-only>
+    <pwa-update />
+  </client-only>
 </template>
 
 <style lang="postcss" scoped>
-  .main {
-    margin-block: 5em 8em;
-  }
+.main {
+  margin-block: 5em 8em;
+}
 </style>
