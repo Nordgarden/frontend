@@ -2,10 +2,6 @@
 const props = defineProps({
   error: Object,
 });
-
-definePageMeta({
-  layout: "default",
-});
 </script>
 
 <template>

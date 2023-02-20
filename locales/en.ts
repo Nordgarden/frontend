@@ -28,4 +28,7 @@ export default {
     content: "To main content",
     menu: "To main navigation",
   },
+  errors: {
+    error404: "Page not found",
+  },
 };
