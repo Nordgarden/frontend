@@ -7,22 +7,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <the-header />
-  <center-wrapper>
-    <main class="main">
-      <NuxtLayout>
-        <NuxtLoadingIndicator color="var(--color-primary)" />
-        <NuxtPage />
-      </NuxtLayout>
-    </main>
-  </center-wrapper>
-  <client-only>
-    <pwa-update />
-  </client-only>
+  <NuxtLayout>
+    <NuxtLoadingIndicator color="var(--color-primary)" />
+    <NuxtPage />
+  </NuxtLayout>
 </template>
-
-<style lang="postcss" scoped>
-.main {
-  margin-block: 5em 8em;
-}
-</style>

@@ -1,10 +1,10 @@
 <script setup>
-  const route = useRoute();
-  const head = useLocaleHead({
-    addDirAttribute: true,
-    identifierAttribute: "id",
-    addSeoAttributes: true,
-  });
+const route = useRoute();
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
 </script>
 
 <template>
@@ -29,8 +29,22 @@
         </template>
       </Head>
       <Body>
-        <slot />
+        <the-header />
+        <center-wrapper>
+          <main class="main">
+            <slot />
+          </main>
+        </center-wrapper>
+        <client-only>
+          <pwa-update />
+        </client-only>
       </Body>
     </Html>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.main {
+  margin-block: 5em 8em;
+}
+</style>

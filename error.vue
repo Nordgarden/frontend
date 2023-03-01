@@ -1,21 +1,20 @@
-<script setup>
-const props = defineProps({
+<script lang="ts" setup>
+defineProps({
   error: Object,
+});
+
+const { t } = useI18n();
+
+useHead({
+  title: t("errors.error404"),
 });
 </script>
 
 <template>
-  <the-header />
-  <center-wrapper>
-    <main class="main">
+  <NuxtLayout>
+    <div>
       <h1>404</h1>
       <p>{{ error }}</p>
-    </main>
-  </center-wrapper>
+    </div>
+  </NuxtLayout>
 </template>
-
-<style lang="postcss" scoped>
-.main {
-  margin-block: 5em 8em;
-}
-</style>
