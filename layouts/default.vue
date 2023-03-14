@@ -1,10 +1,17 @@
-<script setup>
-  const route = useRoute();
-  const head = useLocaleHead({
-    addDirAttribute: true,
-    identifierAttribute: "id",
-    addSeoAttributes: true,
-  });
+<script setup lang="ts">
+const head = useLocaleHead({
+  addDirAttribute: true,
+  identifierAttribute: "id",
+  addSeoAttributes: true,
+});
+
+head.value.link?.forEach((link) => {
+  const url = new URL(link.href);
+  if (!url.pathname.endsWith("/")) {
+    url.pathname = `${url.pathname}/`;
+    link.href = url.href;
+  }
+});
 </script>
 
 <template>
@@ -29,8 +36,22 @@
         </template>
       </Head>
       <Body>
-        <slot />
+        <the-header />
+        <center-wrapper>
+          <main class="main">
+            <slot />
+          </main>
+        </center-wrapper>
+        <client-only>
+          <pwa-update />
+        </client-only>
       </Body>
     </Html>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.main {
+  margin-block: 5em 8em;
+}
+</style>

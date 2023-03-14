@@ -7,6 +7,7 @@ defineI18nRoute({
 
 const route = useRoute();
 const { getPost } = useServer();
+const t = useI18n();
 
 const { data: post, error } = await useAsyncData(
   `post-${route.params.slug}`,
@@ -21,7 +22,7 @@ const { data: post, error } = await useAsyncData(
 if (!post.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: "Page Not Found",
+    statusMessage: t("errors.error404"),
     fatal: true,
   });
 }

@@ -1,21 +1,22 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const currentPage = route.query.page ? Number(route.query.page) : 1;
+const page = ref(1);
 
-const page = ref(currentPage);
+onMounted(() => {
+  if (route.query.page) {
+    page.value = Number(route.query.page);
+  }
+});
+
 const { getPosts } = useServer();
 const { data, pending } = await useAsyncData(
   "posts",
   async () => {
-    const posts = await getPosts(page.value);
-    return {
-      posts,
-      page: page.value,
-    };
+    return await getPosts(page.value);
   },
   {
-    watch: page,
+    watch: [page],
   }
 );
 
@@ -23,27 +24,21 @@ const goToPage = (newPage: number) => {
   page.value = newPage;
 };
 
-if (page.value !== data.value?.page) {
-  refreshNuxtData("posts");
-}
+onBeforeUnmount(() => {
+  if (page.value > 1) {
+    clearNuxtData("posts");
+  }
+});
 </script>
 
 <template>
   <div v-if="data" class="wrapper">
     <app-loader v-if="pending" />
-    <ul class="posts" v-else-if="data.posts.items.length">
-      <PostsListItem
-        v-for="post in data.posts.items"
-        :key="post.slug"
-        :post="post"
-      />
+    <ul class="posts" v-else-if="data.items.length">
+      <PostsListItem v-for="post in data.items" :key="post.slug" :post="post" />
     </ul>
     <p v-else>No posts found</p>
-    <app-paging
-      :page="page"
-      :total-pages="data.posts.total"
-      @go-to-page="goToPage"
-    />
+    <app-paging :page="page" :total-pages="data.total" @go-to-page="goToPage" />
   </div>
 </template>
 
