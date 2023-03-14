@@ -1,9 +1,16 @@
-<script setup>
-const route = useRoute();
+<script setup lang="ts">
 const head = useLocaleHead({
   addDirAttribute: true,
   identifierAttribute: "id",
   addSeoAttributes: true,
+});
+
+head.value.link?.forEach((link) => {
+  const url = new URL(link.href);
+  if (!url.pathname.endsWith("/")) {
+    url.pathname = `${url.pathname}/`;
+    link.href = url.href;
+  }
 });
 </script>
 

@@ -9,18 +9,18 @@
     "generate-images": "node ./images"
   },
   "devDependencies": {
-    "@kevinmarrec/nuxt-pwa": "^0.16.2",
+    "@kevinmarrec/nuxt-pwa": "^0.17.0",
     "@nuxtjs/i18n": "^8.0.0-beta.8",
     "@types/body-scroll-lock": "^3.1.0",
     "@types/workbox-window": "^4.3.4",
-    "nuxt": "3.2.2",
+    "nuxt": "3.2.3",
     "nuxt-svgo": "^1.1.0",
     "postcss-mixins": "^9.0.4",
     "postcss-preset-env": "^8.0.1"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
-    "node-fetch": "^3.3.0",
+    "node-fetch": "^3.3.1",
     "nuxt-icons": "^3.1.0",
     "sharp": "^0.31.3"
   }
