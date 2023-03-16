@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "netlify",
-    "generate": "nuxt generate",
+    "dev": "nuxt dev",
+    "generate": "nuxt build",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "generate-images": "node ./images"
