@@ -1,10 +1,11 @@
 import { IPage } from "~~/types/IContent";
 
 export const usePage = async (pageId: number) => {
-  const { pageApiUrl } = useAppConfig();
+  const { contentApiUrl } = useAppConfig();
 
-  const { data: page, error } = useFetch<IPage>(pageApiUrl, {
+  const { data: page, error } = useFetch<IPage>("page", {
     key: `page-${pageId}`,
+    baseURL: contentApiUrl,
     server: true,
     params: {
       id: pageId,

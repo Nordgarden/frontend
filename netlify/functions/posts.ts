@@ -2,16 +2,16 @@ import { Handler, HandlerEvent } from "@netlify/functions";
 
 import fetch from "./utils/fetch";
 import getUrl from "./utils/getUrl";
-import type { IPost } from "~~/types/IContent";
+import type { IPost, IPostListItem } from "~~/types/IContent";
 import type { ISEO } from "~~/types/ISEO";
 
 const handler: Handler = async (event: HandlerEvent) => {
   try {
-    const slug = event.queryStringParameters?.slug;
+    const page = event.queryStringParameters?.page;
     const url = getUrl({
-      slug,
+      page,
       type: "posts",
-      fields: ["title", "content", "yoast_head_json", "date"],
+      fields: ["title", "excerpt", "date", "slug"],
       image: true,
     });
 
@@ -20,20 +20,22 @@ const handler: Handler = async (event: HandlerEvent) => {
         title: {
           rendered: string;
         };
-        content: {
+        excerpt: {
           rendered: string;
         };
-        yoast_head_json: ISEO;
+        except: string;
         date: string;
+        slug: string;
       }[]
     >(url);
-    const body: IPost = {
-      title: data[0].title.rendered,
-      content: data[0].content.rendered,
-      seo: data[0].yoast_head_json,
-      date: data[0].date,
-      featuredImage: null,
-    };
+    const body: IPostListItem[] = data.map((item) => {
+      return {
+        title: item.title.rendered,
+        slug: item.slug,
+        excerpt: item.excerpt.rendered,
+        date: item.date,
+      };
+    });
 
     return {
       statusCode: 200,

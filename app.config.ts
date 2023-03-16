@@ -2,8 +2,8 @@ export default defineAppConfig({
   mediaSizes: [96, 128, 192, 256, 384, 512],
   eventsApiUrl:
     "https://nuxt-fetch--nordgarden.netlify.app/.netlify/functions/events",
-  pageApiUrl:
-    "https://nuxt-fetch--nordgarden.netlify.app/.netlify/functions/page",
+  contentApiUrl:
+    "https://nuxt-fetch--nordgarden.netlify.app/.netlify/functions/",
   postApiUrl:
     "https://nuxt-fetch--nordgarden.netlify.app/.netlify/functions/post",
   postsApiUrl:

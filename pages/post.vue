@@ -9,10 +9,11 @@ defineI18nRoute({
 
 const route = useRoute();
 const t = useI18n();
-const { postApiUrl } = useAppConfig();
+const { contentApiUrl } = useAppConfig();
 
-const { data: post, error } = useFetch<IPost>(postApiUrl, {
+const { data: post, error } = useFetch<IPost>("post", {
   key: route.params.slug as string,
+  baseURL: contentApiUrl,
   server: true,
   params: {
     slug: route.params.slug,
