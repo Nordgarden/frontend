@@ -1,5 +1,3 @@
-import routes from "./data/routes";
-import en from "./locales/en";
 const apiUrl = "https://api.nordgarden.info/";
 
 export default defineNuxtConfig({
@@ -13,7 +11,7 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
-    preset: "netlify",
+    preset: "netlify-builder",
   },
   // hooks: {
   //   async "nitro:config"(nitroConfig) {
@@ -175,9 +173,7 @@ export default defineNuxtConfig({
     ],
     vueI18n: {
       legacy: false,
-      messages: {
-        en,
-      },
+
       datetimeFormats: {
         en: {
           short: {
