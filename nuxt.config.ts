@@ -181,17 +181,14 @@ export default defineNuxtConfig({
       datetimeFormats: {
         en: {
           short: {
-            year: "numeric",
-            month: "long",
+            year: "2-digit",
+            month: "numeric",
             day: "numeric",
           },
           long: {
             year: "numeric",
-            month: "short",
+            month: "long",
             day: "numeric",
-            weekday: "short",
-            hour: "numeric",
-            minute: "numeric",
           },
         },
       },

@@ -1,4 +1,4 @@
-import { IEvent, IEventResponse } from "~~/types/IEvent";
+import { IEvent } from "~~/types/IEvent";
 
 const keys = {
   isLoading: "events/isLoading",
@@ -12,23 +12,9 @@ export const useEvents = () => {
   const { eventsApiUrl } = useAppConfig();
   const fetchEvents = async () => {
     try {
-      const data = (await $fetch(eventsApiUrl)) as IEventResponse[];
+      const data = (await $fetch(eventsApiUrl)) as IEvent[];
       if (data) {
-        events.value = data.map((event) => {
-          const datetime = new Date(event.datetime);
-
-          const date = `${datetime.getDate()}.${datetime.getMonth() + 1}`;
-          return {
-            name: event.lineup.name,
-            date,
-            venue:
-              event.venue.name !== "Unknown venue"
-                ? event.venue.name
-                : undefined,
-            city: event.venue.city !== "Unknown" ? event.venue.city : undefined,
-            url: event.url,
-          };
-        });
+        events.value = data;
       }
     } catch (error) {
     } finally {

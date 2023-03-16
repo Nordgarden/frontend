@@ -1,13 +1,19 @@
 <script setup lang="ts">
-  const props = defineProps<{
+const props = withDefaults(
+  defineProps<{
     date: string;
-  }>();
-  const dateTime = computed(() => {
-    const date = new Date(props.date);
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  });
+    format?: "long" | "short";
+  }>(),
+  {
+    format: "long",
+  }
+);
+const dateTime = computed(() => {
+  const date = new Date(props.date);
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+});
 </script>
 
 <template>
-  <time :datetime="dateTime">{{ $d(new Date(date), "short") }}</time>
+  <time :datetime="dateTime">{{ $d(new Date(date), format) }}</time>
 </template>
