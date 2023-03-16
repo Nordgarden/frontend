@@ -1,15 +1,8 @@
 import { IPage } from "~~/types/IContent";
-import { ISEO } from "~~/types/ISEO";
-import { useServer } from "./useServer";
 
 export const usePage = async (pageId: number) => {
-  const { getPage } = useServer();
-
-  const { data: page, error } = await useAsyncData(
-    `page-${pageId}`,
-    async () => {
-      return await getPage(pageId);
-    }
+  const { data: page, error } = useFetch<IPage>(
+    `/.netlify/functions/page?id=${pageId}`
   );
 
   if (error.value) {
@@ -20,6 +13,7 @@ export const usePage = async (pageId: number) => {
   }
 
   useMeta(page);
+
   return {
     page,
   };

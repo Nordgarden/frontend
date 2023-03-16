@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { IPost } from "~~/types/IContent";
+
 defineI18nRoute({
   paths: {
     en: "/:slug",
@@ -6,20 +8,13 @@ defineI18nRoute({
 });
 
 const route = useRoute();
-const { getPost } = useServer();
 const t = useI18n();
 
-const { data: post, error } = await useAsyncData(
-  `post-${route.params.slug}`,
-  async () => {
-    if (Array.isArray(route.params.slug)) {
-      return await getPost(route.params.slug.join(","));
-    }
-    return await getPost(route.params.slug);
-  }
+const { data: post, error } = useFetch<IPost>(
+  `/.netlify/functions/post?id=${route.params.slug}`
 );
 
-if (!post.value) {
+if (error.value) {
   throw createError({
     statusCode: 404,
     statusMessage: t("errors.error404"),

@@ -6,9 +6,6 @@ import { IEvent, IEventResponse } from "~~/types/IEvent";
 const url =
   "https://rest.bandsintown.com/artists/Nordgarden/events?app_id=TerjeNordgardenWebsite";
 const handler: Handler = async (event: HandlerEvent) => {
-  const headers = {
-    "Content-Type": "application/json",
-  };
   const response = await fetch(url);
   const data = (await response.json()) as IEventResponse[];
   let body: IEvent[] = [];
@@ -28,7 +25,9 @@ const handler: Handler = async (event: HandlerEvent) => {
   return {
     statusCode: 200,
     body: JSON.stringify(body),
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 };
 
