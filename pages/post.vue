@@ -11,9 +11,13 @@ const route = useRoute();
 const t = useI18n();
 const { postApiUrl } = useAppConfig();
 
-const { data: post, error } = useFetch<IPost>(
-  `${postApiUrl}?id=${route.params.slug}`
-);
+const { data: post, error } = useFetch<IPost>(postApiUrl, {
+  key: route.params.slug as string,
+  server: true,
+  params: {
+    slug: route.params.slug,
+  },
+});
 
 if (error.value) {
   throw createError({
