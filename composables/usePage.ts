@@ -1,9 +1,9 @@
 import { IPage } from "~~/types/IContent";
 
 export const usePage = async (pageId: number) => {
-  const { data: page, error } = useFetch<IPage>(
-    `/.netlify/functions/page?id=${pageId}`
-  );
+  const { pageApiUrl } = useAppConfig();
+
+  const { data: page, error } = useFetch<IPage>(`${pageApiUrl}?id=${pageId}`);
 
   if (error.value) {
     throw createError({

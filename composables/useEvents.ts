@@ -12,7 +12,7 @@ export const useEvents = () => {
   const { eventsApiUrl } = useAppConfig();
   const fetchEvents = async () => {
     try {
-      const data = (await $fetch(eventsApiUrl)) as IEvent[];
+      const data = await $fetch<IEvent[]>(eventsApiUrl);
       if (data) {
         events.value = data;
       }

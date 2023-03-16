@@ -9,9 +9,10 @@ defineI18nRoute({
 
 const route = useRoute();
 const t = useI18n();
+const { postApiUrl } = useAppConfig();
 
 const { data: post, error } = useFetch<IPost>(
-  `/.netlify/functions/post?id=${route.params.slug}`
+  `${postApiUrl}?id=${route.params.slug}`
 );
 
 if (error.value) {
