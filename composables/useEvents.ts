@@ -9,10 +9,12 @@ export const useEvents = () => {
   const isLoading = useState<boolean>(keys.isLoading, () => true);
   const events = useState<IEvent[]>(keys.events, () => []);
 
-  const { eventsApiUrl } = useAppConfig();
+  const { contentApiUrl } = useAppConfig();
   const fetchEvents = async () => {
     try {
-      const data = await $fetch<IEvent[]>(eventsApiUrl);
+      const data = await $fetch<IEvent[]>("events", {
+        baseURL: contentApiUrl,
+      });
       if (data) {
         events.value = data;
       }
