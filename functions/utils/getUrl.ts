@@ -4,12 +4,14 @@ export default ({
   id,
   slug,
   page,
+  image,
 }: {
   fields: string[];
   type: string;
   id?: string;
   slug?: string;
-  page?: number;
+  page?: string;
+  image?: Boolean;
 }) => {
   const apiUrl = "https://api.nordgarden.info/wp-json/wp/v2/";
 
@@ -18,7 +20,14 @@ export default ({
     baseUrl = `${baseUrl}${id}`;
   }
   let url = new URL(baseUrl);
-  url.searchParams.set("_fields", fields.join(","));
+  const allFields = fields;
+  if (image) {
+    url.searchParams.set("_embed", "true");
+    allFields.push("_links");
+    allFields.push("_embedded");
+  }
+
+  url.searchParams.set("_fields", allFields.join(","));
   if (slug) {
     url.searchParams.set("slug", slug);
   }

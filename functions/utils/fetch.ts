@@ -12,8 +12,15 @@ export default async <TResponse>(
   // Inside, we call the `fetch` function with
   // a URL and config given:
   const response = await fetch(url);
-  const data = await response.json();
-  return data as TResponse;
+  const data = (await response.json()) as TResponse;
+  // const total = Number(response.headers.get("x-wp-totalpages")) as number;
+  // if (total) {
+  //   return {
+  //     data,
+  //     number,
+  //   } as TResponse;
+  // }
+  return data;
 
   // We also can use some post-response
   // data-transformations in the last `then` clause.
