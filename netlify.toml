@@ -2,6 +2,7 @@
   autoLaunch = false
 
 [build]
+  directory = "functions"
   command = "npm run generate"
   publish = "dist"
 
