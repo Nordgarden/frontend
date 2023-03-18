@@ -15,18 +15,11 @@
   const goToPost = () => {
     router.push(url);
   };
-
-  const image = computed(() => {
-    if (props.post.featuredImage) {
-      return props.post.featuredImage.node;
-    }
-    return undefined;
-  });
 </script>
 
 <template>
   <ClickableListItem @click="goToPost" class="post">
-    <image-wrapper :image="image">
+    <image-wrapper :image="post.featuredImage">
       <div class="content">
         <h2>
           <nuxt-link :to="url"><span v-html="post.title" /></nuxt-link>

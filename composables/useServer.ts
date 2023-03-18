@@ -1,8 +1,31 @@
-import { IFeaturedImage, IPage, IPost, IPostListItem } from "~~/types/IContent";
-import { ISEO } from "~~/types/ISEO";
+import { IPage, IPost, IPostListItem } from "~~/types/IContent";
+import {
+  IResponseImage,
+  IResponsePage,
+  IResponsePost,
+  IResponsePosts,
+} from "~~/types/IResponse";
 
 export const useServer = () => {
   const { apiUrl } = useAppConfig();
+
+  const getFeaturedImage = (featuredImage: IResponseImage) => {
+    if (!featuredImage["wp:featuredmedia"]) {
+      return null;
+    }
+    const image = featuredImage["wp:featuredmedia"][0];
+    const srcSet = Object.values(image.media_details.sizes).map((size) => {
+      return `${size?.source_url} ${size?.width}w`;
+    });
+
+    return {
+      alt: image.alt_text,
+      width: image.media_details.width,
+      height: image.media_details.height,
+      src: image.source_url,
+      srcSet: srcSet.join(","),
+    };
+  };
 
   const getUrl = ({
     fields,
@@ -47,72 +70,10 @@ export const useServer = () => {
       fields: ["title", "content", "yoast_head_json", "date"],
       image: true,
     });
-    const response = await $fetch<
-      {
-        title: {
-          rendered: string;
-        };
-        content: {
-          rendered: string;
-        };
-        yoast_head_json: ISEO;
-        date: string;
-        _embedded: {
-          "wp:featuredmedia"?: {
-            alt_text: string;
-            source_url: string;
-            media_details: {
-              width: number;
-              heigth: number;
-              sizes: [
-                thumbnail: {
-                  width: number;
-                  heigth: number;
-                  source_url: string;
-                },
-                full: {
-                  width: number;
-                  heigth: number;
-                  source_url: string;
-                },
-                medium?: {
-                  width: number;
-                  heigth: number;
-                  source_url: string;
-                },
-                large?: {
-                  width: number;
-                  heigth: number;
-                  source_url: string;
-                },
-                medium_large?: {
-                  width: number;
-                  heigth: number;
-                  source_url: string;
-                }
-              ];
-            };
-          }[];
-        };
-      }[]
-    >(url);
+    const response = await $fetch<IResponsePost[]>(url);
 
     if (response.length) {
-      let featuredImage: null | IFeaturedImage = null;
-
-      if (response[0]._embedded["wp:featuredmedia"]) {
-        const image = response[0]._embedded["wp:featuredmedia"][0];
-        const srcSet = Object.values(image.media_details.sizes).map((size) => {
-          return `${size?.source_url} ${size?.width}w`;
-        });
-        featuredImage = {
-          alt: image.alt_text,
-          width: image.media_details.width,
-          height: image.media_details.heigth,
-          src: image.source_url,
-          srcSet: srcSet.join(","),
-        };
-      }
+      const featuredImage = getFeaturedImage(response[0]._embedded);
       return {
         title: response[0].title.rendered,
         content: response[0].content.rendered,
@@ -140,11 +101,14 @@ export const useServer = () => {
       };
     }
     const total = Number(response.headers.get("x-wp-totalpages")) as number;
-    const items = response._data.map((item) => {
+    const items = response._data.map((item: IResponsePosts) => {
+      const featuredImage = getFeaturedImage(item._embedded);
+
       return {
-        ...item,
         title: item.title.rendered,
         excerpt: item.excerpt.rendered,
+        date: item.date,
+        featuredImage,
       };
     }) as IPostListItem[];
     return {
@@ -159,15 +123,7 @@ export const useServer = () => {
       type: "pages",
       fields: ["title", "content", "yoast_head_json"],
     });
-    const response = await $fetch<{
-      title: {
-        rendered: string;
-      };
-      content: {
-        rendered: string;
-      };
-      yoast_head_json: ISEO;
-    }>(url);
+    const response = await $fetch<IResponsePage>(url);
     if (response) {
       return {
         title: response.title.rendered,
