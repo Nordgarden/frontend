@@ -46,7 +46,7 @@ export const useAudio = () => {
     const images: MediaImage[] = [];
     mediaSizes.forEach((size) => {
       formats.forEach((format) => {
-        const src = `${image}-${size}.${format}`;
+        const src = `/images/${image}-${size}.${format}`;
         images.push({
           src,
           sizes: `${size}x${size}`,
