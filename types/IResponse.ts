@@ -25,6 +25,7 @@ export interface IResponseImage {
 }
 
 export interface IResponsePost {
+  id: number;
   title: {
     rendered: string;
   };

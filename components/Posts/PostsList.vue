@@ -1,13 +1,17 @@
 <script setup lang="ts">
   const route = useRoute();
 
+  const props = defineProps<{
+    exclude: number;
+  }>();
+
   const page = ref(1);
 
   const { getPosts } = useServer();
   const { data, pending, execute } = await useAsyncData(
     "posts",
     async () => {
-      return await getPosts(page.value);
+      return await getPosts(page.value, props.exclude);
     },
     {
       watch: [page],

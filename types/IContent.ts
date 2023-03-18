@@ -21,6 +21,7 @@ export interface IBasePage {
 export interface IPage extends IBasePage {}
 
 export interface IPost extends IBasePage {
+  id: number;
   date: string;
   featuredImage: IFeaturedImageNode | null;
 }

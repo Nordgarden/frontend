@@ -48,8 +48,8 @@
     </component>
   </app-page>
   <section class="news-list" aria-labelledby="news-list-title" v-if="post">
-    <h1 id="news-list-title">{{ $t("latestPosts") }}</h1>
-    <posts-list />
+    <h1 id="news-list-title">{{ $t("morePosts") }}</h1>
+    <posts-list :exclude="post.id" />
   </section>
 </template>
 

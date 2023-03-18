@@ -34,6 +34,7 @@ export const useServer = () => {
     slug,
     page,
     image,
+    exclude,
   }: {
     fields: string[];
     type: string;
@@ -41,6 +42,7 @@ export const useServer = () => {
     slug?: string;
     page?: number;
     image?: Boolean;
+    exclude?: number;
   }) => {
     let baseUrl = `${apiUrl}${type}/`;
     if (id) {
@@ -56,6 +58,9 @@ export const useServer = () => {
     if (slug) {
       url.searchParams.set("slug", slug);
     }
+    if (exclude) {
+      url.searchParams.set("exclude", exclude.toString());
+    }
     if (page) {
       url.searchParams.set("page", page.toString());
       url.searchParams.set("per_page", "5");
@@ -67,7 +72,7 @@ export const useServer = () => {
     const url = getUrl({
       slug,
       type: "posts",
-      fields: ["title", "content", "yoast_head_json", "date"],
+      fields: ["title", "content", "yoast_head_json", "date", "id"],
       image: true,
     });
     const response = await $fetch<IResponsePost[]>(url);
@@ -75,6 +80,7 @@ export const useServer = () => {
     if (response.length) {
       const featuredImage = getFeaturedImage(response[0]._embedded);
       return {
+        id: response[0].id,
         title: response[0].title.rendered,
         content: response[0].content.rendered,
         seo: response[0].yoast_head_json,
@@ -85,12 +91,13 @@ export const useServer = () => {
     return null;
   };
 
-  const getPosts = async (page: number) => {
+  const getPosts = async (page: number, exclude?: number) => {
     const url = getUrl({
       type: "posts",
       fields: ["title", "excerpt", "date", "slug"],
       page,
       image: true,
+      exclude,
     });
 
     const response = await $fetch.raw(url).catch((error) => error.data);
