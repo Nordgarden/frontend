@@ -15,7 +15,7 @@
     :lazy="lazy"
     :alt="image.alt"
     :sizes="sizes"
-    :width="image.mediaDetails.width"
-    :height="image.mediaDetails.height"
+    :width="image.width"
+    :height="image.height"
   />
 </template>

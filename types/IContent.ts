@@ -1,14 +1,11 @@
 import { ISEO } from "./ISEO";
 
 export interface IFeaturedImage {
-  id: string;
   srcSet: string;
   src: string;
   alt: string;
-  mediaDetails: {
-    width: string;
-    height: string;
-  };
+  width: number;
+  height: number;
 }
 
 interface IFeaturedImageNode {
@@ -33,7 +30,7 @@ export interface IPostListItem {
   date: string;
   slug: string;
   excerpt: string;
-  featuredImage?: IFeaturedImageNode;
+  featuredImage?: IFeaturedImage;
 }
 
 interface IPostNode {

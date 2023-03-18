@@ -21,7 +21,7 @@
     }
   );
 
-  if (!post.value) {
+  if (!post.value || error.value) {
     throw createError({
       statusCode: 404,
       statusMessage: "Page Not Found",
@@ -30,15 +30,8 @@
 
   useMeta(post);
 
-  const image = computed(() => {
-    // if (data.value?.post.featuredImage) {
-    //   return data.value?.post.featuredImage.node;
-    // }
-    return undefined;
-  });
-
   const component = computed(() => {
-    if (image.value) {
+    if (post.value?.featuredImage) {
       return resolveComponent("image-wrapper");
     }
     return "div";
@@ -47,7 +40,7 @@
 
 <template>
   <app-page :title="post.title" v-if="post">
-    <component :is="component" :image="image">
+    <component :is="component" :image="post.featuredImage">
       <div class="post">
         <post-date :date="post.date" class="date" />
         <div class="text" v-html="post.content" />
