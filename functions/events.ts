@@ -1,13 +1,12 @@
 import { Handler, HandlerEvent } from "@netlify/functions";
 
-import fetch from "node-fetch";
+import fetch from "./utils/fetch";
 import { IEvent, IEventResponse } from "~~/types/IEvent";
 
 const url =
   "https://rest.bandsintown.com/artists/Nordgarden/events?app_id=TerjeNordgardenWebsite";
 const handler: Handler = async (event: HandlerEvent) => {
-  const response = await fetch(url);
-  const data = (await response.json()) as IEventResponse[];
+  const data = await fetch<IEventResponse[]>(url);
   let body: IEvent[] = [];
 
   if (data) {

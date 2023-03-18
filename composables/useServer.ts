@@ -1,4 +1,3 @@
-import { title } from "process";
 import { IPage, IPost, IPostListItem } from "~~/types/IContent";
 import { ISEO } from "~~/types/ISEO";
 

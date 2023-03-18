@@ -1,16 +1,12 @@
-import { IPage } from "~~/types/IContent";
-
 export const usePage = async (pageId: number) => {
-  const { contentApiUrl } = useAppConfig();
+  const { getPage } = useServer();
 
-  const { data: page, error } = useFetch<IPage>("page", {
-    key: `page-${pageId}`,
-    baseURL: contentApiUrl,
-    server: true,
-    params: {
-      id: pageId,
-    },
-  });
+  const { data: page, error } = await useAsyncData(
+    `page-${pageId}`,
+    async () => {
+      return await getPage(pageId);
+    }
+  );
 
   if (error.value) {
     throw createError({
@@ -20,7 +16,6 @@ export const usePage = async (pageId: number) => {
   }
 
   useMeta(page);
-
   return {
     page,
   };
