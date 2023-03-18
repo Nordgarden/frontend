@@ -43,6 +43,7 @@ export interface IResponsePosts {
   excerpt: {
     rendered: string;
   };
+  slug: string;
   date: string;
   _embedded: IResponseImage;
 }

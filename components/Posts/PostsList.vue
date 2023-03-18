@@ -3,20 +3,15 @@
 
   const page = ref(1);
 
-  onMounted(() => {
-    if (route.query.page) {
-      page.value = Number(route.query.page);
-    }
-  });
-
   const { getPosts } = useServer();
-  const { data, pending } = await useAsyncData(
+  const { data, pending, execute } = await useAsyncData(
     "posts",
     async () => {
       return await getPosts(page.value);
     },
     {
       watch: [page],
+      immediate: false,
     }
   );
 
@@ -24,10 +19,11 @@
     page.value = newPage;
   };
 
-  onBeforeUnmount(() => {
-    if (page.value > 1) {
-      clearNuxtData("posts");
+  onMounted(() => {
+    if (route.query.page) {
+      page.value = Number(route.query.page);
     }
+    execute();
   });
 </script>
 

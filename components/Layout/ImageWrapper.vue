@@ -3,7 +3,7 @@
 
   const props = withDefaults(
     defineProps<{
-      image?: string | IFeaturedImage;
+      image?: IFeaturedImage;
       remote?: boolean;
       lazy?: boolean;
       alt?: string;

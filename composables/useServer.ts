@@ -105,6 +105,7 @@ export const useServer = () => {
       const featuredImage = getFeaturedImage(item._embedded);
 
       return {
+        slug: item.slug,
         title: item.title.rendered,
         excerpt: item.excerpt.rendered,
         date: item.date,
