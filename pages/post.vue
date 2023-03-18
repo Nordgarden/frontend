@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  import { IPost } from "~~/types/IContent";
-  import { ISEO } from "~~/types/ISEO";
-
   defineI18nRoute({
     paths: {
       en: "/:slug",

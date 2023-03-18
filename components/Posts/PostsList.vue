@@ -2,7 +2,7 @@
   const route = useRoute();
 
   const props = defineProps<{
-    exclude: number;
+    exclude?: number;
   }>();
 
   const page = ref(1);
