@@ -36,6 +36,7 @@ head.value.link?.forEach((link) => {
         </template>
       </Head>
       <Body>
+        <VitePwaManifest />
         <the-header />
         <center-wrapper>
           <main class="main">
