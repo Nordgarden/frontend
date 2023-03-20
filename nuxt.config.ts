@@ -87,6 +87,11 @@ export default defineNuxtConfig({
       ],
       link: [
         {
+          rel: "apple-touch-icon",
+          href: "/icons/512x512.maskable.png",
+          sizes: "512x512",
+        },
+        {
           type: "application/atom+xml",
           rel: "alternate",
           href: `${apiUrl}feed/`,
