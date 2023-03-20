@@ -64,6 +64,32 @@ export default defineNuxtConfig({
           icons: [],
         },
       ],
+      icons: [
+        {
+          src: "/icons/192x192.png",
+          type: "image/png",
+          sizes: "192x192",
+          purpose: "any",
+        },
+        {
+          src: "/icons/192x192.maskable.png",
+          type: "image/png",
+          sizes: "192x192",
+          purpose: "maskable",
+        },
+        {
+          src: "/icons/512x512.png",
+          type: "image/png",
+          sizes: "512x512",
+          purpose: "any",
+        },
+        {
+          src: "/icons/512x512.maskable.png",
+          type: "image/png",
+          sizes: "512x512",
+          purpose: "maskable",
+        },
+      ],
       categories: ["music"],
       // screenshots: [
       //   {
