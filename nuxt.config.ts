@@ -34,32 +34,6 @@ export default defineNuxtConfig({
       theme_color: "#ca242c",
       short_name: "Nordgarden",
       orientation: "portrait-primary",
-      shortcuts: [
-        {
-          name: "Tour",
-          short_name: "Tour",
-          url: "/tour",
-          icons: [],
-        },
-        {
-          name: "Albums",
-          short_name: "Albums",
-          url: "/albums",
-          icons: [],
-        },
-        {
-          name: "Videos",
-          short_name: "Videos",
-          url: "/videos",
-          icons: [],
-        },
-        {
-          name: "Biography",
-          short_name: "Biography",
-          url: "/biography",
-          icons: [],
-        },
-      ],
       icons: [
         {
           src: "/icons/192x192.png",
