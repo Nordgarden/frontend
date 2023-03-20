@@ -14,22 +14,18 @@ export default defineNuxtConfig({
   nitro: {
     preset: "netlify",
   },
-  hooks: {
-    async "nitro:config"(nitroConfig) {
-      if (nitroConfig.dev) {
-        return;
-      }
-      let slugs = await routes();
-      // @ts-ignore
-      nitroConfig.prerender.routes.push(...slugs);
-      return;
-    },
-  },
+  // hooks: {
+  //   async "nitro:config"(nitroConfig) {
+  //     if (nitroConfig.dev) {
+  //       return;
+  //     }
+  //     let slugs = await routes();
+  //     // @ts-ignore
+  //     nitroConfig.prerender.routes.push(...slugs);
+  //     return;
+  //   },
+  // },
   pwa: {
-    workbox: {
-      // importScripts: ['/badge.js', '/update.js'],
-      templatePath: "~/public/sw.js",
-    },
     manifest: {
       description:
         "Nordgarden is a Norwegian artist deriving from the American old school of classic songwriting.",
@@ -90,43 +86,8 @@ export default defineNuxtConfig({
           purpose: "maskable",
         },
       ],
+
       categories: ["music"],
-      // screenshots: [
-      //   {
-      //     src: "/screenshots/desktop-home.png",
-      //     sizes: "1280x800",
-      //     type: "image/png",
-      //   },
-      //   {
-      //     src: "/screenshots/desktop-albums.png",
-      //     sizes: "1280x800",
-      //     type: "image/png",
-      //   },
-      //   {
-      //     src: "/screenshots/mobile-home.png",
-      //     sizes: "375x667",
-      //     type: "image/png",
-      //   },
-      //   {
-      //     src: "/screenshots/mobile-albums.png",
-      //     sizes: "375x667",
-      //     type: "image/png",
-      //   },
-      // ],
-    },
-    icon: {
-      maskablePadding: 0,
-    },
-    meta: {
-      ogSiteName: "Nordgarden",
-      appleStatusBarStyle: "black-translucent",
-      title: "Nordgarden",
-      mobileApp: true,
-      mobileAppIOS: true,
-      theme_color: "#ca242c",
-      twitterCard: "summary_large_image",
-      twitterCreator: "TerjeNordgarden",
-      twitterSite: "TerjeNordgarden",
     },
   },
   telemetry: false,
@@ -137,6 +98,18 @@ export default defineNuxtConfig({
           name: "viewport",
           content: "width=device-width,initial-scale=1,viewport-fit=cover",
         },
+        { name: "mobile-web-app-capable", content: "yes" },
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        {
+          name: "apple-mobile-web-app-status-bar-style",
+          content: "black-translucent",
+        },
+        { name: "apple-mobile-web-app-title", content: "Nordgarden" },
+        { name: "theme-color", content: "#ca242c" },
+        { property: "og:site_name", content: "Nordgarden" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:site", content: "TerjeNordgarden" },
+        { name: "twitter:creator", content: "TerjeNordgarden" },
       ],
       link: [
         {
@@ -187,7 +160,7 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/base.css"],
-  modules: ["@nuxtjs/i18n", "nuxt-svgo", "@kevinmarrec/nuxt-pwa"],
+  modules: ["@nuxtjs/i18n", "nuxt-svgo", "@vite-pwa/nuxt"],
   i18n: {
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
