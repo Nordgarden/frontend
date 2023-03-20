@@ -14,17 +14,17 @@ export default defineNuxtConfig({
   nitro: {
     preset: "netlify",
   },
-  // hooks: {
-  //   async "nitro:config"(nitroConfig) {
-  //     if (nitroConfig.dev) {
-  //       return;
-  //     }
-  //     let slugs = await routes();
-  //     // @ts-ignore
-  //     nitroConfig.prerender.routes.push(...slugs);
-  //     return;
-  //   },
-  // },
+  hooks: {
+    async "nitro:config"(nitroConfig) {
+      if (nitroConfig.dev) {
+        return;
+      }
+      let slugs = await routes();
+      // @ts-ignore
+      nitroConfig.prerender.routes.push(...slugs);
+      return;
+    },
+  },
   pwa: {
     manifest: {
       description:
