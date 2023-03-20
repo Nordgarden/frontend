@@ -40,21 +40,16 @@ export const useAudio = () => {
   };
 
   const { mediaSizes } = useAppConfig();
-  const formats = ["webp", "avif"];
 
   const getMediaImages = (image: string) => {
-    const images: MediaImage[] = [];
-    mediaSizes.forEach((size) => {
-      formats.forEach((format) => {
-        const src = `/images/${image}-${size}.${format}`;
-        images.push({
-          src,
-          sizes: `${size}x${size}`,
-          type: `image/${format}`,
-        });
-      });
+    return mediaSizes.map((size: number) => {
+      const src = `/images/${image}-${size}.avif`;
+      return {
+        src,
+        sizes: `${size}x${size}`,
+        type: `image/avif`,
+      };
     });
-    return images;
   };
 
   const updateMetaData = () => {
