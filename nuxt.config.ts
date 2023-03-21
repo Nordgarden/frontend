@@ -7,7 +7,7 @@ export default defineNuxtConfig({
       compilerOptions: {
         isolatedModules: true,
         esModuleInterop: true,
-        types: ["@types/body-scroll-lock", "@types/workbox-window"],
+        types: ["@types/body-scroll-lock", "vite-plugin-pwa/client"],
       },
     },
   },
