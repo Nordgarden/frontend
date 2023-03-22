@@ -1,11 +1,11 @@
 <script setup lang="ts">
-  defineI18nRoute({
-    paths: {
-      en: "/biography",
-    },
-  });
-  const { pageIds } = useAppConfig();
-  const { page } = await usePage(pageIds.biography);
+defineI18nRoute({
+  paths: {
+    en: '/biography'
+  }
+})
+const { pageIds } = useAppConfig()
+const { page } = await usePage(pageIds.biography)
 </script>
 
 <template>

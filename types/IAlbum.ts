@@ -1,4 +1,4 @@
-import { ISong } from "./ISong";
+import { ISong } from './ISong'
 
 export interface IAlbum {
   title: string;

@@ -14,18 +14,18 @@ export interface ISEO {
   og_publisher: string;
   og_title: string;
   og_type:
-    | "website"
-    | "article"
-    | "book"
-    | "profile"
-    | "music.song"
-    | "music.album"
-    | "music.playlist"
-    | "music.radio_status"
-    | "video.movie"
-    | "video.episode"
-    | "video.tv_show"
-    | "video.other";
+    | 'website'
+    | 'article'
+    | 'book'
+    | 'profile'
+    | 'music.song'
+    | 'music.album'
+    | 'music.playlist'
+    | 'music.radio_status'
+    | 'video.movie'
+    | 'video.episode'
+    | 'video.tv_show'
+    | 'video.other';
   og_url: string;
   title: string;
   twitterDescription: string;

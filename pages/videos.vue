@@ -1,15 +1,15 @@
 <script setup lang="ts">
 defineI18nRoute({
   paths: {
-    en: "/videos",
-  },
-});
+    en: '/videos'
+  }
+})
 
-const { pageIds } = useAppConfig();
-const { page } = await usePage(pageIds.videos);
+const { pageIds } = useAppConfig()
+const { page } = await usePage(pageIds.videos)
 </script>
 
 <template>
-  <app-page :title="page.title" v-if="page" />
+  <app-page v-if="page" :title="page.title" />
   <videos-list />
 </template>

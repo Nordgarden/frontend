@@ -1,15 +1,17 @@
 <script setup lang="ts">
-  defineI18nRoute({
-    paths: {
-      en: "/",
-    },
-  });
-  const { pageIds } = useAppConfig();
+defineI18nRoute({
+  paths: {
+    en: '/'
+  }
+})
+const { pageIds } = useAppConfig()
 
-  const { page } = await usePage(pageIds.home);
+const { page } = await usePage(pageIds.home)
 </script>
 
 <template>
-  <h1 class="sr-only" v-if="page">{{ page.title }}</h1>
+  <h1 v-if="page" class="sr-only">
+    {{ page.title }}
+  </h1>
   <posts-list />
 </template>

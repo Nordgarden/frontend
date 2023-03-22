@@ -1,4 +1,4 @@
-import { ISEO } from "./ISEO";
+import { ISEO } from './ISEO'
 
 export interface IFeaturedImage {
   srcSet: string;

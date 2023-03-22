@@ -1,4 +1,4 @@
-import { ISEO } from "./ISEO";
+import { ISEO } from './ISEO'
 
 interface IResponseImageSize {
   width: number;
@@ -7,7 +7,7 @@ interface IResponseImageSize {
 }
 
 export interface IResponseImage {
-  "wp:featuredmedia"?: {
+  'wp:featuredmedia'?: {
     alt_text: string;
     source_url: string;
     media_details: {

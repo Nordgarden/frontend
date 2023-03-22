@@ -1,22 +1,22 @@
 export const usePage = async (pageId: number) => {
-  const { getPage } = useServer();
+  const { getPage } = useServer()
 
   const { data: page, error } = await useAsyncData(
     `page-${pageId}`,
     async () => {
-      return await getPage(pageId);
+      return await getPage(pageId)
     }
-  );
+  )
 
   if (error.value) {
     throw createError({
       statusCode: 404,
-      statusMessage: error.value.message,
-    });
+      statusMessage: error.value.message
+    })
   }
 
-  useMeta(page);
+  useMeta(page)
   return {
-    page,
-  };
-};
+    page
+  }
+}

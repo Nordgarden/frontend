@@ -1,15 +1,15 @@
 <script setup lang="ts">
 defineI18nRoute({
   paths: {
-    en: "/tour",
-  },
-});
+    en: '/tour'
+  }
+})
 
-const { pageIds } = useAppConfig();
-const { page } = await usePage(pageIds.events);
+const { pageIds } = useAppConfig()
+const { page } = await usePage(pageIds.events)
 </script>
 
 <template>
-  <app-page :title="page.title" v-if="page" />
+  <app-page v-if="page" :title="page.title" />
   <event-list />
 </template>

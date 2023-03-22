@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { fetchEvents } = useEvents();
+const { fetchEvents } = useEvents()
 
 onMounted(() => {
-  fetchEvents();
-});
+  fetchEvents()
+})
 </script>
 
 <template>

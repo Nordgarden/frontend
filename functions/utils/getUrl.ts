@@ -4,7 +4,7 @@ export default ({
   id,
   slug,
   page,
-  image,
+  image
 }: {
   fields: string[];
   type: string;
@@ -13,27 +13,27 @@ export default ({
   page?: string;
   image?: Boolean;
 }) => {
-  const apiUrl = "https://api.nordgarden.info/wp-json/wp/v2/";
+  const apiUrl = 'https://api.nordgarden.info/wp-json/wp/v2/'
 
-  let baseUrl = `${apiUrl}${type}/`;
+  let baseUrl = `${apiUrl}${type}/`
   if (id) {
-    baseUrl = `${baseUrl}${id}`;
+    baseUrl = `${baseUrl}${id}`
   }
-  let url = new URL(baseUrl);
-  const allFields = fields;
+  const url = new URL(baseUrl)
+  const allFields = fields
   if (image) {
-    url.searchParams.set("_embed", "true");
-    allFields.push("_links");
-    allFields.push("_embedded");
+    url.searchParams.set('_embed', 'true')
+    allFields.push('_links')
+    allFields.push('_embedded')
   }
 
-  url.searchParams.set("_fields", allFields.join(","));
+  url.searchParams.set('_fields', allFields.join(','))
   if (slug) {
-    url.searchParams.set("slug", slug);
+    url.searchParams.set('slug', slug)
   }
   if (page) {
-    url.searchParams.set("page", page.toString());
-    url.searchParams.set("per_page", "5");
+    url.searchParams.set('page', page.toString())
+    url.searchParams.set('per_page', '5')
   }
-  return url.toString();
-};
+  return url.toString()
+}

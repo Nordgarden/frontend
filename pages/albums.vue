@@ -1,18 +1,18 @@
 <script setup lang="ts">
-  const { albums } = useAudio();
+const { albums } = useAudio()
 
-  defineI18nRoute({
-    paths: {
-      en: "/albums",
-    },
-  });
+defineI18nRoute({
+  paths: {
+    en: '/albums'
+  }
+})
 
-  const { pageIds } = useAppConfig();
-  const { page } = await usePage(pageIds.albums);
+const { pageIds } = useAppConfig()
+const { page } = await usePage(pageIds.albums)
 </script>
 
 <template>
-  <app-page :title="page.title" v-if="page" />
+  <app-page v-if="page" :title="page.title" />
   <ul v-if="albums.length" class="albums">
     <app-album
       v-for="(album, index) in albums"
@@ -24,7 +24,7 @@
 </template>
 
 <style lang="postcss" scoped>
-  .albums {
-    @mixin list-reset;
-  }
+.albums {
+  @mixin list-reset;
+}
 </style>
