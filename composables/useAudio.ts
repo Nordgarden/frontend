@@ -15,7 +15,7 @@ export const useAudio = () => {
     () => playableSongs[0]
   );
   useState<boolean>(keys.isPlaying, () => false);
-  useState<string | null>(keys.progress, () => null);
+  useState<number>(keys.progress, () => 0);
   const player = useState<HTMLAudioElement | null>(keys.player, () => null);
 
   const selectSong = async (song: IPlayableSong) => {

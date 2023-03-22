@@ -7,12 +7,12 @@ const preload = ref("none");
 const isPlaying = useState<boolean>(keys.isPlaying);
 const currentSong = useState<IPlayableSong>(keys.currentSong);
 const player = useState<HTMLAudioElement | null>(keys.player);
-const progress = useState<string | null>(keys.progress);
+const progress = useState<number>(keys.progress);
 
 const userHasFastConnection = () => {
-  if (!process.client) return false;
   const connection = window.navigator.connection;
   if (!connection) return false;
+  if (!connection.effectiveType) return false;
 
   const slowConnections = ["slow-2g", "2g", "3g"];
   return !slowConnections.includes(connection.effectiveType);
@@ -38,11 +38,9 @@ const setPlayState = (state: boolean) => {
 
 const timeupdate = () => {
   if (!player.value) {
-    return;
+    return 0;
   }
-  progress.value = `${
-    (player.value.currentTime / player.value.duration) * 100
-  }%`;
+  progress.value = (player.value.currentTime / player.value.duration) * 100;
 };
 </script>
 
