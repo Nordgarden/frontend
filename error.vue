@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-defineProps({
-  error: Object
-})
+defineProps<{
+  error: Error
+}>()
 
 const { t } = useI18n()
 
