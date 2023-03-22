@@ -1,27 +1,27 @@
 <script lang="ts" setup>
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { Ref } from "vue";
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { Ref } from 'vue'
 
-const menuIsOpen = useMenu();
+const menuIsOpen = useMenu()
 const afterLeave = () => {
-  lockBodyScoll(false);
-};
+  lockBodyScoll(false)
+}
 const afterEnter = () => {
-  lockBodyScoll(true);
-};
-const content: Ref<HTMLDivElement | null> = ref(null);
+  lockBodyScoll(true)
+}
+const content: Ref<HTMLDivElement | null> = ref(null)
 
 const lockBodyScoll = (isOpen: boolean) => {
   if (!content.value) {
-    return;
+    return
   }
 
   if (isOpen) {
-    disableBodyScroll(content.value);
+    disableBodyScroll(content.value)
   } else {
-    enableBodyScroll(content.value);
+    enableBodyScroll(content.value)
   }
-};
+}
 </script>
 
 <template>

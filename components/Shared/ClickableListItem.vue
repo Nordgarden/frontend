@@ -1,25 +1,25 @@
 <script lang="ts" setup>
-import { Ref } from "vue";
-const down: Ref<number | null> = ref(null);
+import { Ref } from 'vue'
+const down: Ref<number | null> = ref(null)
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 const mouseDown = (event: { target: Element }) => {
-  if (event.target.nodeName === "A") {
-    down.value = null;
+  if (event.target.nodeName === 'A') {
+    down.value = null
   } else {
-    down.value = +new Date();
+    down.value = +new Date()
   }
-};
+}
 const mouseUp = () => {
   if (!down.value) {
-    return;
+    return
   }
-  const up = +new Date();
+  const up = +new Date()
   if (up - down.value < 200) {
-    emit("click");
+    emit('click')
   }
-};
+}
 </script>
 
 <template>

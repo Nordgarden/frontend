@@ -1,20 +1,10 @@
 <script lang="ts" setup>
 import { IAlbum } from '~/types/IAlbum'
-import { IFeaturedImage } from '~~/types/IContent'
-const props = defineProps<{
+defineProps<{
     album: IAlbum;
     lazy?: boolean;
   }>()
 
-const image: ComputedRef<IFeaturedImage> = computed(() => {
-  return {
-    alt: props.album.title,
-    src: props.album.image,
-    srcSet: props.album.image,
-    width: 200,
-    height: 200
-  }
-})
 </script>
 
 <template>
@@ -24,7 +14,7 @@ const image: ComputedRef<IFeaturedImage> = computed(() => {
     </h2>
     <image-wrapper
       :lazy="lazy"
-      :image="image"
+      :image="album.image"
       :remote="false"
       :alt="`Album cover for ${album.title}`"
     >

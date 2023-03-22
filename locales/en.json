@@ -24,10 +24,6 @@
     "previous": "Previous page",
     "next": "Next page"
   },
-  "skiplinks": {
-    "content": "To main content",
-    "menu": "To main navigation"
-  },
   "errors": {
     "error404": "Page not found"
   }

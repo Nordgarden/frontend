@@ -3,7 +3,7 @@ import { IFeaturedImage } from '~~/types/IContent'
 
 const props = withDefaults(
   defineProps<{
-      image?: IFeaturedImage;
+      image?: IFeaturedImage | string;
       remote?: boolean;
       lazy?: boolean;
       alt?: string;

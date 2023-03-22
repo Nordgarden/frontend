@@ -1,38 +1,38 @@
 <script lang="ts" setup>
-  import { ComputedRef, ImgHTMLAttributes } from "vue";
+import { ComputedRef } from 'vue'
 
-  const props = defineProps<{
+const props = defineProps<{
     image: string;
     alt?: string;
     lazy: boolean;
     sizes?: string;
-  }>();
-  const generateImage = (format: string, size: number) => {
-    return `/images/${props.image}-${size}.${format} ${size}w`;
-  };
+  }>()
+const generateImage = (format: string, size: number) => {
+  return `/images/${props.image}-${size}.${format} ${size}w`
+}
 
-  const imageSizes = [512, 384, 256];
-  const srcset: ComputedRef<{ avif: string; webp: string }> = computed(() => {
-    const imageSizesWebP = imageSizes.map((size) => {
-      return generateImage("webp", size);
-    });
-    const imageSizesAvif = imageSizes.map((size) => {
-      return generateImage("avif", size);
-    });
-    return {
-      webp: imageSizesWebP.join(","),
-      avif: imageSizesAvif.join(","),
-    };
-  });
+const imageSizes = [512, 384, 256]
+const srcset: ComputedRef<{ avif: string; webp: string }> = computed(() => {
+  const imageSizesWebP = imageSizes.map((size) => {
+    return generateImage('webp', size)
+  })
+  const imageSizesAvif = imageSizes.map((size) => {
+    return generateImage('avif', size)
+  })
+  return {
+    webp: imageSizesWebP.join(','),
+    avif: imageSizesAvif.join(',')
+  }
+})
 
-  const src: ComputedRef<string> = computed(() => {
-    return generateImage("webp", imageSizes[0]);
-  });
+const src: ComputedRef<string> = computed(() => {
+  return generateImage('webp', imageSizes[0])
+})
 </script>
 
 <template>
   <picture>
-    <source type="image/avif" :srcset="srcset.avif" :sizes="sizes" />
+    <source type="image/avif" :srcset="srcset.avif" :sizes="sizes">
     <app-image
       :src="src"
       :srcset="srcset.webp"

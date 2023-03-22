@@ -26,6 +26,7 @@ export default defineNuxtConfig({
       nitroConfig.prerender.routes.push(...slugs)
     }
   },
+  extends: ['github:michielkoning/nuxt-base'],
   pwa: {
     manifest: {
       description:
@@ -65,20 +66,10 @@ export default defineNuxtConfig({
       categories: ['music']
     }
   },
-  telemetry: false,
   app: {
     head: {
       meta: [
-        {
-          name: 'viewport',
-          content: 'width=device-width,initial-scale=1,viewport-fit=cover'
-        },
-        { name: 'mobile-web-app-capable', content: 'yes' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        {
-          name: 'apple-mobile-web-app-status-bar-style',
-          content: 'black-translucent'
-        },
+
         { name: 'apple-mobile-web-app-title', content: 'Nordgarden' },
         { name: 'theme-color', content: '#ca242c' },
         { property: 'og:site_name', content: 'Nordgarden' },
