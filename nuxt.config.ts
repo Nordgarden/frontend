@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         types: ["@types/body-scroll-lock", "@types/workbox-window"],
       },
     },
+    strict: true,
   },
   nitro: {
     preset: "netlify",

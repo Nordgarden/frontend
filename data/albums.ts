@@ -138,7 +138,6 @@ const albums: IAlbum[] = [
       },
       {
         title: "Up the Hillside",
-        permalink: "http://nordgarden.info/songs/up-the-hillside/",
       },
       {
         title: "The Path of Love",
@@ -148,7 +147,6 @@ const albums: IAlbum[] = [
       },
       {
         title: "The Night",
-        permalink: "http://nordgarden.info/songs/the-night-2/",
       },
       {
         title: "B Minor Tinitus",
@@ -269,7 +267,6 @@ const albums: IAlbum[] = [
       },
       {
         title: "In Hopes and Dreams",
-        permalink: "http://nordgarden.info/songs/in-hopes-and-dreams/",
       },
       {
         title: "The Path of Love (Piano Version)",

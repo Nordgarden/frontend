@@ -43,9 +43,7 @@ head.value.link?.forEach((link) => {
             <slot />
           </main>
         </center-wrapper>
-        <client-only>
-          <pwa-update />
-        </client-only>
+        <pwa-update />
       </Body>
     </Html>
   </div>
