@@ -44,9 +44,13 @@ const handler: Handler = async (event: HandlerEvent) => {
       }
     }
   } catch (error) {
+    let message = 'Error'
+    if ((error instanceof Error)) {
+      message = error.message
+    }
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: error.message }),
+      body: JSON.stringify({ message }),
       headers: {
         'Content-Type': 'application/json'
       }

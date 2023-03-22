@@ -1,23 +1,36 @@
 <script lang="ts" setup>
-  import { IAlbum } from "~/types/IAlbum";
-  defineProps<{
+import { IAlbum } from '~/types/IAlbum'
+import { IFeaturedImage } from '~~/types/IContent'
+const props = defineProps<{
     album: IAlbum;
     lazy?: boolean;
-  }>();
+  }>()
+
+const image: ComputedRef<IFeaturedImage> = computed(() => {
+  return {
+    alt: props.album.title,
+    src: props.album.image,
+    srcSet: props.album.image,
+    width: 200,
+    height: 200
+  }
+})
 </script>
 
 <template>
   <li class="album">
-    <h2 class="title">{{ album.title }}</h2>
+    <h2 class="title">
+      {{ album.title }}
+    </h2>
     <image-wrapper
       :lazy="lazy"
-      :image="album.image"
+      :image="image"
       :remote="false"
       :alt="`Album cover for ${album.title}`"
     >
-      <template v-slot:image>
+      <template #image>
         <app-date :date="album.releaseDate" class="date" />
-        <ul class="stores" v-if="album.spotify || album.apple">
+        <ul v-if="album.spotify || album.apple" class="stores">
           <li v-if="album.spotify">
             <a
               :href="album.spotify"

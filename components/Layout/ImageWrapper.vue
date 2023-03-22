@@ -1,39 +1,43 @@
 <script lang="ts" setup>
-  import { IFeaturedImage } from "~~/types/IContent";
+import { IFeaturedImage } from '~~/types/IContent'
 
-  const props = withDefaults(
-    defineProps<{
+const props = withDefaults(
+  defineProps<{
       image?: IFeaturedImage;
       remote?: boolean;
       lazy?: boolean;
       alt?: string;
     }>(),
-    {
-      remote: true,
-      lazy: false,
-    }
-  );
+  {
+    image: undefined,
+    alt: '',
+    remote: true,
+    lazy: false
+  }
+)
 
-  const component = computed(() => {
-    if (props.remote) {
-      return resolveComponent("remote-image");
-    }
-    return resolveComponent("static-image");
-  });
+const component = computed(() => {
+  if (props.remote) {
+    return resolveComponent('remote-image')
+  }
+  return resolveComponent('static-image')
+})
 </script>
 
 <template>
   <div class="wrapper">
-    <div class="text"><slot /></div>
+    <div class="text">
+      <slot />
+    </div>
     <div class="image-wrapper">
       <component
-        :alt="alt"
         :is="component"
+        v-if="image"
+        :alt="alt"
         :image="image"
         :lazy="props.lazy"
         class="image"
         sizes="(max-width: 320px) 270px, 200px"
-        v-if="image"
       />
       <slot name="image" />
     </div>
