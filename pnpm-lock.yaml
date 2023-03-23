@@ -9,7 +9,7 @@ specifiers:
   '@types/workbox-window': ^4.3.4
   '@vite-pwa/nuxt': ^0.0.7
   body-scroll-lock: ^3.1.5
-  eslint: ^8.27.0
+  eslint: ^8.36.0
   node-fetch: ^3.3.1
   nuxt: 3.3.1
   nuxt-icons: ^3.1.0
@@ -1903,8 +1903,8 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@eslint-community/regexpp/4.4.0:
-    resolution: {integrity: sha512-A9983Q0LnDGdLPjxyXQ00sbV+K+O+ko2Dr+CZigbHWtX9pNfxlaBkMR8X1CztI73zuEyEBXTVjx7CE+/VSwDiQ==}
+  /@eslint-community/regexpp/4.4.1:
+    resolution: {integrity: sha512-BISJ6ZE4xQsuL/FmsyRaiffpq977bMlsKfGHTQrOGFErfByxIe6iZTxPf/00Zon9b9a7iUykfQwejN3s2ZW/Bw==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     dev: true
 
@@ -2181,11 +2181,11 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/kit-edge/3.3.2-27991762.e6c1bb57_rollup@2.79.1:
-    resolution: {integrity: sha512-egpEb5r8iRRPjkBDch9nQ5krflt3ZUJqPYkOY7d56wfDIbdhaecuwpZi4tsHj7IpUf+OjHGJAWfphMQu2zIV0w==}
+  /@nuxt/kit-edge/3.3.2-27992199.dc5982d9_rollup@2.79.1:
+    resolution: {integrity: sha512-DeuuDCjCkmqCZrTE9bBCRVriCg/hErXeMcMvmbqAtghMIlOJh+IfKdLfz/7wUjA5AmhULumyrUZGwqEDdLNArQ==}
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.3.2-27991762.e6c1bb57_rollup@2.79.1
+      '@nuxt/schema': /@nuxt/schema-edge/3.3.2-27992199.dc5982d9_rollup@2.79.1
       c12: 1.2.0
       consola: 2.15.3
       defu: 6.1.2
@@ -2261,8 +2261,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/schema-edge/3.3.2-27991762.e6c1bb57_rollup@2.79.1:
-    resolution: {integrity: sha512-1cTznqi3a+HIgeIgomyLS3jwgYpdfhmOrbgt7AsCsr/3mslBqWH4fe00L0TXi8WS5IhDaxucyGDteh1vpEfnGQ==}
+  /@nuxt/schema-edge/3.3.2-27992199.dc5982d9_rollup@2.79.1:
+    resolution: {integrity: sha512-61HYmobGyNfzKHbE8pR9n1YzZO89SGzJ58bZBbQqXE0y0w2g4XXEsOS1OgM4ZOTpGiy7lQtF9jrsbzY2g5RdSw==}
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
       c12: 1.2.0
@@ -2735,13 +2735,13 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.21.3
-      '@types/estree': 1.0.0
+      '@types/estree': 0.0.51
     dev: true
 
   /@types/eslint/8.21.3:
     resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
-      '@types/estree': 1.0.0
+      '@types/estree': 0.0.51
       '@types/json-schema': 7.0.11
     dev: true
 
@@ -2809,7 +2809,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@eslint-community/regexpp': 4.4.0
+      '@eslint-community/regexpp': 4.4.1
       '@typescript-eslint/parser': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
       '@typescript-eslint/scope-manager': 5.56.0
       '@typescript-eslint/type-utils': 5.56.0_j4766f7ecgqbon3u7zlxn5zszu
@@ -3656,7 +3656,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.335
+      electron-to-chromium: 1.4.337
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
 
@@ -4381,8 +4381,8 @@ packages:
       jake: 10.8.5
     dev: true
 
-  /electron-to-chromium/1.4.335:
-    resolution: {integrity: sha512-l/eowQqTnrq3gu+WSrdfkhfNHnPgYqlKAwxz7MTOj6mom19vpEDHNXl6dxDxyTiYuhemydprKr/HCrHfgk+OfQ==}
+  /electron-to-chromium/1.4.337:
+    resolution: {integrity: sha512-W8gdzXG86mVPoc56eM8YA+QiLxaAxJ8cmDjxZgfhLLWVvZQxyA918w5tX2JEWApZta45T1/sYcmFHTsTOUE3nw==}
 
   /emoji-regex/8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4919,7 +4919,7 @@ packages:
     hasBin: true
     dependencies:
       '@eslint-community/eslint-utils': 4.3.0_eslint@8.36.0
-      '@eslint-community/regexpp': 4.4.0
+      '@eslint-community/regexpp': 4.4.1
       '@eslint/eslintrc': 2.0.1
       '@eslint/js': 8.36.0
       '@humanwhocodes/config-array': 0.11.8
@@ -6648,7 +6648,7 @@ packages:
   /nuxt-svgo/1.1.0_bub3wmyimi5ilvi4pghraaazjq:
     resolution: {integrity: sha512-rluyaY2S2ey8MrUNyA5fJHcNQsgPtBn5fKyYgDb4Wr5foP2ICwJcoN/Jp8czwfuHSEnPek0t4XXmjOSvChk+WA==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.3.2-27991762.e6c1bb57_rollup@2.79.1
+      '@nuxt/kit': /@nuxt/kit-edge/3.3.2-27992199.dc5982d9_rollup@2.79.1
       svgo-loader: 3.0.3
       vite-svg-loader: 3.6.0
       vue-loader: 17.0.1_vue@3.2.47+webpack@5.76.3
