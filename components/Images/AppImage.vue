@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       src: string;
       width: number | string;
@@ -25,5 +25,5 @@
     :alt="alt"
     :width="width"
     :height="height"
-  />
+  >
 </template>

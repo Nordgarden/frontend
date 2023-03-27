@@ -12,8 +12,14 @@ const { page } = await usePage(pageIds.albums)
 </script>
 
 <template>
-  <app-page v-if="page" :title="page.title" />
-  <ul v-if="albums.length" class="albums">
+  <app-page
+    v-if="page"
+    :title="page.title"
+  />
+  <ul
+    v-if="albums.length"
+    class="albums"
+  >
     <app-album
       v-for="(album, index) in albums"
       :key="album.title"

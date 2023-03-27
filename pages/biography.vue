@@ -9,9 +9,12 @@ const { page } = await usePage(pageIds.biography)
 </script>
 
 <template>
-  <app-page v-if="page" :title="page.title">
+  <app-page
+    v-if="page"
+    :title="page.title"
+  >
     <div class="text">
-      <BiographyIntro />
+      <biography-intro />
       <div v-html="page.content" />
     </div>
   </app-page>

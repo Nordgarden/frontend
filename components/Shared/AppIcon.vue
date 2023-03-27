@@ -66,6 +66,14 @@
 </script>
 
 <template>
-  <component :is="iconComponent" :width="size" :height="size" v-bind="$attrs" />
-  <span class="sr-only" v-if="title">{{ title }}</span>
+  <component
+    :is="iconComponent"
+    :width="size"
+    :height="size"
+    v-bind="$attrs"
+  />
+  <span
+    v-if="title"
+    class="sr-only"
+  >{{ title }}</span>
 </template>

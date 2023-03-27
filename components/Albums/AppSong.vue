@@ -32,10 +32,22 @@
           class="btn-play"
           @click="select(song)"
         >
-          <app-icon icon="play" :size="20" :title="$t('play')" />
+          <app-icon
+            icon="play"
+            :size="20"
+            :title="$t('play')"
+          />
         </button>
-        <button v-else class="btn-pause" @click="pause">
-          <app-icon icon="pause" :size="20" :title="$t('pause')" />
+        <button
+          v-else
+          class="btn-pause"
+          @click="pause"
+        >
+          <app-icon
+            icon="pause"
+            :size="20"
+            :title="$t('pause')"
+          />
         </button>
       </template>
     </div>

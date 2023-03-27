@@ -52,7 +52,11 @@
 
 <template>
   <nav aria-labelledby="menu-title">
-    <h2 id="menu-title" class="sr-only" tabindex="-1">
+    <h2
+      id="menu-title"
+      class="sr-only"
+      tabindex="-1"
+    >
       {{ $t("mainNavigation") }}
     </h2>
     <ul ref="menu">
@@ -103,9 +107,9 @@
       </li>
     </ul>
     <div
+      v-if="arrowPosition"
       :style="{ transform: arrowPosition }"
       class="arrow"
-      v-if="arrowPosition"
     />
   </nav>
 </template>

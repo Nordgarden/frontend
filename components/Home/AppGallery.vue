@@ -7,8 +7,16 @@
 </script>
 
 <template>
-  <section class="gallery" aria-labelledby="gallery-title">
-    <h1 id="gallery-title" class="sr-only">{{ $t("gallery") }}</h1>
+  <section
+    class="gallery"
+    aria-labelledby="gallery-title"
+  >
+    <h1
+      id="gallery-title"
+      class="sr-only"
+    >
+      {{ $t("gallery") }}
+    </h1>
     <div
       v-for="image in images"
       :key="image.name"
@@ -24,7 +32,7 @@
         }&h=${image.height * 1.5} 2x`"
         loading="lazy"
         alt=""
-      />
+      >
     </div>
   </section>
 </template>

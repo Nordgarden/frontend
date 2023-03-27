@@ -11,10 +11,10 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
+  <nuxt-layout>
     <div>
       <h1>404</h1>
       <p>{{ error }}</p>
     </div>
-  </NuxtLayout>
+  </nuxt-layout>
 </template>

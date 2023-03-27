@@ -21,11 +21,23 @@
           <app-icon icon="bars" />
           {{ $t("menu") }}
         </button>
-        <button v-if="isPlaying" @click="pause">
-          <app-icon icon="pause" :title="$t('pause')" />
+        <button
+          v-if="isPlaying"
+          @click="pause"
+        >
+          <app-icon
+            icon="pause"
+            :title="$t('pause')"
+          />
         </button>
-        <button v-else @click="play">
-          <app-icon icon="play" :title="$t('play')" />
+        <button
+          v-else
+          @click="play"
+        >
+          <app-icon
+            icon="play"
+            :title="$t('play')"
+          />
         </button>
       </div>
     </center-wrapper>
