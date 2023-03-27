@@ -10,6 +10,7 @@
       lazy?: boolean;
     }>(),
     {
+      sizes: '100vw',
       alt: "",
       lazy: false,
     }
