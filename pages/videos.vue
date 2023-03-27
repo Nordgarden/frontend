@@ -10,6 +10,9 @@ const { page } = await usePage(pageIds.videos)
 </script>
 
 <template>
-  <app-page v-if="page" :title="page.title" />
+  <app-page
+    v-if="page"
+    :title="page.title"
+  />
   <videos-list />
 </template>
