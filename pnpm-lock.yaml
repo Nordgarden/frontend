@@ -6,7 +6,6 @@ specifiers:
   '@nuxtjs/i18n': ^8.0.0-beta.8
   '@types/body-scroll-lock': ^3.1.0
   '@types/node': ^18.15.10
-  '@types/workbox-window': ^4.3.4
   '@vite-pwa/nuxt': ^0.0.7
   body-scroll-lock: ^3.1.5
   eslint: ^8.36.0
@@ -32,7 +31,6 @@ devDependencies:
   '@nuxtjs/i18n': 8.0.0-beta.10_rollup@2.79.1+vue@3.2.47
   '@types/body-scroll-lock': 3.1.0
   '@types/node': 18.15.10
-  '@types/workbox-window': 4.3.4
   '@vite-pwa/nuxt': 0.0.7_aqs4pm34hwz5tlcrbl27qry2dy
   eslint: 8.36.0
   nuxt: 3.3.2_vbb77nxis43beewpxl4pbshqda
@@ -2628,10 +2626,6 @@ packages:
 
   /@types/trusted-types/2.0.3:
     resolution: {integrity: sha512-NfQ4gyz38SL8sDNrSixxU2Os1a5xcdFxipAFxYEuLUlvU2uDwS4NUpsImcf1//SlWItCVMMLiylsxbmNMToV/g==}
-    dev: true
-
-  /@types/workbox-window/4.3.4:
-    resolution: {integrity: sha512-Zyac7JfCO1iWLeHxC/hwJ132nXta/x0hl1kERdvHSUU2qVgQ7slmF9C0xhzWADRu7XO4v9+po9xtGD4yonlzyA==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.56.0_2hcjazgfnbtq42tcc73br2vup4:
