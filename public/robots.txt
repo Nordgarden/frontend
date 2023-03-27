@@ -1,2 +1,2 @@
-Sitemap: /sitemap.xml
+Sitemap: https://www.nordgarden.info/sitemap.xml
 User-agent: *
