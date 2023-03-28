@@ -24,10 +24,10 @@
     defineProps<{
       icon: string;
       size?: number;
-      title?: string | null;
+      title?: string;
     }>(),
     {
-      title: null,
+      title: undefined,
       size: 24,
     }
   );
