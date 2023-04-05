@@ -5,7 +5,7 @@ import { IEvent, IEventResponse } from "~~/types/IEvent";
 
 const url =
   "https://rest.bandsintown.com/artists/Nordgarden/events?app_id=TerjeNordgardenWebsite";
-const handler: Handler = async (_) => {
+const handler: Handler = async () => {
   const data = await fetch<IEventResponse[]>(url);
   let body: IEvent[] = [];
 

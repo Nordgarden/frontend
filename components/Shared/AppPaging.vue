@@ -12,7 +12,6 @@
   <div class="paging">
     <nuxt-link
       v-if="page > 1 && totalPages > 0"
-      @click="$emit('go-to-page', page - 1)"
       class="btn previous"
       :to="
         localePath({
@@ -21,13 +20,13 @@
           },
         })
       "
+      @click="$emit('go-to-page', page - 1)"
     >
       {{ $t("paging.previous") }}
     </nuxt-link>
 
     <nuxt-link
       v-if="page < totalPages"
-      @click="$emit('go-to-page', page + 1)"
       class="btn next"
       :to="
         localePath({
@@ -36,6 +35,7 @@
           },
         })
       "
+      @click="$emit('go-to-page', page + 1)"
     >
       {{ $t("paging.next") }}
     </nuxt-link>

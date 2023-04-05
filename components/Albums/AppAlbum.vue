@@ -19,8 +19,14 @@ defineProps<{
       :alt="`Album cover for ${album.title}`"
     >
       <template #image>
-        <app-date :date="album.releaseDate" class="date" />
-        <ul v-if="album.spotify || album.apple" class="stores">
+        <app-date
+          :date="album.releaseDate"
+          class="date"
+        />
+        <ul
+          v-if="album.spotify || album.apple"
+          class="stores"
+        >
           <li v-if="album.spotify">
             <a
               :href="album.spotify"

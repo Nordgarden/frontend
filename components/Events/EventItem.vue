@@ -8,7 +8,11 @@ defineProps<{
 
 <template>
   <li>
-    <app-date :date="event.date" format="short" class="date" />
+    <app-date
+      :date="event.date"
+      format="short"
+      class="date"
+    />
     <div>
       <span class="venue">{{ event.venue }}</span>
       <span class="city">{{ event.city }}</span>

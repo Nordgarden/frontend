@@ -46,12 +46,18 @@
             height="360"
             loading="lazy"
             alt=""
-          />
+          >
           <div class="icon-wrapper">
-            <app-icon icon="play" class="icon" />
+            <app-icon
+              icon="play"
+              class="icon"
+            />
           </div>
         </div>
-        <button class="btn-video" @click="playVideo(video.videoId)">
+        <button
+          class="btn-video"
+          @click="playVideo(video.videoId)"
+        >
           <span class="sr-only">{{ $t("play") }}</span>
           {{ video.title }}
         </button>

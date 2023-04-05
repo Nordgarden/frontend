@@ -10,14 +10,19 @@ const events = useState<IEvent[]>(keys.events);
 <template>
   <app-loader v-if="isLoading" />
   <template v-else>
-    <ul v-if="events.length" class="list">
+    <ul
+      v-if="events.length"
+      class="list"
+    >
       <event-item
         v-for="event in events"
         :key="event.date.toString()"
         :event="event"
       />
     </ul>
-    <p v-else>{{ $t("noTourDays") }}</p>
+    <p v-else>
+      {{ $t("noTourDays") }}
+    </p>
   </template>
 </template>
 

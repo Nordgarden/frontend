@@ -35,12 +35,23 @@
 
 <template>
   <nav aria-labelledby="social-links-title">
-    <h2 id="social-links-title" class="sr-only">
+    <h2
+      id="social-links-title"
+      class="sr-only"
+    >
       {{ $t("socialMediaLinks") }}
     </h2>
     <ul class="list">
-      <li v-for="link in links" :key="link.url">
-        <a :href="link.url" rel="noopener" target="_blank" class="link">
+      <li
+        v-for="link in links"
+        :key="link.url"
+      >
+        <a
+          :href="link.url"
+          rel="noopener"
+          target="_blank"
+          class="link"
+        >
           <app-icon
             :icon="link.icon"
             :size="32"

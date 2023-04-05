@@ -9,7 +9,7 @@
   const menu: Ref<HTMLAnchorElement | null> = ref(null);
   const events = useState<IEvent[]>(keys.events);
   const arrowPosition: Ref<string | undefined> = ref(undefined);
-  const changePage = () => {
+  const closeMenu = () => {
     menuIsOpen.value = false;
   };
 
@@ -52,7 +52,11 @@
 
 <template>
   <nav aria-labelledby="menu-title">
-    <h2 id="menu-title" class="sr-only" tabindex="-1">
+    <h2
+      id="menu-title"
+      class="sr-only"
+      tabindex="-1"
+    >
       {{ $t("mainNavigation") }}
     </h2>
     <ul ref="menu">
@@ -61,7 +65,7 @@
           id="menu"
           :class="{ 'router-link-exact-active': isNewsPage }"
           :to="localePath({ name: 'index' })"
-          @click.native="changePage"
+          @click="closeMenu"
         >
           <span class="title">
             {{ $t("home") }}
@@ -71,7 +75,7 @@
       <li>
         <nuxt-link
           :to="localePath({ name: 'events' })"
-          @click.native="changePage"
+          @click="closeMenu"
         >
           <span class="title">{{ $t("tour") }}</span>
           <app-badge :amount="events.length" />
@@ -80,7 +84,7 @@
       <li>
         <nuxt-link
           :to="localePath({ name: 'albums' })"
-          @click.native="changePage"
+          @click="closeMenu"
         >
           <span class="title">{{ $t("albums") }}</span>
         </nuxt-link>
@@ -88,7 +92,7 @@
       <li>
         <nuxt-link
           :to="localePath({ name: 'videos' })"
-          @click.native="changePage"
+          @click="closeMenu"
         >
           <span class="title">{{ $t("videos") }}</span>
         </nuxt-link>
@@ -96,16 +100,16 @@
       <li>
         <nuxt-link
           :to="localePath({ name: 'biography' })"
-          @click.native="changePage"
+          @click="closeMenu"
         >
           <span class="title">{{ $t("biography") }}</span>
         </nuxt-link>
       </li>
     </ul>
     <div
+      v-if="arrowPosition"
       :style="{ transform: arrowPosition }"
       class="arrow"
-      v-if="arrowPosition"
     />
   </nav>
 </template>

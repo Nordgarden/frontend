@@ -7,7 +7,10 @@ defineProps<{
 <template>
   <div>
     <article>
-      <h1 tabindex="-1" v-html="title" />
+      <h1
+        tabindex="-1"
+        v-html="title"
+      />
       <slot />
     </article>
   </div>

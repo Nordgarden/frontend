@@ -1,17 +1,20 @@
 <script setup lang="ts">
-  const props = defineProps<{
-    date: string;
-  }>();
+defineProps<{
+  date: string;
+}>();
 </script>
 
 <template>
-  <app-date :date="date" class="date" />
+  <app-date
+    :date="date"
+    class="date"
+  />
 </template>
 
 <style lang="postcss" scoped>
-  .date {
-    font-size: var(--font-size-sm);
-    display: block;
-    order: -1;
-  }
+.date {
+  font-size: var(--font-size-sm);
+  display: block;
+  order: -1;
+}
 </style>

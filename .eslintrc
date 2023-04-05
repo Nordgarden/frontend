@@ -1,7 +1,15 @@
 {
-  "extends": "@nuxtjs/eslint-config-typescript",
+  "root": true,
+  "extends": ["@nuxt/eslint-config"],
   "rules": {
+    "vue/no-v-html": 0,
     "vue/no-multiple-template-root": 0,
-    "vue/no-v-html": 0
+    "vue/component-name-in-template-casing": [
+      "error",
+      "kebab-case",
+      {
+        "registeredComponentsOnly": false
+      }
+    ]
   }
 }

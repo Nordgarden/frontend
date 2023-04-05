@@ -2,8 +2,7 @@
 import { Ref } from "vue";
 import { IPlayableSong } from "~~/types/ISong";
 
-const { albums, playableSongs, play, pause, next, setCurrentTime, keys } =
-  useAudio();
+const { playableSongs, play, pause, next, setCurrentTime, keys } = useAudio();
 
 const progressBar: Ref<HTMLDivElement | null> = ref(null);
 
@@ -21,19 +20,52 @@ const scrub = (event: MouseEvent) => {
 </script>
 
 <template>
-  <div class="wrapper" v-if="playableSongs">
-    <button v-if="isPlaying" @click="pause">
-      <app-icon icon="pause" :title="$t('pause')" />
+  <div
+    v-if="playableSongs"
+    class="wrapper"
+  >
+    <button
+      v-if="isPlaying"
+      @click="pause"
+    >
+      <app-icon
+        icon="pause"
+        :title="$t('pause')"
+      />
     </button>
-    <button v-else @click="play">
-      <app-icon icon="play" :title="$t('play')" />
+    <button
+      v-else
+      @click="play"
+    >
+      <app-icon
+        icon="play"
+        :title="$t('play')"
+      />
     </button>
-    <button v-if="playableSongs.length > 1" @click="next">
-      <app-icon icon="forwards" :title="$t('next')" />
+    <button
+      v-if="playableSongs.length > 1"
+      @click="next"
+    >
+      <app-icon
+        icon="forwards"
+        :title="$t('next')"
+      />
     </button>
-    <div ref="progressBar" class="progress" @click="scrub">
-      <div :style="{ width: `${progress}%` }" class="bar"></div>
-      <div v-if="currentSong" class="title">{{ currentSong.title }}</div>
+    <div
+      ref="progressBar"
+      class="progress"
+      @click="scrub"
+    >
+      <div
+        :style="{ width: `${progress}%` }"
+        class="bar"
+      />
+      <div
+        v-if="currentSong"
+        class="title"
+      >
+        {{ currentSong.title }}
+      </div>
     </div>
   </div>
 </template>

@@ -32,13 +32,29 @@
 </script>
 
 <template>
-  <div v-if="data" class="wrapper">
+  <div
+    v-if="data"
+    class="wrapper"
+  >
     <app-loader v-if="pending" />
-    <ul class="posts" v-else-if="data.items.length">
-      <PostsListItem v-for="post in data.items" :key="post.slug" :post="post" />
+    <ul
+      v-else-if="data.items.length"
+      class="posts"
+    >
+      <posts-list-item
+        v-for="post in data.items"
+        :key="post.slug"
+        :post="post"
+      />
     </ul>
-    <p v-else>No posts found</p>
-    <app-paging :page="page" :total-pages="data.total" @go-to-page="goToPage" />
+    <p v-else>
+      No posts found
+    </p>
+    <app-paging
+      :page="page"
+      :total-pages="data.total"
+      @go-to-page="goToPage"
+    />
   </div>
 </template>
 

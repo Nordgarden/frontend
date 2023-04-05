@@ -36,15 +36,31 @@ const component = computed(() => {
 </script>
 
 <template>
-  <app-page v-if="post" :title="post.title">
-    <component :is="component" :image="post.featuredImage">
+  <app-page
+    v-if="post"
+    :title="post.title"
+  >
+    <component
+      :is="component"
+      :image="post.featuredImage"
+    >
       <div class="post">
-        <post-date :date="post.date" class="date" />
-        <div class="text" v-html="post.content" />
+        <post-date
+          :date="post.date"
+          class="date"
+        />
+        <div
+          class="text"
+          v-html="post.content"
+        />
       </div>
     </component>
   </app-page>
-  <section v-if="post" class="news-list" aria-labelledby="news-list-title">
+  <section
+    v-if="post"
+    class="news-list"
+    aria-labelledby="news-list-title"
+  >
     <h1 id="news-list-title">
       {{ $t("morePosts") }}
     </h1>

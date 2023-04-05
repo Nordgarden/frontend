@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       src: string;
       width: number | string;
@@ -10,6 +10,7 @@
       lazy?: boolean;
     }>(),
     {
+      sizes: '100vw',
       alt: "",
       lazy: false,
     }
@@ -25,5 +26,5 @@
     :alt="alt"
     :width="width"
     :height="height"
-  />
+  >
 </template>

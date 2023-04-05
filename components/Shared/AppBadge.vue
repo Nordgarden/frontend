@@ -5,7 +5,10 @@ defineProps<{
 </script>
 
 <template>
-  <span v-if="amount > 0" class="badge">{{ amount }}</span>
+  <span
+    v-if="amount > 0"
+    class="badge"
+  >{{ amount }}</span>
 </template>
 
 <style lang="postcss" scoped>

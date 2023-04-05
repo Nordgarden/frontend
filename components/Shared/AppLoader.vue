@@ -1,10 +1,14 @@
 <template>
   <div class="loader">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <span class="sr-only" aria-live="polite" role="region">
+    <div />
+    <div />
+    <div />
+    <div />
+    <span
+      class="sr-only"
+      aria-live="polite"
+      role="region"
+    >
       {{ $t("loading") }}
     </span>
   </div>

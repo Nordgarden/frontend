@@ -32,7 +32,11 @@ const src: ComputedRef<string> = computed(() => {
 
 <template>
   <picture>
-    <source type="image/avif" :srcset="srcset.avif" :sizes="sizes">
+    <source
+      type="image/avif"
+      :srcset="srcset.avif"
+      :sizes="sizes"
+    >
     <app-image
       :src="src"
       :srcset="srcset.webp"
