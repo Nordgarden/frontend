@@ -8,11 +8,12 @@
 
 <template>
   <div>
-    <html
+    <!-- eslint-disable vue/component-name-in-template-casing -->
+    <Html
       :lang="head.htmlAttrs?.lang"
       :dir="head.htmlAttrs?.dir"
     >
-      <head>
+      <Head>
         <template
           v-for="link in head.link"
           :key="link.id"
@@ -35,8 +36,8 @@
             :content="meta.content"
           >
         </template>
-      </head>
-      <body>
+      </Head>
+      <Body>
         <vite-pwa-manifest />
         <the-header />
         <center-wrapper>
@@ -45,8 +46,8 @@
           </main>
         </center-wrapper>
         <pwa-update />
-      </body>
-    </html>
+      </Body>
+    </Html>
   </div>
 </template>
 
