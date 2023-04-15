@@ -15,21 +15,12 @@
     "@nuxtjs/i18n": "^8.0.0-beta.8",
     "@types/body-scroll-lock": "^3.1.0",
     "@vite-pwa/nuxt": "^0.0.7",
-<<<<<<< HEAD
-    "eslint": "^8.37.0",
-    "nuxt": "^3.3.3",
-    "nuxt-svgo": "^1.1.0",
-    "postcss-mixins": "^9.0.4",
-    "postcss-preset-env": "^8.3.0",
-    "typescript": "^5.0.3",
-=======
     "eslint": "^8.38.0",
-    "nuxt": "^3.3.3",
-    "nuxt-svgo": "^1.1.0",
+    "nuxt": "^3.4.1",
+    "nuxt-svgo": "^1.2.1",
     "postcss-mixins": "^9.0.4",
     "postcss-preset-env": "^8.3.1",
     "typescript": "^5.0.4",
->>>>>>> 74e4c7cc9085d68252b4e8b1d097c90a9eeac40d
     "vue-tsc": "^1.2.0"
   },
   "dependencies": {
