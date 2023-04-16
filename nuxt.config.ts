@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     }
   },
   pwa: {
+    registerWebManifestInRouteRules: true,
     manifest: {
       description:
         'Nordgarden is a Norwegian artist deriving from the American old school of classic songwriting.',
