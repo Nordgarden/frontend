@@ -1,66 +1,50 @@
 <script setup lang="ts">
 defineI18nRoute({
   paths: {
-    en: '/:slug'
-  }
-})
+    en: "/[slug]",
+  },
+});
 
-const route = useRoute()
-const { getPost } = useServer()
+const route = useRoute();
+const { getPost } = useServer();
 
 const { data: post, error } = await useAsyncData(
-    `post-${route.params.slug}`,
-    async () => {
-      if (Array.isArray(route.params.slug)) {
-        return await getPost(route.params.slug.join(','))
-      }
-      return await getPost(route.params.slug)
+  `post-${route.params.slug}`,
+  async () => {
+    if (Array.isArray(route.params.slug)) {
+      return await getPost(route.params.slug.join(","));
     }
-)
+    return await getPost(route.params.slug);
+  }
+);
 
 if (!post.value || error.value) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Page Not Found'
-  })
+    statusMessage: "Page Not Found",
+  });
 }
 
-useMeta(post)
+useMeta(post);
 
 const component = computed(() => {
   if (post.value?.featuredImage) {
-    return resolveComponent('image-wrapper')
+    return resolveComponent("image-wrapper");
   }
-  return 'div'
-})
+  return "div";
+});
 </script>
 
 <template>
-  <app-page
-    v-if="post"
-    :title="post.title"
-  >
-    <component
-      :is="component"
-      :image="post.featuredImage"
-    >
+  <app-page v-if="post" :title="post.title">
+    <component :is="component" :image="post.featuredImage">
       <div class="post">
-        <post-date
-          :date="post.date"
-          class="date"
-        />
-        <div
-          class="text"
-          v-html="post.content"
-        />
+        <post-date :date="post.date" class="date" />
+        <div class="text" v-html="post.content" />
       </div>
     </component>
   </app-page>
-  <section
-    v-if="post"
-    class="news-list"
-    aria-labelledby="news-list-title"
-  >
+  <section v-if="post" class="news-list" aria-labelledby="news-list-title">
     <h1 id="news-list-title">
       {{ $t("morePosts") }}
     </h1>
@@ -69,7 +53,7 @@ const component = computed(() => {
 </template>
 
 <style lang="postcss" scoped>
-  .text {
-    margin-bottom: var(--spacing-l);
-  }
+.text {
+  margin-bottom: var(--spacing-l);
+}
 </style>
