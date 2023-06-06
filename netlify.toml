@@ -12,28 +12,28 @@
 [[headers]]
   for = "/images/*"
   [headers.values]
-    cache-control = '''
+    Cache-Control = '''
     max-age=31536000,
     immutable'''
 
 [[headers]]
   for = "/audio/*"
   [headers.values]
-    cache-control = '''
+    Cache-Control = '''
     max-age=31536000,
     immutable'''
 
 [[headers]]
   for = "/*.css"
   [headers.values]
-    cache-control = '''
+    Cache-Control = '''
     max-age=31536000,
     immutable'''
 
 [[headers]]
   for = "/*.js"
   [headers.values]
-    cache-control = '''
+    Cache-Control = '''
     max-age=31536000,
     immutable'''
 

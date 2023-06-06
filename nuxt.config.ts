@@ -148,10 +148,13 @@ export default defineNuxtConfig({
     baseUrl: "https://nordgarden.info",
     strategy: "prefix_except_default",
     defaultLocale: "en",
+    lazy: true,
+    langDir: "locales",
     locales: [
       {
         code: "en",
         iso: "en-US",
+        file: "en.json",
       },
     ],
   },
